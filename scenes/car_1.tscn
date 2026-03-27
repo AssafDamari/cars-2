@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://c46wyujvnotrj"]
+
+[ext_resource type="Texture2D" uid="uid://q7u57h4rdlud" path="res://textures/PNG/Red/texture_09.png" id="1_svl2s"]
+[ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="1_ydp05"]
+
+[sub_resource type="GDScript" id="GDScript_3e54y"]
+resource_name = "Car1"
+script/source = "extends VehicleBody3D
+
+@export var max_engine_force: float = 400.0
+@export var max_brake_force: float = 20.0
+@export var max_steering_angle: float = 0.3  # In radians (approx 30 degrees)
+@export var steering_speed: float = 1.0 # Lower = Slower steering
+
+func _physics_process(delta: float) -> void:
+	# 1. Acceleration and Reverse
+	var throttle = Input.get_action_strength(\"ui_up\") - Input.get_action_strength(\"ui_down\")
+
+	engine_force = throttle * max_engine_force
+	
+	# 2. Steering
+	var steer_input = Input.get_action_strength(\"ui_left\") - Input.get_action_strength(\"ui_right\")
+	var steer_target = steer_input * max_steering_angle
+	steering = move_toward(steering, steer_target, delta * steering_speed)
+	
+	# 3. Braking (Optional separate key)
+	if Input.is_action_pressed(\"ui_accept\"): # Example: Spacebar
+		brake = max_brake_force
+	else:
+		brake = 0.0
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kf162"]
+albedo_color = Color(0.7539839, 0.75398386, 0.75398386, 1)
+albedo_texture = ExtResource("1_svl2s")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_3e54y"]
+size = Vector3(2, 0.3, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
+size = Vector3(2, 0.3, 4)
+
+[node name="Car1" type="VehicleBody3D" unique_id=1835131583]
+mass = 500.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.1, 0)
+script = SubResource("GDScript_3e54y")
+max_engine_force = 500.0
+steering_speed = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=847695400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27724922, 0)
+material_override = SubResource("StandardMaterial3D_kf162")
+mesh = SubResource("BoxMesh_3e54y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27171913, 0)
+shape = SubResource("BoxShape3D_3e54y")
+
+[node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel" parent="VehicleWheel3DFrontLeft" unique_id=1097093256 instance=ExtResource("1_ydp05")]
+
+[node name="VehicleWheel3DFrontRight" type="VehicleWheel3D" parent="." unique_id=2038555314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.5)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel2" parent="VehicleWheel3DFrontRight" unique_id=1045903003 instance=ExtResource("1_ydp05")]
+
+[node name="VehicleWheel3DBackRight" type="VehicleWheel3D" parent="." unique_id=2036089284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.5)
+use_as_traction = true
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=862881802 instance=ExtResource("1_ydp05")]
+
+[node name="VehicleWheel3DBackLeft" type="VehicleWheel3D" parent="." unique_id=389764362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.5)
+use_as_traction = true
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("1_ydp05")]
