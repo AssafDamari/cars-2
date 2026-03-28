@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dtp5bt81r57mc"]
+
+[ext_resource type="Script" uid="uid://dlmopksf2xgiv" path="res://scenes/npx_car.gd" id="1_d5kkg"]
+[ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_avsom"]
+[ext_resource type="Material" uid="uid://dstm1evqenur1" path="res://materials/orange.tres" id="3_nxx2m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fsb6"]
+size = Vector3(2, 0.3, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vh06j"]
+size = Vector3(2, 0.3, 4)
+
+[node name="NpxCar" type="VehicleBody3D" unique_id=495299180]
+script = ExtResource("1_d5kkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1413013555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27171913, 0)
+shape = SubResource("BoxShape3D_0fsb6")
+
+[node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1812266311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel" parent="VehicleWheel3DFrontLeft" unique_id=1097093256 instance=ExtResource("2_avsom")]
+
+[node name="VehicleWheel3DFrontRight" type="VehicleWheel3D" parent="." unique_id=1787859264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.5)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel2" parent="VehicleWheel3DFrontRight" unique_id=1280328653 instance=ExtResource("2_avsom")]
+
+[node name="VehicleWheel3DBackRight" type="VehicleWheel3D" parent="." unique_id=956594363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.5)
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=487265203 instance=ExtResource("2_avsom")]
+
+[node name="VehicleWheel3DBackLeft" type="VehicleWheel3D" parent="." unique_id=237646752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.5)
+wheel_roll_influence = 0.9
+wheel_friction_slip = 1.0
+suspension_stiffness = 30.0
+
+[node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1885321166 instance=ExtResource("2_avsom")]
+
+[node name="Body" type="Node3D" parent="." unique_id=1951651576]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=950236015]
+transform = Transform3D(1, 0, 0, 0, 1.7602191, 0, 0, 0, 1.0938888, 0, 0.39566875, 0)
+material_override = ExtResource("3_nxx2m")
+mesh = SubResource("BoxMesh_vh06j")
+
+[node name="Sensor" type="RayCast3D" parent="." unique_id=1561292123]
+transform = Transform3D(1, 0, 0, 0, -0.0010297734, 0.99999946, 0, -0.99999946, -0.0010297734, 0, 0.29090738, 2.2921317)
+target_position = Vector3(0, -5, 0)

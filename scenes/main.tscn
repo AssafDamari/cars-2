@@ -2,12 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c46wyujvnotrj" path="res://scenes/car_1.tscn" id="2_qo751"]
+[ext_resource type="Material" uid="uid://dstm1evqenur1" path="res://materials/orange.tres" id="3_choun"]
 [ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://df8yalotnk7fh" path="res://scenes/box.tscn" id="3_tipki"]
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://i3mut64ucg30" path="res://scenes/bridge.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dtp5bt81r57mc" path="res://scenes/npx_car.tscn" id="9_85g3d"]
+
+[sub_resource type="Curve3D" id="Curve3D_ya4ey"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.7235584, 0, -67.94163, 0, 0, 0, 0, 0, 0, -4.2349834, 0, -11.0642805, 0, 0, 0, 0, 0, 0, -13.115198, 0, 8.472192, 0, 0, 0, 0, 0, 0, -36.31964, 0, 59.521965, 0, 0, 0, 0, 0, 0, -38.653076, 0, 93.35669, 0, 0, 0, 0, 0, 0, -2.1932201, 0, 108.81566, 0, 0, 0, 0, 0, 0, 35.141647, 0, 110.56573, 0, 0, 0, 0, 0, 0, 61.39273, 0, 91.60662, 0, 0, 0, 0, 0, 0, 68.68469, 0, 61.56372, 0, 0, 0, 0, 0, 0, 46.22545, 0, 43.18796, 0, 0, 0, 0, 0, 0, 13.8490925, 8.956625, 37.35438, 0, 0, 0, 0, 0, 0, -18.235548, 11.562511, 34.43759, 0, 0, 0, 0, 0, 0, -52.070297, 9.107748, 29.479061, 0, 0, 0, 0, 0, 0, -80.65481, 0, 25.103886, 0, 0, 0, 0, 0, 0, -106.90589, 0, 5.853082, 0, 0, 0, 0, 0, 0, -108.36429, 0, -30.315075, 0, 0, 0, 0, 0, 0, -96.40546, 0, -67.94163, 0, 0, 0, 0, 0, 0, -66.36255, 0, -84.567314, 0, 0, 0, 0, 0, 0, -39.819794, 0, -68.52499, 0, 0, 0, 0, 0, 0, -29.611036, 0, -38.773754, 0, 0, 0, 0, 0, 0, -39.528107, 0, -22.731422, 0, 0, 0, 0, 0, 0, -45.945038, 0, -3.1889546, 0, 0, 0, 0, 0, 0, 38.350098, 0, 11.978338, 0, 0, 0, 0, 0, 0, 73.35155, 0, 7.019801, 0, 0, 0, 0, 0, 0, 95.81082, 0, -13.397712, 0, 0, 0, 0, 0, 0, 96.97754, 0, -49.27419, 0, 0, 0, 0, 0, 0, 82.10193, 0, -78.73374, 0, 0, 0, 0, 0, 0, 62.267776, 0, -92.15096, 0, 0, 0, 0, 0, 0, 43.892, 0, -98.85957, 0, 0, 0, 0, 0, 0, 25.224566, 0, -95.65111, 0, 0, 0, 0, 0, 0, 3.0569935, 0, -89.817535),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 31
+
+[sub_resource type="SphereMesh" id="SphereMesh_85g3d"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0wfyh"]
 
@@ -38,8 +50,22 @@ texture_filter = 0
 
 [node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_sugp2")]
 
+[node name="NpxCar" parent="." unique_id=495299180 node_paths=PackedStringArray("path_follow") instance=ExtResource("9_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64017105, 4.783122, -77.75031)
+path_follow = NodePath("../NpcPath3D1/PathFollow3D")
+
+[node name="NpcPath3D1" type="Path3D" parent="." unique_id=38077161]
+curve = SubResource("Curve3D_ya4ey")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="NpcPath3D1" unique_id=1361983949]
+transform = Transform3D(-0.9962211, 0, 0.086850174, 0, 1, 0, -0.086850174, 0, -0.9962211, 0.7235584, 0, -67.94163)
+
+[node name="marker" type="MeshInstance3D" parent="NpcPath3D1/PathFollow3D" unique_id=1503936528]
+mesh = SubResource("SphereMesh_85g3d")
+surface_material_override/0 = ExtResource("3_choun")
+
 [node name="Car1" parent="." unique_id=1835131583 instance=ExtResource("2_qo751")]
-transform = Transform3D(0.8257342, 0, -0.5640594, 0, 1, 0, 0.5640594, 0, 0.8257342, -5.9253435, 1.618608, 0)
+transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1, -3.0406095e-08, 0.95654935, -2.4456371e-08, 0.29157054, 30.955376, 1.6186069, -94.164085)
 
 [node name="Box" parent="." unique_id=74203526 instance=ExtResource("3_tipki")]
 transform = Transform3D(0.78877306, 0, -0.6146845, 0, 1, 0, 0.6146845, 0, 0.78877306, -5.718605, 3.3688498, -0.87104565)
