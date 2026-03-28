@@ -5,33 +5,7 @@
 [ext_resource type="Material" uid="uid://bpgi78a6n1pd3" path="res://materials/dark.tres" id="3_h2cct"]
 [ext_resource type="Material" uid="uid://dstm1evqenur1" path="res://materials/orange.tres" id="4_u2fa2"]
 [ext_resource type="PackedScene" uid="uid://f64whos56byr" path="res://scenes/speedometer.tscn" id="5_h2cct"]
-
-[sub_resource type="GDScript" id="GDScript_3e54y"]
-resource_name = "Car1"
-script/source = "extends VehicleBody3D
-
-@export var max_engine_force: float = 400.0
-@export var max_brake_force: float = 20.0
-@export var max_steering_angle: float = 0.4  # In radians (0.3 is approx 30 degrees)
-@export var steering_speed: float = 2.0 # Lower = Slower steering
-
-func _physics_process(delta: float) -> void:
-	# 1. Acceleration and Reverse
-	var throttle = Input.get_action_strength(\"ui_up\") - Input.get_action_strength(\"ui_down\")
-
-	engine_force = throttle * max_engine_force
-	
-	# 2. Steering
-	var steer_input = Input.get_action_strength(\"ui_left\") - Input.get_action_strength(\"ui_right\")
-	var steer_target = steer_input * max_steering_angle
-	steering = move_toward(steering, steer_target, delta * steering_speed)
-	
-	# 3. Braking (Optional separate key)
-	if Input.is_action_pressed(\"ui_accept\"): # Example: Spacebar
-		brake = max_brake_force
-	else:
-		brake = 0.0
-"
+[ext_resource type="Script" uid="uid://djlvejcullers" path="res://scenes/car_1.gd" id="6_car1script"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
 size = Vector3(2, 0.3, 4)
@@ -72,11 +46,25 @@ rings = 1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_b4fkd"]
 
+[sub_resource type="GDScript" id="GDScript_ecky1"]
+resource_name = "speedometer"
+script/source = "extends Label
+
+@onready var car := get_parent() as VehicleBody3D
+
+func _process(_delta: float) -> void:
+	if car:
+		var speed_mps = car.linear_velocity.length()
+		var speed_kmh = speed_mps * 3.6
+		
+		text = str(round(speed_kmh)) + \" km/h\"
+"
+
 [node name="Car1" type="VehicleBody3D" unique_id=1835131583]
 mass = 500.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.1, 0)
-script = SubResource("GDScript_3e54y")
+script = ExtResource("6_car1script")
 max_engine_force = 500.0
 steering_speed = 0.5
 
@@ -186,7 +174,7 @@ mesh = SubResource("BoxMesh_mucs4")
 surface_material_override/0 = SubResource("StandardMaterial3D_lkfvg")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="Body" unique_id=159518388]
-transform = Transform3D(2.189204, 0, 0, 0, 0.2603488, 0, 0, 0, 0.1663295, 0, 0.19987488, -2.0942621)
+transform = Transform3D(2.189204, 0, 0, 0, 0.2603488, 0, 0, 0, 0.1663295, 0, 0.19987488, -2.1446958)
 material_override = ExtResource("3_h2cct")
 mesh = SubResource("BoxMesh_fj4fd")
 
@@ -211,3 +199,4 @@ material_override = ExtResource("2_o6j5x")
 mesh = SubResource("CylinderMesh_b4fkd")
 
 [node name="Speedometer" parent="." unique_id=1149325968 instance=ExtResource("5_h2cct")]
+script = SubResource("GDScript_ecky1")

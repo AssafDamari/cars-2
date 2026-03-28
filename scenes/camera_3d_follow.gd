@@ -1,0 +1,24 @@
+extends Camera3D
+
+@export var target_path: NodePath
+@export var offset: Vector3 = Vector3(0, 3, -8) # Height and distance behind
+@export var lerp_speed: float = 5.0
+
+var target: Node3D
+
+func _ready():
+	if target_path:
+		target = get_node(target_path)
+
+func _physics_process(delta):
+	if not target:
+		return
+
+	# Calculate where the camera wants to be based on the car's position/rotation
+	var target_pos = target.global_transform.origin + (target.global_transform.basis * offset)
+	
+	# Smoothly move the camera to that position
+	global_transform.origin = global_transform.origin.lerp(target_pos, lerp_speed * delta)
+	
+	# Always look at the car
+	look_at(target.global_transform.origin, Vector3.UP)
