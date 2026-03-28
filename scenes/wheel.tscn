@@ -7,6 +7,7 @@
 height = 0.35
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b52vq"]
+albedo_color = Color(0.51718444, 0.5171845, 0.51718444, 1)
 albedo_texture = ExtResource("2_b52vq")
 uv1_scale = Vector3(2.64, 2.64, 2.64)
 uv1_triplanar = true

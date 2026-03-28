@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://f64whos56byr"]
 
-[ext_resource type="Script" path="res://scenes/speedometer.gd" id="1_speedometer_script"]
+[ext_resource type="Script" uid="uid://ctyss7h1p8ecg" path="res://scenes/speedometer.gd" id="1_speedometer_script"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecky1"]
-font_size = 22
+font_size = 20
 font_color = Color(0.40515652, 1, 0.9975185, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Speedometer" type="Label" unique_id=1149325968]
-offset_left = 35.0
-offset_top = 35.0
-offset_right = 544.0
-offset_bottom = 66.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.0
+offset_right = 44.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "00 kmhw"
 label_settings = SubResource("LabelSettings_ecky1")
 script = ExtResource("1_speedometer_script")

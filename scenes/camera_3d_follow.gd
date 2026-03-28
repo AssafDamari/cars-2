@@ -1,7 +1,7 @@
 extends Camera3D
 
 @export var target_path: NodePath
-@export var offset: Vector3 = Vector3(0, 3, -8) # Height and distance behind
+@export var offset: Vector3 = Vector3(0, 6, -10) # Height and distance behind
 @export var lerp_speed: float = 5.0
 
 var target: Node3D
