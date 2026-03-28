@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ctyss7h1p8ecg" path="res://scenes/speedometer.gd" id="1_speedometer_script"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecky1"]
-font_size = 20
+font_size = 24
 font_color = Color(0.40515652, 1, 0.9975185, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
