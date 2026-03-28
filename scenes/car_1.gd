@@ -1,6 +1,6 @@
 extends VehicleBody3D
 
-@export var max_engine_force: float = 800.0
+@export var max_engine_force: float = 1000.0
 @export var max_brake_force: float = 20.0
 @export var max_steering_angle: float = 0.5  # In radians (0.3 is approx 30 degrees)
 @export var steering_speed: float = 3 # Lower = Slower steering
