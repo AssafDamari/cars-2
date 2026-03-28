@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://f64whos56byr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ecky1"]
+font_size = 22
+font_color = Color(0.40515652, 1, 0.9975185, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_ecky1"]
+resource_name = "speedometer"
+script/source = "extends Label
+
+@onready var car := get_parent() as VehicleBody3D
+
+func _process(_delta: float) -> void:
+	if car:
+		var speed_mps = car.linear_velocity.length()
+		var speed_kmh = speed_mps * 3.6
+		
+		text = str(round(speed_kmh)) + \" km/h\"
+"
+
+[node name="Speedometer" type="Label" unique_id=1149325968]
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 544.0
+offset_bottom = 66.0
+text = "00 kmhw"
+label_settings = SubResource("LabelSettings_ecky1")
+script = SubResource("GDScript_ecky1")

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bvqvwfrwak26k"]
+
+[sub_resource type="Gradient" id="Gradient_4bqxd"]
+offsets = PackedFloat32Array(0.209459, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_br286"]
+seed = 7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_un4dl"]
+noise = SubResource("FastNoiseLite_br286")
+color_ramp = SubResource("Gradient_4bqxd")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4fla"]
+sky_top_color = Color(0.2911, 0.465642, 0.71, 1)
+sky_cover = SubResource("NoiseTexture2D_un4dl")
+sky_cover_modulate = Color(0.72, 0.72, 0.72, 1)
+ground_bottom_color = Color(0.1705, 0.2356, 0.31, 1)
+sun_angle_max = 15.0
+energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_h35h7"]
+sky_material = SubResource("ProceduralSkyMaterial_u4fla")
+
+[sub_resource type="Environment" id="Environment_g32t6"]
+background_mode = 2
+sky = SubResource("Sky_h35h7")
+
+[node name="Enviroment" type="Node3D" unique_id=994865547]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1357371403]
+environment = SubResource("Environment_g32t6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1918266504]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 300.0

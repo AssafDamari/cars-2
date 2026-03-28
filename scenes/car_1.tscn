@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://b3w71v6w4y2xd" path="res://materials/red.tres" id="2_o6j5x"]
 [ext_resource type="Material" uid="uid://bpgi78a6n1pd3" path="res://materials/dark.tres" id="3_h2cct"]
 [ext_resource type="Material" uid="uid://dstm1evqenur1" path="res://materials/orange.tres" id="4_u2fa2"]
+[ext_resource type="PackedScene" uid="uid://f64whos56byr" path="res://scenes/speedometer.tscn" id="5_h2cct"]
 
 [sub_resource type="GDScript" id="GDScript_3e54y"]
 resource_name = "Car1"
@@ -11,8 +12,8 @@ script/source = "extends VehicleBody3D
 
 @export var max_engine_force: float = 400.0
 @export var max_brake_force: float = 20.0
-@export var max_steering_angle: float = 0.3  # In radians (approx 30 degrees)
-@export var steering_speed: float = 1.0 # Lower = Slower steering
+@export var max_steering_angle: float = 0.4  # In radians (0.3 is approx 30 degrees)
+@export var steering_speed: float = 2.0 # Lower = Slower steering
 
 func _physics_process(delta: float) -> void:
 	# 1. Acceleration and Reverse
@@ -208,3 +209,5 @@ mesh = SubResource("CylinderMesh_b4fkd")
 transform = Transform3D(0.12797426, 0, 0, 0, -0.007823852, 0.4290816, 0, -1.189032, -0.0028233666, 0.97489905, 0.4171065, -0.20039165)
 material_override = ExtResource("2_o6j5x")
 mesh = SubResource("CylinderMesh_b4fkd")
+
+[node name="Speedometer" parent="." unique_id=1149325968 instance=ExtResource("5_h2cct")]

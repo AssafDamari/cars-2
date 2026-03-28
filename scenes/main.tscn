@@ -1,48 +1,10 @@
 [gd_scene format=3 uid="uid://dh48bd7omk48j"]
 
+[ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c46wyujvnotrj" path="res://scenes/car_1.tscn" id="2_qo751"]
+[ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="5_tbgi4"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qo751"]
-sky_top_color = Color(0, 0.5891304, 0.91729665, 1)
-sky_horizon_color = Color(0.60041684, 0.73994946, 0.812991, 1)
-ground_horizon_color = Color(0.60041684, 0.73994946, 0.812991, 1)
-
-[sub_resource type="Sky" id="Sky_dmsfk"]
-sky_material = SubResource("ProceduralSkyMaterial_qo751")
-
-[sub_resource type="Environment" id="Environment_ucpox"]
-background_mode = 2
-sky = SubResource("Sky_dmsfk")
-ambient_light_source = 1
-tonemap_mode = 2
-
-[sub_resource type="GDScript" id="GDScript_0wfyh"]
-script/source = "extends Camera3D
-
-@export var target_path: NodePath
-@export var offset: Vector3 = Vector3(0, 3, -5) # Height and distance behind
-@export var lerp_speed: float = 5.0
-
-var target: Node3D
-
-func _ready():
-	if target_path:
-		target = get_node(target_path)
-
-func _physics_process(delta):
-	if not target:
-		return
-
-	# Calculate where the camera wants to be based on the car's position/rotation
-	var target_pos = target.global_transform.origin + (target.global_transform.basis * offset)
-	
-	# Smoothly move the camera to that position
-	global_transform.origin = global_transform.origin.lerp(target_pos, lerp_speed * delta)
-	
-	# Always look at the car
-	look_at(target.global_transform.origin, Vector3.UP)
-"
+[ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="5_tefeu"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0wfyh"]
 
@@ -54,21 +16,20 @@ _data = {
 }
 point_count = 20
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6xl0"]
+albedo_texture = ExtResource("5_tefeu")
+uv1_scale = Vector3(7.855, 7.855, 7.855)
+texture_filter = 0
+
 [node name="main" type="Node3D" unique_id=699808080]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2130130121]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1461025383]
-environment = SubResource("Environment_ucpox")
+[node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_sugp2")]
 
 [node name="Car1" parent="." unique_id=1835131583 instance=ExtResource("2_qo751")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4838743, 0)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1845453059]
+[node name="Camera3DFollow" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)
-script = SubResource("GDScript_0wfyh")
-target_path = NodePath("../Car1")
 
 [node name="FpsLabel" parent="." unique_id=706279772 instance=ExtResource("5_tbgi4")]
 anchors_preset = 1
@@ -104,3 +65,4 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = true
+material = SubResource("StandardMaterial3D_o6xl0")
