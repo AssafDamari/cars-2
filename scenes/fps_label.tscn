@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c1y6yhe347n7s"]
+
+[sub_resource type="GDScript" id="GDScript_24yv0"]
+resource_name = "fps_label"
+script/source = "extends Label
+
+func _process(_delta: float) -> void:
+	# Engine.get_frames_per_second() returns the current FPS
+	text = \"FPS: %d\" % Engine.get_frames_per_second()
+"
+
+[node name="FpsLabel" type="Label" unique_id=706279772]
+script = SubResource("GDScript_24yv0")
