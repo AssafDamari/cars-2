@@ -134,6 +134,36 @@ transform = Transform3D(1.8491453, 0, 0, 0, 0.8012116, 0, 0, 0, 0.9247606, 0.013
 material_override = ExtResource("2_o6j5x")
 mesh = SubResource("BoxMesh_8j6vf")
 
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Body" unique_id=1434055176]
+transform = Transform3D(0.20264429, 0, 0, 0, 0.3067415, 0, 0, 0, 0.080932625, 1.127535, 1.2087864, 1.1315781)
+material_override = ExtResource("2_o6j5x")
+mesh = SubResource("BoxMesh_8j6vf")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Body/MeshInstance3D18" unique_id=2052267197]
+transform = Transform3D(0.69409364, 0, 0, 0, 0.8129583, 0, 0, 0, 0.7137443, 0.005198002, -0.0052757263, -0.23843288)
+mesh = SubResource("BoxMesh_gfnuu")
+surface_material_override/0 = SubResource("StandardMaterial3D_5mj8q")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Body/MeshInstance3D18" unique_id=1485409836]
+transform = Transform3D(1, 0, 0, 0, 0.22119206, 0, 0, 0, 0.99999994, -0.99008465, 0.39644217, 0)
+material_override = ExtResource("2_o6j5x")
+mesh = SubResource("BoxMesh_8j6vf")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Body" unique_id=1261029144]
+transform = Transform3D(0.20264429, 0, 0, 0, 0.3067415, 0, 0, 0, 0.080932625, -1.0933615, 1.2087864, 1.1315781)
+material_override = ExtResource("2_o6j5x")
+mesh = SubResource("BoxMesh_8j6vf")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Body/MeshInstance3D19" unique_id=381623862]
+transform = Transform3D(0.69409364, 0, 0, 0, 0.8129583, 0, 0, 0, 0.7137443, 0.005198002, -0.0052757263, -0.23843288)
+mesh = SubResource("BoxMesh_gfnuu")
+surface_material_override/0 = SubResource("StandardMaterial3D_5mj8q")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Body/MeshInstance3D19" unique_id=1061884600]
+transform = Transform3D(1, 0, 0, 0, 0.22119206, 0, 0, 0, 0.99999994, 0.9331845, 0.38635835, 0)
+material_override = ExtResource("2_o6j5x")
+mesh = SubResource("BoxMesh_8j6vf")
+
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Body" unique_id=633319916]
 transform = Transform3D(1.7169513, 0, 0, 0, 0.6788723, 0, 0, 0, 0.22670338, 0.012516022, 1.0227927, 1.124295)
 mesh = SubResource("BoxMesh_gfnuu")
