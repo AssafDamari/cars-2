@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c46wyujvnotrj" path="res://scenes/car_1.tscn" id="2_qo751"]
 [ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://df8yalotnk7fh" path="res://scenes/box.tscn" id="3_tipki"]
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="5_tefeu"]
@@ -47,42 +46,36 @@ texture_filter = 0
 
 [node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_sugp2")]
 
+[node name="NpcPath3D1" type="Path3D" parent="." unique_id=38077161]
+curve = SubResource("Curve3D_ya4ey")
+
 [node name="NpxCar" parent="." unique_id=495299180 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64017105, 4.783122, -77.75031)
 path_node = NodePath("../NpcPath3D1")
-target_speed = 40.0
+color = Color(0.8992537, 0, 0.28492868, 1)
 
 [node name="NpxCar2" parent="." unique_id=762286706 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64017105, 4.783122, -40.415413)
 path_node = NodePath("../NpcPath3D1")
-target_speed = 50.0
+color = Color(0.7885547, 0.0023343414, 0.980557, 1)
 
 [node name="NpxCar3" parent="." unique_id=315050891 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.777643, 4.783122, 30.462547)
+transform = Transform3D(0.9509972, 0, -0.3091996, 0, 1, 0, 0.3091996, 0, 0.9509972, -26.777643, 4.783122, 59.294243)
 path_node = NodePath("../NpcPath3D1")
+color = Color(0.33090147, 0.24092788, 0.9999811, 1)
 
 [node name="NpxCar4" parent="." unique_id=321495123 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.36158, 4.783122, 75.57061)
 path_node = NodePath("../NpcPath3D1")
-target_speed = 55.0
+color = Color(0.6503262, 0.6375296, 3.85046e-07, 1)
 
-[node name="NpcPath3D1" type="Path3D" parent="." unique_id=38077161]
-curve = SubResource("Curve3D_ya4ey")
+[node name="NpxCar5" parent="." unique_id=1256958396 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
+transform = Transform3D(0.15714125, 0, 0.9875761, 0, 1, 0, -0.9875761, 0, 0.15714125, -18.30461, 4.783122, 109.14508)
+path_node = NodePath("../NpcPath3D1")
+color = Color(0.20955032, 0.15276521, 0.9999998, 1)
 
 [node name="Car1" parent="." unique_id=1835131583 instance=ExtResource("2_qo751")]
-transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1, -3.0406095e-08, 0.95654935, -2.4456371e-08, 0.29157054, 30.955376, 1.6186069, -94.164085)
-
-[node name="Box" parent="." unique_id=74203526 instance=ExtResource("3_tipki")]
-transform = Transform3D(0.78877306, 0, -0.6146845, 0, 1, 0, 0.6146845, 0, 0.78877306, -5.718605, 3.3688498, -0.87104565)
-
-[node name="Box2" parent="." unique_id=578529872 instance=ExtResource("3_tipki")]
-transform = Transform3D(0.78877306, 0, -0.6146845, 0, 1, 0, 0.6146845, 0, 0.78877306, -5.251654, 3.3688498, -1.5693469)
-
-[node name="Box3" parent="." unique_id=289546603 instance=ExtResource("3_tipki")]
-transform = Transform3D(0.78877306, 0, -0.6146845, 0, 1, 0, 0.6146845, 0, 0.78877306, -4.573198, 3.1926289, -1.0406315)
-
-[node name="Box4" parent="." unique_id=2033520634 instance=ExtResource("3_tipki")]
-transform = Transform3D(0.78877306, 0, -0.6146845, 0, 1, 0, 0.6146845, 0, 0.78877306, -5.3046494, 3.1342363, -0.09917491)
+transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1, -3.0406095e-08, 0.95654935, -2.4456371e-08, 0.29157054, -10.711338, 1.6186069, 7.0265427)
 
 [node name="Camera3DFollow" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)
@@ -129,4 +122,4 @@ path_joined = true
 material = SubResource("StandardMaterial3D_o6xl0")
 
 [node name="Bridge" parent="." unique_id=276212995 instance=ExtResource("6_tefeu")]
-transform = Transform3D(19.848871, -1.07268434e-07, -2.4540164, 1.07268434e-07, 20, -6.605928e-09, 2.4540164, -6.6059176e-09, 19.848871, -78.24215, -3.759495e-08, 129.85664)
+transform = Transform3D(19.848871, -1.07268434e-07, -2.4540164, 1.07268434e-07, 20, -6.605928e-09, 2.4540164, -6.6059176e-09, 19.848871, -26.51064, -3.837562e-08, 32.3887)

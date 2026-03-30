@@ -2,20 +2,27 @@
 
 [ext_resource type="Script" uid="uid://dlmopksf2xgiv" path="res://scenes/npx_car.gd" id="1_d5kkg"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_avsom"]
-[ext_resource type="Material" uid="uid://dstm1evqenur1" path="res://materials/orange.tres" id="3_nxx2m"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0fsb6"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o10oq"]
+radius = 0.7871094
+height = 4.2077637
+
+[sub_resource type="BoxMesh" id="BoxMesh_o10oq"]
 size = Vector3(2, 0.3, 4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_vh06j"]
-size = Vector3(2, 0.3, 4)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5kkg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_o10oq"]
 
 [node name="NpxCar" type="VehicleBody3D" unique_id=495299180]
+mass = 500.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("1_d5kkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1413013555]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27171913, 0)
-shape = SubResource("BoxShape3D_0fsb6")
+transform = Transform3D(1, 0, 0, 0, 0.016265703, 0.9998677, 0, -0.9998677, 0.016265703, 0, 0.68134755, 0.05014368)
+shape = SubResource("CapsuleShape3D_o10oq")
 
 [node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1812266311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
@@ -56,10 +63,13 @@ suspension_stiffness = 30.0
 [node name="Body" type="Node3D" parent="." unique_id=1951651576]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=950236015]
-transform = Transform3D(1, 0, 0, 0, 1.7602191, 0, 0, 0, 1.0938888, 0, 0.39566875, 0)
-material_override = ExtResource("3_nxx2m")
-mesh = SubResource("BoxMesh_vh06j")
+transform = Transform3D(1, 0, 0, 0, 2.0200741, 0, 0, 0, 0.9869793, 0, 0.30731744, 0)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5kkg")
 
 [node name="Sensor" type="RayCast3D" parent="." unique_id=1561292123]
-transform = Transform3D(1, 0, 0, 0, -0.0010297734, 0.99999946, 0, -0.99999946, -0.0010297734, 0, 0.29090738, 2.2921317)
-target_position = Vector3(0, -5, 0)
+transform = Transform3D(1, 0, 0, 0, -0.0010297734, 0.99999946, 0, -0.99999946, -0.0010297734, 0, 0.6036432, 1.9884772)
+
+[node name="DebugMarker" type="MeshInstance3D" parent="." unique_id=255012199]
+top_level = true
+mesh = SubResource("SphereMesh_o10oq")
