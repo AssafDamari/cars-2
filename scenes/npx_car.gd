@@ -1,5 +1,6 @@
 extends VehicleBody3D
 
+@export var debug_mode: bool = false
 @export var path_node: Path3D 
 @export var target_speed: float = 40.0
 @export var color: Color = Color.WHITE
@@ -25,9 +26,6 @@ var curve: Curve3D
 func _ready() -> void:
 	if path_node:
 		curve = path_node.curve
-		
-	if debug_marker:
-		debug_marker.top_level = true
 		
 	apply_color_to_mesh(color)
 
@@ -57,7 +55,7 @@ func _physics_process(_delta: float) -> void:
 
 	var target_path_point = path_node.to_global(curve.sample_baked(target_offset))
 	
-	if debug_marker:
+	if debug_mode:
 		debug_marker.global_position = target_path_point
 
 	var local_target = to_local(target_path_point)
@@ -98,5 +96,5 @@ func apply_color_to_mesh(_color: Color) -> void:
 	var material = body_mesh.get_active_material(0).duplicate(true)
 	material.albedo_color = _color
 	body_mesh.set_surface_override_material(0, material)
-	if debug_marker:
+	if debug_mode:
 		debug_marker.set_surface_override_material(0, material)

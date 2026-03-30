@@ -47,6 +47,7 @@ texture_filter = 0
 [node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_sugp2")]
 
 [node name="NpcPath3D1" type="Path3D" parent="." unique_id=38077161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5721016, 0)
 curve = SubResource("Curve3D_ya4ey")
 
 [node name="NpxCar" parent="." unique_id=495299180 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
