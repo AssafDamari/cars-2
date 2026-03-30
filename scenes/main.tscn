@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c46wyujvnotrj" path="res://scenes/car_1.tscn" id="2_qo751"]
 [ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://df8yalotnk7fh" path="res://scenes/box.tscn" id="4_85g3d"]
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="5_tefeu"]
@@ -77,6 +78,15 @@ color = Color(0.20955032, 0.15276521, 0.9999998, 1)
 
 [node name="Car1" parent="." unique_id=1835131583 instance=ExtResource("2_qo751")]
 transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1, -3.0406095e-08, 0.95654935, -2.4456371e-08, 0.29157054, -10.711338, 1.6186069, 7.0265427)
+
+[node name="Box" parent="." unique_id=74203526 instance=ExtResource("4_85g3d")]
+transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -10.384853, 2.915029, 7.17163)
+
+[node name="Box2" parent="." unique_id=1389071900 instance=ExtResource("4_85g3d")]
+transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -9.050698, 2.9576306, 6.85129)
+
+[node name="Box3" parent="." unique_id=1326101794 instance=ExtResource("4_85g3d")]
+transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -9.793329, 3.1120658, 6.0951023)
 
 [node name="Camera3DFollow" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)

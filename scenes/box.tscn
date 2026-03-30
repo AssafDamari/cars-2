@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cea73r2byaqgy" path="res://textures/texture_13.png" id="1_3inec"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3inec"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks2v0"]
 albedo_texture = ExtResource("1_3inec")
 uv1_triplanar = true
@@ -13,6 +15,8 @@ size = Vector3(0.75, 0.75, 0.75)
 size = Vector3(0.75, 0.75, 0.75)
 
 [node name="Box" type="RigidBody3D" unique_id=74203526]
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_3inec")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1514663111]
 material_override = SubResource("StandardMaterial3D_ks2v0")

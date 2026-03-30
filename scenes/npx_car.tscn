@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dlmopksf2xgiv" path="res://scenes/npx_car.gd" id="1_d5kkg"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_avsom"]
+[ext_resource type="Material" uid="uid://bpgi78a6n1pd3" path="res://materials/dark.tres" id="3_avsom"]
+[ext_resource type="Material" uid="uid://id13ux6gtf3n" path="res://materials/light_blue.tres" id="4_nxx2m"]
+[ext_resource type="Material" uid="uid://b3w71v6w4y2xd" path="res://materials/red.tres" id="5_0fsb6"]
+[ext_resource type="Material" uid="uid://dstm1evqenur1" path="res://materials/orange.tres" id="6_vh06j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o10oq"]
 radius = 0.7871094
@@ -61,6 +65,51 @@ suspension_stiffness = 30.0
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1885321166 instance=ExtResource("2_avsom")]
 
 [node name="Body" type="Node3D" parent="." unique_id=1951651576]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body" unique_id=837907432]
+transform = Transform3D(1, 0, 0, 0, 2.0200744, 0, 0, 0, 0.47436598, 0, 0.92096984, 0)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("3_avsom")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Body" unique_id=1328144569]
+transform = Transform3D(0.840447, 0, 0, 0, 1.6288364, 0, 0, 0, 0.48278597, -0.02534914, 0.87676394, 0)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("4_nxx2m")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Body" unique_id=1608600102]
+transform = Transform3D(0.10949325, 0, 0, 0, 0.67363125, 0, 0, 0, 0.018959116, -0.78557956, 0.37676632, 1.9777479)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("4_nxx2m")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Body" unique_id=1616492518]
+transform = Transform3D(0.10949325, 0, 0, 0, 0.67363125, 0, 0, 0, 0.018959116, 0.7716677, 0.37676632, 1.9777479)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("4_nxx2m")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Body" unique_id=1387650083]
+transform = Transform3D(0.129, 0, 0, 0, 0.349, 0, 0, 0, 0.018959116, -0.78557956, 0.3392086, -1.9635057)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("5_0fsb6")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Body" unique_id=416768826]
+transform = Transform3D(0.129, 0, 0, 0, 0.349, 0, 0, 0, 0.018959116, 0.7716677, 0.3392086, -1.9635057)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("5_0fsb6")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Body" unique_id=1159477952]
+transform = Transform3D(0.29368404, 0, 0, 0, 0.67363125, 0, 0, 0, 0.018959116, -0.022741318, 0.15105039, 1.9777479)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("6_vh06j")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Body" unique_id=231174822]
+transform = Transform3D(0.29368404, 0, 0, 0, 0.67363125, 0, 0, 0, 0.018959116, -0.022741318, 0.1469664, -1.9737275)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("6_vh06j")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Body" unique_id=928725768]
+transform = Transform3D(1.0339375, 0, 0, 0, 1.6288364, 0, 0, 0, 0.43221703, -0.02534914, 0.87676394, 0)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("4_nxx2m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=950236015]
 transform = Transform3D(1, 0, 0, 0, 2.0200741, 0, 0, 0, 0.9869793, 0, 0.30731744, 0)
