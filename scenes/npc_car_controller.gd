@@ -39,8 +39,8 @@ func _ready() -> void:
 		push_error("NPC Controller path_node is not set for ", name, " and could not be auto-found")
 	
 	if collision_sensor:
-		collision_sensor.area_entered.connect(_on_collision_sensor_entered)
-		collision_sensor.area_exited.connect(_on_collision_sensor_exited)
+		collision_sensor.body_entered.connect(_on_collision_sensor_entered)
+		collision_sensor.body_exited.connect(_on_collision_sensor_exited)
 
 
 func _physics_process(delta: float) -> void:
@@ -104,13 +104,13 @@ func apply_braking() -> void:
 	vehicle.brake = braking_force
 
 
-func _on_collision_sensor_entered(area: Area3D) -> void:
-	print("Collision sensor entered by: ", area.name)
-	if area.is_in_group("CAR"):
+func _on_collision_sensor_entered(body: Node3D) -> void:
+	print("Collision sensor entered by: ", body.name)
+	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = true
 		vehicle.show_brakes_lights()
 
-func _on_collision_sensor_exited(area: Area3D) -> void:
-	if area.is_in_group("CAR"):
+func _on_collision_sensor_exited(body: Node3D) -> void:
+	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = false
 		vehicle.hide_brakes_lights()

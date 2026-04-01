@@ -118,11 +118,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_d5kkg")
 visible = false
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="Body/BrakeLights" unique_id=915952600]
-transform = Transform3D(0.224, 0, 0, 0, 0.606, 0, 0, 0, 0.033, -0.78557956, 0.3392086, -1.9804356)
+transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, -0.78557956, 0.3392086, -1.9804356)
 mesh = SubResource("BoxMesh_o10oq")
 surface_material_override/0 = ExtResource("5_0fsb6")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="Body/BrakeLights" unique_id=1018903654]
-transform = Transform3D(0.224, 0, 0, 0, 0.606, 0, 0, 0, 0.033, 0.7716677, 0.3392086, -1.9804356)
+transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, 0.7716677, 0.3392086, -1.9804356)
 mesh = SubResource("BoxMesh_o10oq")
 surface_material_override/0 = ExtResource("5_0fsb6")
