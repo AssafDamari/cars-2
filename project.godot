@@ -25,6 +25,10 @@ window/stretch/aspect="ignore"
 
 enabled=PackedStringArray("res://addons/csg_terrain/plugin.cfg", "res://addons/virtual_joystick_plus/plugin.cfg")
 
+[global_group]
+
+CAR=""
+
 [input]
 
 ui_left={

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://i3mut64ucg30" path="res://scenes/bridge.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dtp5bt81r57mc" path="res://scenes/npx_car.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://oic2u1tn4ubi" path="res://scenes/npc_car_controller.tscn" id="10_npcctrl"]
 
 [sub_resource type="Curve3D" id="Curve3D_ya4ey"]
 closed = true
@@ -51,32 +52,42 @@ texture_filter = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5721016, 0)
 curve = SubResource("Curve3D_ya4ey")
 
-[node name="NpxCar" parent="." unique_id=495299180 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
+[node name="NpxCar" parent="." unique_id=495299180 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64017105, 4.783122, -77.75031)
-path_node = NodePath("../NpcPath3D1")
 color = Color(0.8992537, 0, 0.28492868, 1)
 
-[node name="NpxCar2" parent="." unique_id=762286706 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
+[node name="NpcCarController" parent="NpxCar" unique_id=1893882791 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="NpxCar2" parent="." unique_id=762286706 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64017105, 4.783122, -40.415413)
-path_node = NodePath("../NpcPath3D1")
 color = Color(0.7885547, 0.0023343414, 0.980557, 1)
 
-[node name="NpxCar3" parent="." unique_id=315050891 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
+[node name="NpcCarController" parent="NpxCar2" unique_id=947872423 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="NpxCar3" parent="." unique_id=315050891 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(0.9509972, 0, -0.3091996, 0, 1, 0, 0.3091996, 0, 0.9509972, -26.777643, 4.783122, 59.294243)
-path_node = NodePath("../NpcPath3D1")
 color = Color(0.33090147, 0.24092788, 0.9999811, 1)
 
-[node name="NpxCar4" parent="." unique_id=321495123 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
+[node name="NpcCarController" parent="NpxCar3" unique_id=2080417054 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="NpxCar4" parent="." unique_id=321495123 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.36158, 4.783122, 75.57061)
-path_node = NodePath("../NpcPath3D1")
 color = Color(0.6503262, 0.6375296, 3.85046e-07, 1)
 
-[node name="NpxCar5" parent="." unique_id=1256958396 node_paths=PackedStringArray("path_node") instance=ExtResource("9_85g3d")]
+[node name="NpcCarController" parent="NpxCar4" unique_id=1036367458 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="NpxCar5" parent="." unique_id=1256958396 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(0.15714125, 0, 0.9875761, 0, 1, 0, -0.9875761, 0, 0.15714125, -18.30461, 4.783122, 109.14508)
-path_node = NodePath("../NpcPath3D1")
 color = Color(0.20955032, 0.15276521, 0.9999998, 1)
 
-[node name="Car1" parent="." unique_id=1835131583 instance=ExtResource("2_qo751")]
+[node name="NpcCarController" parent="NpxCar5" unique_id=571421174 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="Car1" parent="." unique_id=1835131583 groups=["CAR"] instance=ExtResource("2_qo751")]
 transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1, -3.0406095e-08, 0.95654935, -2.4456371e-08, 0.29157054, -10.711338, 1.6186069, 7.0265427)
 
 [node name="Box" parent="." unique_id=74203526 instance=ExtResource("4_85g3d")]
