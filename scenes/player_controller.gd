@@ -8,6 +8,7 @@ var is_reverse: bool = false
 var texture_reverse = preload("res://textures/joystickLeft.png")
 var texture_forward = preload("res://textures/joystickRight.png") # Example second texture
 
+	
 func _physics_process(delta: float) -> void:
 	# 1. Acceleration and Reverse Logic
 	var gas = Input.is_action_pressed("ui_up")

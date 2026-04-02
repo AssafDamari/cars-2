@@ -3,7 +3,7 @@ extends VehicleBody3D
 @export var color: Color = Color.WHITE
 
 @onready var body_mesh: MeshInstance3D = $Body/MeshInstance3D
-@onready var brake_lights: Node3D = $Body/BrakeLights
+@onready var brake_lights: Node3D = $BrakeLights
 
 
 func _ready() -> void:

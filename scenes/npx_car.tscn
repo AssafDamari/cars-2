@@ -62,6 +62,19 @@ suspension_stiffness = 30.0
 
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1885321166 instance=ExtResource("2_avsom")]
 
+[node name="BrakeLights" type="Node3D" parent="." unique_id=1773530133]
+visible = false
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="BrakeLights" unique_id=915952600]
+transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, -0.78557956, 0.3392086, -1.9804356)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("5_0fsb6")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="BrakeLights" unique_id=1018903654]
+transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, 0.7716677, 0.3392086, -1.9804356)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = ExtResource("5_0fsb6")
+
 [node name="Body" type="Node3D" parent="." unique_id=1951651576]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Body" unique_id=837907432]
@@ -113,16 +126,3 @@ surface_material_override/0 = ExtResource("4_nxx2m")
 transform = Transform3D(1, 0, 0, 0, 2.0200741, 0, 0, 0, 0.9869793, 0, 0.30731744, 0)
 mesh = SubResource("BoxMesh_o10oq")
 surface_material_override/0 = SubResource("StandardMaterial3D_d5kkg")
-
-[node name="BrakeLights" type="Node3D" parent="Body" unique_id=1773530133]
-visible = false
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Body/BrakeLights" unique_id=915952600]
-transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, -0.78557956, 0.3392086, -1.9804356)
-mesh = SubResource("BoxMesh_o10oq")
-surface_material_override/0 = ExtResource("5_0fsb6")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Body/BrakeLights" unique_id=1018903654]
-transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, 0.7716677, 0.3392086, -1.9804356)
-mesh = SubResource("BoxMesh_o10oq")
-surface_material_override/0 = ExtResource("5_0fsb6")
