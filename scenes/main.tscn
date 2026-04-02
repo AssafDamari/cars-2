@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dq5vm2aqyrech" path="res://scenes/player_controller.tscn" id="5_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://i3mut64ucg30" path="res://scenes/bridge.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dtp5bt81r57mc" path="res://scenes/npx_car.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://oic2u1tn4ubi" path="res://scenes/npc_car_controller.tscn" id="10_npcctrl"]
@@ -89,6 +90,8 @@ path_node = NodePath("../../NpcPath3D1")
 
 [node name="Car1" parent="." unique_id=1835131583 groups=["CAR"] instance=ExtResource("2_qo751")]
 transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1, -3.0406095e-08, 0.95654935, -2.4456371e-08, 0.29157054, -10.711338, 1.6186069, 7.0265427)
+
+[node name="PlayerController" parent="Car1" unique_id=193088310 instance=ExtResource("5_ya4ey")]
 
 [node name="Box" parent="." unique_id=74203526 instance=ExtResource("4_85g3d")]
 transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -10.384853, 2.915029, 7.17163)
