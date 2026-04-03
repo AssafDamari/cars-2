@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bqv5dx5kqebu2" path="res://scenes/player_controller.gd" id="1_d4y06"]
 [ext_resource type="PackedScene" uid="uid://f64whos56byr" path="res://scenes/speedometer.tscn" id="2_mfmwq"]
-[ext_resource type="Texture2D" uid="uid://d1kf8t1q37no0" path="res://textures/icon_pedal.png" id="3_1kmjt"]
-[ext_resource type="Texture2D" uid="uid://dhmvdwkfxkkl1" path="res://textures/icon_pedal_black.png" id="4_bqnof"]
+[ext_resource type="Texture2D" uid="uid://bwscin4l2w7kh" path="res://textures/joystickUp.png" id="5_ba4vk"]
 [ext_resource type="Texture2D" uid="uid://0e6uu2ooyhur" path="res://textures/icon_pedal_brake.png" id="5_iu0n4"]
 [ext_resource type="Texture2D" uid="uid://ct6umjr3y3kaq" path="res://textures/icon_pedal_brake_black.png" id="6_ngi1a"]
-[ext_resource type="Texture2D" uid="uid://khy3eob0bd4r" path="res://textures/joystickRight.png" id="7_ek60h"]
-[ext_resource type="Texture2D" uid="uid://brsu6r6csb08i" path="res://textures/joystickRightBlack.png" id="8_6cx1n"]
 [ext_resource type="Script" uid="uid://le2y1bavsjxc" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="9_sdupd"]
 [ext_resource type="Texture2D" uid="uid://01srmdbuabf7" path="res://textures/icon_steering_wheel.png" id="10_34smf"]
 [ext_resource type="Texture2D" uid="uid://dlf0vtvb7xr5u" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_5.png" id="11_kdses"]
@@ -16,7 +13,7 @@
 resource_name = "speedometer"
 script/source = "extends Label
 
-@onready var car := get_parent().get_parent() as VehicleBody3D
+@onready var car := get_parent().get_parent().get_parent() as VehicleBody3D
 
 func _process(_delta: float) -> void:
 	if car:
@@ -25,6 +22,12 @@ func _process(_delta: float) -> void:
 		
 		text = str(round(speed_kmh)) + \" km/h\"
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_ba4vk"]
+font_size = 70
+font_color = Color(1.1070073e-06, 0.77062076, 0.21262565, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PlayerController" type="Node3D" unique_id=193088310]
 script = ExtResource("1_d4y06")
@@ -38,42 +41,41 @@ offset_right = 131.5
 offset_bottom = 195.5
 script = SubResource("GDScript_aq10k")
 
-[node name="Gas" type="Control" parent="Player controllsUI" unique_id=372514801]
+[node name="VirtualJoystickPlus" type="Control" parent="Player controllsUI" unique_id=1499984360]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -399.0
-offset_top = -687.0
-offset_right = -210.0
-offset_bottom = -495.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="TouchScreenButtonGas" type="TouchScreenButton" parent="Player controllsUI/Gas" unique_id=1511290349]
-scale = Vector2(2, 2)
-texture_normal = ExtResource("3_1kmjt")
-texture_pressed = ExtResource("4_bqnof")
-action = "ui_up"
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(360, 780)
+script = ExtResource("9_sdupd")
+joystick_mode = 1
+scale_factor = 3.0
+joystick_texture = ExtResource("10_34smf")
+joystick_opacity = 0.332
+stick_use_textures = false
+stick_texture = ExtResource("11_kdses")
+stick_opacity = 0.295
+metadata/_custom_type_script = "uid://le2y1bavsjxc"
 
 [node name="Brake" type="Control" parent="Player controllsUI" unique_id=90182225]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -435.0
-offset_right = -220.0
-offset_bottom = -236.0
-grow_horizontal = 0
+offset_left = -48.0
+offset_top = -97.0
+offset_right = 48.0
+grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(2, 2)
 
 [node name="TouchScreenButtonBrake" type="TouchScreenButton" parent="Player controllsUI/Brake" unique_id=1117390335]
-scale = Vector2(2, 2)
+position = Vector2(-17.5, -76.5)
 texture_normal = ExtResource("5_iu0n4")
 texture_pressed = ExtResource("6_ngi1a")
 action = "ui_accept"
@@ -85,34 +87,38 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -410.0
-offset_top = -242.0
-offset_right = -198.0
-offset_bottom = -40.0
+offset_left = -100.0
+offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="TouchScreenButtonShift" type="TouchScreenButton" parent="Player controllsUI/Shift" unique_id=1829674828]
-scale = Vector2(2, 2)
-texture_normal = ExtResource("7_ek60h")
-texture_pressed = ExtResource("8_6cx1n")
+texture_normal = ExtResource("5_ba4vk")
 action = "ui_down"
 
-[node name="VirtualJoystickPlus" type="Control" parent="Player controllsUI" unique_id=1499984360]
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 3
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 1094.0
+[node name="DebugLable" type="Label" parent="Player controllsUI" unique_id=1099488465]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(547, 450)
-script = ExtResource("9_sdupd")
-joystick_mode = 1
-scale_factor = 2.0
-relative_position = Vector2(0.2, 0.8)
-joystick_texture = ExtResource("10_34smf")
-joystick_opacity = 0.332
-stick_use_textures = false
-stick_texture = ExtResource("11_kdses")
-stick_opacity = 0.295
-metadata/_custom_type_script = "uid://le2y1bavsjxc"
+label_settings = SubResource("LabelSettings_ba4vk")
+
+[node name="Button" type="Button" parent="Player controllsUI" unique_id=749655137]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = -147.0
+offset_right = 183.0
+offset_bottom = -35.0
+grow_vertical = 0
+text = "Reload"
+
+[connection signal="pressed" from="Player controllsUI/Button" to="." method="_on_button_pressed"]

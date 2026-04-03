@@ -9,10 +9,10 @@ albedo_texture = ExtResource("1_3inec")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_c2ln5"]
-size = Vector3(0.75, 0.75, 0.75)
+size = Vector3(0.65, 0.65, 0.65)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_telwu"]
-size = Vector3(0.75, 0.75, 0.75)
+size = Vector3(0.65, 0.65, 0.65)
 
 [node name="Box" type="RigidBody3D" unique_id=74203526]
 mass = 30.0

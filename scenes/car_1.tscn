@@ -8,16 +8,16 @@
 [ext_resource type="Script" uid="uid://djlvejcullers" path="res://scenes/car_1.gd" id="6_car1script"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
-size = Vector3(2, 0.3, 4)
+size = Vector3(1.7609863, 0.5325195, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gfnuu"]
-size = Vector3(1, 0.7537842, 0.9279785)
+size = Vector3(1.8417358, 0.554718, 0.12463379)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2fa2"]
-size = Vector3(0.07543945, 0.24209595, 2.3162842)
+size = Vector3(0.07543945, 0.19671059, 2.1679077)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8j6vf"]
-size = Vector3(1.9535522, 0.35888672, 0.05883789)
+size = Vector3(1.9103241, 0.1927948, 0.05883789)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8j6vf"]
 
@@ -57,42 +57,42 @@ rings = 1
 radial_segments = 8
 
 [node name="Car1" type="VehicleBody3D" unique_id=1835131583]
-mass = 500.0
+mass = 1000.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0.1, 0)
 script = ExtResource("6_car1script")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27171913, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004272461, 0.2694242, 0)
 shape = SubResource("BoxShape3D_3e54y")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1415441947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0391214, 0.77007926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1552734e-05, 1.145632, 0.3684069)
 shape = SubResource("BoxShape3D_gfnuu")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=385838801]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92802715, 0.7820033, -0.9856067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92802715, 0.87961805, -0.9856067)
 shape = SubResource("BoxShape3D_u2fa2")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=210154954]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9155936, 0.78327763, -0.9856067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9155936, 0.8485886, -0.91141844)
 shape = SubResource("BoxShape3D_u2fa2")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1965348957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02017212, 0.7321087, -2.1269524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012397766, 0.8690225, -2.1269524)
 shape = SubResource("BoxShape3D_8j6vf")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=385824789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.272063, 0.76924956)
 shape = SubResource("SphereShape3D_8j6vf")
+disabled = true
 
 [node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
 use_as_traction = true
 use_as_steering = true
-wheel_roll_influence = 0.9
-wheel_friction_slip = 1.0
-suspension_stiffness = 40.0
+wheel_roll_influence = 1.0
+wheel_friction_slip = 2.0
+suspension_stiffness = 35.0
 
 [node name="Wheel" parent="VehicleWheel3DFrontLeft" unique_id=1097093256 instance=ExtResource("1_ydp05")]
 
@@ -100,25 +100,25 @@ suspension_stiffness = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.5)
 use_as_traction = true
 use_as_steering = true
-wheel_roll_influence = 0.9
-wheel_friction_slip = 1.0
-suspension_stiffness = 40.0
+wheel_roll_influence = 1.0
+wheel_friction_slip = 2.0
+suspension_stiffness = 35.0
 
 [node name="Wheel2" parent="VehicleWheel3DFrontRight" unique_id=1045903003 instance=ExtResource("1_ydp05")]
 
 [node name="VehicleWheel3DBackRight" type="VehicleWheel3D" parent="." unique_id=2036089284]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.5)
-wheel_roll_influence = 0.9
-wheel_friction_slip = 1.0
-suspension_stiffness = 40.0
+wheel_roll_influence = 1.0
+wheel_friction_slip = 2.0
+suspension_stiffness = 35.0
 
 [node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=862881802 instance=ExtResource("1_ydp05")]
 
 [node name="VehicleWheel3DBackLeft" type="VehicleWheel3D" parent="." unique_id=389764362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.5)
-wheel_roll_influence = 0.9
-wheel_friction_slip = 1.0
-suspension_stiffness = 40.0
+wheel_roll_influence = 1.0
+wheel_friction_slip = 2.0
+suspension_stiffness = 35.0
 
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("1_ydp05")]
 

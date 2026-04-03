@@ -15,10 +15,10 @@
 [sub_resource type="Curve3D" id="Curve3D_ya4ey"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.7235584, 0, -67.94163, 0, 0, 0, 0, 0, 0, -4.2349834, 0, -11.0642805, 0, 0, 0, 0, 0, 0, -13.115198, 0, 8.472192, 0, 0, 0, 0, 0, 0, -36.31964, 0, 59.521965, 0, 0, 0, 0, 0, 0, -38.653076, 0, 93.35669, 0, 0, 0, 0, 0, 0, -2.1932201, 0, 108.81566, 0, 0, 0, 0, 0, 0, 35.141647, 0, 110.56573, 0, 0, 0, 0, 0, 0, 61.39273, 0, 91.60662, 0, 0, 0, 0, 0, 0, 68.68469, 0, 61.56372, 0, 0, 0, 0, 0, 0, 46.22545, 0, 43.18796, 0, 0, 0, 0, 0, 0, 13.8490925, 0.9227848, 37.35438, 0, 0, 0, 0, 0, 0, -18.235548, 0.43290138, 34.43759, 0, 0, 0, 0, 0, 0, -52.070297, -1.9088993, 29.479061, 0, 0, 0, 0, 0, 0, -80.65481, 0, 25.103886, 0, 0, 0, 0, 0, 0, -106.90589, 0, 5.853082, 0, 0, 0, 0, 0, 0, -108.36429, 0, -30.315075, 0, 0, 0, 0, 0, 0, -96.40546, 0, -67.94163, 0, 0, 0, 0, 0, 0, -66.36255, 0, -84.567314, 0, 0, 0, 0, 0, 0, -39.819794, 0, -68.52499, 0, 0, 0, 0, 0, 0, -29.611036, 0, -38.773754, 0, 0, 0, 0, 0, 0, -39.528107, 0, -22.731422, 0, 0, 0, 0, 0, 0, -45.945038, 0, -3.1889546, 0, 0, 0, 0, 0, 0, 38.350098, 0, 11.978338, 0, 0, 0, 0, 0, 0, 73.35155, 0, 7.019801, 0, 0, 0, 0, 0, 0, 95.81082, 0, -13.397712, 0, 0, 0, 0, 0, 0, 96.97754, 0, -49.27419, 0, 0, 0, 0, 0, 0, 82.10193, 0, -78.73374, 0, 0, 0, 0, 0, 0, 62.267776, 0, -92.15096, 0, 0, 0, 0, 0, 0, 43.892, 0, -98.85957, 0, 0, 0, 0, 0, 0, 25.224566, 0, -95.65111, 0, 0, 0, 0, 0, 0, 3.0569935, 0, -89.817535),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 15.92091, 0, 13.653347, 0, 0, 0, 0, 0, 0, 51.180508, 0, 14.903683, 0, 0, 0, 0, 0, 0, 78.93808, 0, 9.9023285, 0, 0, 0, 0, 0, 0, 97.69319, 0, -10.853323, 0, 0, 0, 0, 0, 0, 102.19441, 0, -39.611156, 0, 0, 0, 0, 0, 0, 92.941895, 0, -69.61933, 0, 0, 0, 0, 0, 0, 73.93672, 0, -88.12437, 0, 0, 0, 0, 0, 0, 48.093025, 0, -103.26478, 0, 0, 0, 0, 0, 0, 27.557215, 0, -97.049995, 0, 0, 0, 0, 0, 0, 7.021406, 0, -98.13082, 0, 0, 0, 0, 0, 0, -3.7869167, 0, -82.45876, 0, 0, 0, 0, 0, 0, -4.3273296, 0, -64.62503, 0, 0, 0, 0, 0, 0, -4.561394, 0, -20.796041, 0, 0, 0, 0, 0, 0, -43.299988, 0, 65.939064, 0, 0, 0, 0, 0, 0, -43.667603, 0, 88.363594, 0, 0, 0, 0, 0, 0, -28.043959, 0, 111.52334, 0, 0, 0, 0, 0, 0, -4.1489773, 0, 112.62618, 0, 0, 0, 0, 0, 0, 22.503115, 0, 116.30233, 0, 0, 0, 0, 0, 0, 48.05237, 0, 108.76622, 0, 0, 0, 0, 0, 0, 66.98454, 0, 88.363594, 0, 0, 0, 0, 0, 0, 71.94736, 0, 62.079113, 0, 0, 0, 0, 0, 0, 50.258057, 0, 41.67647, 0, 0, 0, 0, 0, 0, 29.85541, 0.65746117, 35.794632, 0, 0, 0, 0, 0, 0, -5.9708123, 10.143675, 29.34249, 0, 0, 0, 0, 0, 0, -45.32187, 10.894119, 25.133793, 0, 0, 0, 0, 0, 0, -66.64354, 4.443985, 21.825256, 0, 0, 0, 0, 0, 0, -86.678566, 0, 18.700527, 0, 0, 0, 0, 0, 0, -101.988106, 0, 10.015135, 0, 0, 0, 0, 0, 0, -107.50234, 0, -16.453157, 0, 0, 0, 0, 0, 0, -101.43669, 0, -46.781406, 0, 0, 0, 0, 0, 0, -90.59204, 0, -68.65451, 0, 0, 0, 0, 0, 0, -68.732994, 0, -80.9223, 0, 0, 0, 0, 0, 0, -45.205635, 0, -71.36431, 0, 0, 0, 0, 0, 0, -36.566673, 0, -52.799747, 0, 0, 0, 0, 0, 0, -36.382866, 0, -30.742836, 0, 0, 0, 0, 0, 0, -51.455086, 0, -10.707815, 0, 0, 0, 0, 0, 0, -46.676094, 0, 2.158716),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 31
+point_count = 37
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0wfyh"]
 
@@ -50,7 +50,7 @@ texture_filter = 0
 [node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_sugp2")]
 
 [node name="NpcPath3D1" type="Path3D" parent="." unique_id=38077161]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5721016, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 curve = SubResource("Curve3D_ya4ey")
 
 [node name="NpxCar" parent="." unique_id=495299180 groups=["CAR"] instance=ExtResource("9_85g3d")]
@@ -59,6 +59,8 @@ color = Color(0.8992537, 0, 0.28492868, 1)
 
 [node name="NpcCarController" parent="NpxCar" unique_id=1893882791 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
 path_node = NodePath("../../NpcPath3D1")
+target_speed = 15.0
+braking_force = 10.0
 
 [node name="NpxCar2" parent="." unique_id=762286706 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64017105, 4.783122, -40.415413)
@@ -66,6 +68,8 @@ color = Color(0.7885547, 0.0023343414, 0.980557, 1)
 
 [node name="NpcCarController" parent="NpxCar2" unique_id=947872423 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
 path_node = NodePath("../../NpcPath3D1")
+target_speed = 15.0
+braking_force = 10.0
 
 [node name="NpxCar3" parent="." unique_id=315050891 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(0.9509972, 0, -0.3091996, 0, 1, 0, 0.3091996, 0, 0.9509972, -26.777643, 4.783122, 59.294243)
@@ -73,6 +77,8 @@ color = Color(0.33090147, 0.24092788, 0.9999811, 1)
 
 [node name="NpcCarController" parent="NpxCar3" unique_id=2080417054 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
 path_node = NodePath("../../NpcPath3D1")
+target_speed = 15.0
+braking_force = 10.0
 
 [node name="NpxCar4" parent="." unique_id=321495123 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.36158, 4.783122, 75.57061)
@@ -80,6 +86,8 @@ color = Color(0.6503262, 0.6375296, 3.85046e-07, 1)
 
 [node name="NpcCarController" parent="NpxCar4" unique_id=1036367458 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
 path_node = NodePath("../../NpcPath3D1")
+target_speed = 15.0
+braking_force = 10.0
 
 [node name="NpxCar5" parent="." unique_id=1256958396 groups=["CAR"] instance=ExtResource("9_85g3d")]
 transform = Transform3D(0.15714125, 0, 0.9875761, 0, 1, 0, -0.9875761, 0, 0.15714125, -18.30461, 4.783122, 109.14508)
@@ -87,6 +95,8 @@ color = Color(0.20955032, 0.15276521, 0.9999998, 1)
 
 [node name="NpcCarController" parent="NpxCar5" unique_id=571421174 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
 path_node = NodePath("../../NpcPath3D1")
+target_speed = 15.0
+braking_force = 10.0
 
 [node name="Car1" parent="." unique_id=1835131583 groups=["CAR"] instance=ExtResource("2_qo751")]
 transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1, -3.0406095e-08, 0.95654935, -2.4456371e-08, 0.29157054, -10.711338, 1.6186069, 7.0265427)
@@ -94,13 +104,13 @@ transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1,
 [node name="PlayerController" parent="Car1" unique_id=193088310 instance=ExtResource("5_ya4ey")]
 
 [node name="Box" parent="." unique_id=74203526 instance=ExtResource("4_85g3d")]
-transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -10.384853, 2.915029, 7.17163)
+transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -9.743708, 3.0168571, 6.618677)
 
 [node name="Box2" parent="." unique_id=1389071900 instance=ExtResource("4_85g3d")]
-transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -9.050698, 2.9576306, 6.85129)
+transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -14.284032, 3.7361922, -12.100397)
 
 [node name="Box3" parent="." unique_id=1326101794 instance=ExtResource("4_85g3d")]
-transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -9.793329, 3.1120658, 6.0951023)
+transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -15.026663, 3.8906274, -12.856585)
 
 [node name="Camera3DFollow" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)
