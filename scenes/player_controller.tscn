@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bqv5dx5kqebu2" path="res://scenes/player_controller.gd" id="1_d4y06"]
 [ext_resource type="PackedScene" uid="uid://f64whos56byr" path="res://scenes/speedometer.tscn" id="2_mfmwq"]
-[ext_resource type="Texture2D" uid="uid://bwscin4l2w7kh" path="res://textures/joystickUp.png" id="5_ba4vk"]
 [ext_resource type="Texture2D" uid="uid://0e6uu2ooyhur" path="res://textures/icon_pedal_brake.png" id="5_iu0n4"]
 [ext_resource type="Texture2D" uid="uid://ct6umjr3y3kaq" path="res://textures/icon_pedal_brake_black.png" id="6_ngi1a"]
+[ext_resource type="Texture2D" uid="uid://d1kf8t1q37no0" path="res://textures/icon_pedal.png" id="8_ba4vk"]
+[ext_resource type="Texture2D" uid="uid://16omjqh27c3l" path="res://textures/icon_arrow_rotate.png" id="8_ga2kn"]
 [ext_resource type="Script" uid="uid://le2y1bavsjxc" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="9_sdupd"]
 [ext_resource type="Texture2D" uid="uid://01srmdbuabf7" path="res://textures/icon_steering_wheel.png" id="10_34smf"]
 [ext_resource type="Texture2D" uid="uid://dlf0vtvb7xr5u" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_5.png" id="11_kdses"]
@@ -29,6 +30,9 @@ font_color = Color(1.1070073e-06, 0.77062076, 0.21262565, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ga2kn"]
+font_size = 50
+
 [node name="PlayerController" type="Node3D" unique_id=193088310]
 script = ExtResource("1_d4y06")
 
@@ -47,9 +51,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -123.0
+offset_bottom = -264.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(360, 780)
+pivot_offset = Vector2(298.5, 648)
 script = ExtResource("9_sdupd")
 joystick_mode = 1
 scale_factor = 3.0
@@ -80,22 +86,6 @@ texture_normal = ExtResource("5_iu0n4")
 texture_pressed = ExtResource("6_ngi1a")
 action = "ui_accept"
 
-[node name="Shift" type="Control" parent="Player controllsUI" unique_id=706155727]
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -100.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="TouchScreenButtonShift" type="TouchScreenButton" parent="Player controllsUI/Shift" unique_id=1829674828]
-texture_normal = ExtResource("5_ba4vk")
-action = "ui_down"
-
 [node name="DebugLable" type="Label" parent="Player controllsUI" unique_id=1099488465]
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,9 +106,70 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 41.0
 offset_top = -147.0
-offset_right = 183.0
+offset_right = 145.0
 offset_bottom = -35.0
 grow_vertical = 0
-text = "Reload"
+icon = ExtResource("8_ga2kn")
+
+[node name="SpeedSlider" type="VSlider" parent="Player controllsUI" unique_id=834922451]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -183.0
+offset_bottom = 615.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("8_ba4vk")
+theme_override_icons/grabber_highlight = ExtResource("8_ba4vk")
+min_value = -2000.0
+max_value = 2000.0
+step = 500.0
+tick_count = 3
+ticks_on_borders = true
+ticks_position = 2
+
+[node name="Label" type="Label" parent="Player controllsUI/SpeedSlider" unique_id=252589100]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_bottom = 69.0
+grow_horizontal = 0
+text = "D"
+label_settings = SubResource("LabelSettings_ga2kn")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Player controllsUI/SpeedSlider" unique_id=1614437536]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 15.5
+offset_top = 396.0
+offset_right = 73.0625
+offset_bottom = 465.0
+grow_horizontal = 2
+text = "N"
+label_settings = SubResource("LabelSettings_ga2kn")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Player controllsUI/SpeedSlider" unique_id=814046226]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -69.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "R"
+label_settings = SubResource("LabelSettings_ga2kn")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Player controllsUI/Button" to="." method="_on_button_pressed"]
