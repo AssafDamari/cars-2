@@ -293,3 +293,6 @@ mesh = SubResource("CylinderMesh_b4fkd")
 transform = Transform3D(0.12797426, 0, 0, 0, -9.256594e-08, 0.5161956, 0, -2.117662, -2.2563626e-08, -0.975, 0.416, 0.017)
 material_override = ExtResource("2_o6j5x")
 mesh = SubResource("CylinderMesh_b4fkd")
+
+[node name="LoadPosition" type="Marker3D" parent="." unique_id=931693975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6654167, -0.4156593)

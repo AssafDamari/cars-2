@@ -6,7 +6,8 @@ extends VehicleBody3D
 @export var max_brake_force: float = 20.0
 @export var max_steering_angle: float = 0.4 
 @export var steering_speed: float = 0.3
-
+enum CAR_TYPE { REGULAR = 1, RACING = 2, TRUCK = 3 }
+@export var car_type:CAR_TYPE = CAR_TYPE.REGULAR
 @onready var body_mesh: MeshInstance3D = $Body/MeshInstance3D
 
 
