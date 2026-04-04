@@ -4,32 +4,53 @@ extends Node3D
 @onready var unload_button: Button = $CanvasLayer/UnloadButton
 @onready var load_pos: Marker3D = $LoadPos
 @onready var active_marker: MeshInstance3D = $ActiveMarker
+@onready var area_3d: Area3D = $Area3D
 
 var currentActiveCargo: RigidBody3D = null
 
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("CARGO"):
-		# replace previus activeCargo if any
-		if currentActiveCargo:
-			active_marker.visible = false
-			currentActiveCargo = null
+		replace_current_active_cargo(body)
 		
-		active_marker.global_position = body.global_position
-		active_marker.visible = true
-		load_button.visible = true
-		currentActiveCargo = body
 		
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("CARGO"):
-		active_marker.visible = false
-		load_button.visible = false
-		currentActiveCargo = null
+		clear_currentActiveCargo()
 
 
+func replace_current_active_cargo(body: Node3D):
+		# replace previus activeCargo if any
+		if currentActiveCargo:
+			clear_currentActiveCargo()			
+		set_current_active_cargo(body)
+
+
+func set_current_active_cargo(cargo: RigidBody3D):
+	active_marker.global_position = cargo.global_position
+	active_marker.visible = true
+	load_button.visible = true
+	currentActiveCargo = cargo
+		
+		
+func clear_currentActiveCargo():
+	active_marker.visible = false
+	load_button.visible = false
+	currentActiveCargo = null
+
+
+func find_all_cargo_in_area(exlude: Node3D):
+	var bodies = area_3d.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("CARGO") and body != exlude:
+			replace_current_active_cargo(body)
+			
+			
 func _on_load_button_pressed() -> void:
 	if currentActiveCargo:
-		active_marker.visible = false
 		currentActiveCargo.freeze = true
 		currentActiveCargo.global_position = load_pos.global_position
 		currentActiveCargo.freeze = false
-		currentActiveCargo = null
+		
+	find_all_cargo_in_area(currentActiveCargo)
+	active_marker.visible = false

@@ -128,4 +128,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5620956, 2.6521802, 6.6364
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5620956, 2.6521802, 8.327319)
 
 [node name="UnloadingArea" parent="." unique_id=1699998781 instance=ExtResource("12_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.083866, 1.3292953, -0.4214406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.11396, 0.9388772, 21.964851)
