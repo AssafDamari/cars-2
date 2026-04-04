@@ -8,9 +8,7 @@ extends Node3D
 func _physics_process(delta: float) -> void:
 	 
 	var speed_sq = vehicle.linear_velocity.length_squared()
-	
-	var joystick_input := joystick.get_value()
-	
+
 	# 1. power 
 	if speed_sq < vehicle.max_speed * vehicle.max_speed:
 		vehicle.engine_force = speed_slider.value
@@ -19,7 +17,13 @@ func _physics_process(delta: float) -> void:
 	
 	
 	# 2. steering
+	var joystick_input := joystick.get_value()
 	var steer_input = -joystick_input.x	
+	
+	# if not using joystick, use keyboard input
+	if steer_input == 0.0:
+		steer_input = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
+	
 	var steer_target = steer_input * vehicle.max_steering_angle
 	vehicle.steering = move_toward(vehicle.steering, steer_target, delta * vehicle.steering_speed)
 	

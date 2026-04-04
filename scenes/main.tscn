@@ -54,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 curve = SubResource("Curve3D_ya4ey")
 
 [node name="NpxCar" parent="." unique_id=495299180 groups=["CAR"] instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.206684, 4.783122, 0.28125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.206684, 4.783122, 18.395863)
 color = Color(0.9601279, 0.8207987, 1.540184e-06, 1)
 max_speed = 40.0
 max_brake_force = 30.0
@@ -68,15 +68,6 @@ transform = Transform3D(0.29157054, -3.924194e-08, -0.95654935, 3.483552e-08, 1,
 color = Color(0.16584054, 0.15587628, 0.15587655, 1)
 
 [node name="PlayerController" parent="Car1" unique_id=193088310 instance=ExtResource("5_ya4ey")]
-
-[node name="Box" parent="." unique_id=74203526 instance=ExtResource("4_85g3d")]
-transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -21.549078, 3.0168571, -8.159756)
-
-[node name="Box2" parent="." unique_id=1389071900 instance=ExtResource("4_85g3d")]
-transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -14.284032, 3.7361922, -12.100397)
-
-[node name="Box3" parent="." unique_id=1326101794 instance=ExtResource("4_85g3d")]
-transform = Transform3D(0.9639237, 0, 0.26617864, 0, 1, 0, -0.26617864, 0, 0.9639237, -15.026663, 3.8906274, -12.856585)
 
 [node name="Camera3DFollow" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)
@@ -124,3 +115,6 @@ material = SubResource("StandardMaterial3D_o6xl0")
 
 [node name="Bridge" parent="." unique_id=276212995 instance=ExtResource("6_tefeu")]
 transform = Transform3D(19.848871, -1.07268434e-07, -2.4540164, 1.07268434e-07, 20, -6.605928e-09, 2.4540164, -6.6059176e-09, 19.848871, -26.51064, -3.837562e-08, 32.3887)
+
+[node name="Box" parent="." unique_id=74203526 instance=ExtResource("4_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.358711, 2.6521802, 8.540729)
