@@ -3,7 +3,15 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_o8lru"]
 radius = 1.6306573
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_o8lru"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.1
+
 [node name="UnloadingArea" type="Area3D" unique_id=1699998781]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=710715816]
 shape = SubResource("SphereShape3D_o8lru")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=880973422]
+mesh = SubResource("CylinderMesh_o8lru")
