@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/csg_terrain/plugin.cfg", "res://addons/v
 [global_group]
 
 CAR=""
+CARGO=""
 
 [input]
 

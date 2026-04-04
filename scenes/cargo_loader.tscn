@@ -7,6 +7,13 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ypayn"]
 radius = 1.8677905
 
+[sub_resource type="TorusMesh" id="TorusMesh_lgkbt"]
+inner_radius = 0.95
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrukd"]
+shading_mode = 0
+albedo_color = Color(0, 0.9762997, 0.8964332, 1)
+
 [node name="CargoLoader" type="Node3D" unique_id=1528885774]
 script = ExtResource("1_ftntb")
 
@@ -43,6 +50,13 @@ icon = ExtResource("3_wrukd")
 
 [node name="LoadPos" type="Marker3D" parent="." unique_id=1960464610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.807562, 0)
+
+[node name="ActiveMarker" type="MeshInstance3D" parent="." unique_id=863879121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09768844, 0)
+top_level = true
+visible = false
+mesh = SubResource("TorusMesh_lgkbt")
+surface_material_override/0 = SubResource("StandardMaterial3D_wrukd")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
