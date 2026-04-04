@@ -1,11 +1,8 @@
 extends Node3D
 
 @export var path_node: Path3D
-@export var target_speed: float = 40.0
-@export var braking_force: float = 30.0
 
 @export_group("Steering Tuning")
-@export var steer_speed: float = 10.0
 @export var steer_p: float = 0.8 
 @export var steer_d: float = 0.3 
 
@@ -14,7 +11,7 @@ extends Node3D
 @export var max_look_ahead: float = 40.0
 @export var speed_factor: float = 0.8
 
-@onready var vehicle: VehicleBody3D = get_parent()
+@onready var vehicle: Car = get_parent() as Car
 @onready var collision_sensor: Area3D = $CollisionSensor
 
 # Cached values
@@ -90,10 +87,10 @@ func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
 	var target_steering = steer_error * steer_p + error_change * steer_d
 	target_steering = clamp(target_steering, -0.6, 0.6)
 
-	vehicle.steering = lerp(vehicle.steering, target_steering, delta * steer_speed)
+	vehicle.steering = lerp(vehicle.steering, target_steering, delta * vehicle.steering_speed)
 
 	# --- Throttle ---
-	if speed_sq < target_speed * target_speed:
+	if speed_sq < vehicle.max_speed * vehicle.max_speed:
 		vehicle.engine_force = 1000.0
 	else:
 		vehicle.engine_force = 0.0
@@ -101,16 +98,14 @@ func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
 
 func apply_braking() -> void:
 	vehicle.engine_force = 0.0
-	vehicle.brake = braking_force
+	vehicle.brake = vehicle.max_brake_force
 
 
 func _on_collision_sensor_entered(body: Node3D) -> void:
 	print("Collision sensor entered by: ", body.name)
 	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = true
-		vehicle.show_brakes_lights()
 
 func _on_collision_sensor_exited(body: Node3D) -> void:
 	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = false
-		vehicle.hide_brakes_lights()

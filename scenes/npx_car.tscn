@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtp5bt81r57mc"]
 
-[ext_resource type="Script" uid="uid://dlmopksf2xgiv" path="res://scenes/npx_car.gd" id="1_d5kkg"]
+[ext_resource type="Script" uid="uid://djlvejcullers" path="res://scenes/car_1.gd" id="1_0fsb6"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_avsom"]
 [ext_resource type="Material" uid="uid://bpgi78a6n1pd3" path="res://materials/dark.tres" id="3_avsom"]
 [ext_resource type="Material" uid="uid://id13ux6gtf3n" path="res://materials/light_blue.tres" id="4_nxx2m"]
@@ -20,7 +20,7 @@ size = Vector3(2, 0.3, 4)
 mass = 500.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.1, 0)
-script = ExtResource("1_d5kkg")
+script = ExtResource("1_0fsb6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1413013555]
 transform = Transform3D(1, 0, 0, 0, 0.016265703, 0.9998677, 0, -0.9998677, 0.016265703, 0, 0.68134755, 0.05014368)
@@ -62,20 +62,12 @@ suspension_stiffness = 30.0
 
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1885321166 instance=ExtResource("2_avsom")]
 
-[node name="BrakeLights" type="Node3D" parent="." unique_id=1773530133]
-visible = false
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="BrakeLights" unique_id=915952600]
-transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, -0.78557956, 0.3392086, -1.9804356)
-mesh = SubResource("BoxMesh_o10oq")
-surface_material_override/0 = ExtResource("5_0fsb6")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="BrakeLights" unique_id=1018903654]
-transform = Transform3D(0.374, 0, 0, 0, 1.012, 0, 0, 0, 0.055, 0.7716677, 0.3392086, -1.9804356)
-mesh = SubResource("BoxMesh_o10oq")
-surface_material_override/0 = ExtResource("5_0fsb6")
-
 [node name="Body" type="Node3D" parent="." unique_id=1951651576]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=950236015]
+transform = Transform3D(1, 0, 0, 0, 2.0200741, 0, 0, 0, 0.9869793, 0, 0.30731744, 0)
+mesh = SubResource("BoxMesh_o10oq")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5kkg")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Body" unique_id=837907432]
 transform = Transform3D(1, 0, 0, 0, 2.0200744, 0, 0, 0, 0.47436598, 0, 0.92096984, 0)
@@ -121,8 +113,3 @@ surface_material_override/0 = ExtResource("6_vh06j")
 transform = Transform3D(1.0339375, 0, 0, 0, 1.6288364, 0, 0, 0, 0.43221703, -0.02534914, 0.87676394, 0)
 mesh = SubResource("BoxMesh_o10oq")
 surface_material_override/0 = ExtResource("4_nxx2m")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=950236015]
-transform = Transform3D(1, 0, 0, 0, 2.0200741, 0, 0, 0, 0.9869793, 0, 0.30731744, 0)
-mesh = SubResource("BoxMesh_o10oq")
-surface_material_override/0 = SubResource("StandardMaterial3D_d5kkg")

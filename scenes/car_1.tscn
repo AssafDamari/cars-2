@@ -24,6 +24,8 @@ size = Vector3(1.9103241, 0.1927948, 0.05883789)
 [sub_resource type="BoxMesh" id="BoxMesh_3e54y"]
 size = Vector3(2, 0.3, 4)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2fa2"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_8j6vf"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_gfnuu"]
@@ -126,8 +128,8 @@ suspension_stiffness = 35.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=847695400]
 transform = Transform3D(1, 0, 0, 0, 1.7602191, 0, 0, 0, 1.0938888, 0, 0.39566875, 0)
-material_override = ExtResource("3_h2cct")
 mesh = SubResource("BoxMesh_3e54y")
+surface_material_override/0 = SubResource("StandardMaterial3D_u2fa2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Body" unique_id=1029375292]
 transform = Transform3D(1.8491453, 0, 0, 0, 0.8012116, 0, 0, 0, 0.9247606, 0.0009925365, 1.0180302, 0.76449275)
