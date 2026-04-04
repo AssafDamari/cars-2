@@ -30,6 +30,7 @@ enabled=PackedStringArray("res://addons/csg_terrain/plugin.cfg", "res://addons/v
 
 CAR=""
 CARGO=""
+UNLOADING_AREA=""
 
 [input]
 
