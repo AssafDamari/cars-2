@@ -11,10 +11,10 @@ func _physics_process(delta: float) -> void:
 	
 	# 1. power 
 	if joystick_input.y < -0.9:
-		speed_slider.value += 10
+		speed_slider.value += 20
 	
 	if joystick_input.y > 0.9:
-		speed_slider.value -= 10
+		speed_slider.value -= 20
 		
 	var speed_sq = vehicle.linear_velocity.length_squared()
 	if speed_sq < vehicle.max_speed * vehicle.max_speed:

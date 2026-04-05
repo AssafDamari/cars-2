@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqv5dx5kqebu2" path="res://scenes/player_controller.gd" id="1_d4y06"]
 [ext_resource type="PackedScene" uid="uid://f64whos56byr" path="res://scenes/speedometer.tscn" id="2_mfmwq"]
+[ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="3_lwvb4"]
 [ext_resource type="Texture2D" uid="uid://0e6uu2ooyhur" path="res://textures/icon_pedal_brake.png" id="5_iu0n4"]
 [ext_resource type="Texture2D" uid="uid://ct6umjr3y3kaq" path="res://textures/icon_pedal_brake_black.png" id="6_ngi1a"]
 [ext_resource type="Texture2D" uid="uid://d1kf8t1q37no0" path="res://textures/icon_pedal.png" id="8_ba4vk"]
@@ -44,6 +45,16 @@ offset_top = 112.5
 offset_right = 131.5
 offset_bottom = 195.5
 script = SubResource("GDScript_aq10k")
+
+[node name="FpsLabel" parent="Player controllsUI" unique_id=706279772 instance=ExtResource("3_lwvb4")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -323.0
+offset_top = 55.0
+offset_right = -121.0
+offset_bottom = 138.0
+grow_horizontal = 0
 
 [node name="VirtualJoystickPlus" type="Control" parent="Player controllsUI" unique_id=1499984360]
 custom_minimum_size = Vector2(300, 300)
