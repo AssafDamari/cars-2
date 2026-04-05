@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cid0hjlnr0uw3" path="res://scenes/cargo_loader.gd" id="1_ftntb"]
 [ext_resource type="Texture2D" uid="uid://bi1ucqs2h7ixv" path="res://textures/icon_load.png" id="2_lgkbt"]
+[ext_resource type="Texture2D" uid="uid://onymgeb63l0f" path="res://textures/icon_load_black.png" id="3_t8e4g"]
 [ext_resource type="Texture2D" uid="uid://b5afu7yxstj7c" path="res://textures/icon_unload.png" id="3_wrukd"]
+[ext_resource type="Texture2D" uid="uid://b2bq3717vt6oy" path="res://textures/icon_unload_black.png" id="5_ferti"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ypayn"]
 radius = 1.8677905
@@ -24,29 +26,27 @@ shape = SubResource("SphereShape3D_ypayn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=248335640]
 
-[node name="LoadButton" type="Button" parent="CanvasLayer" unique_id=931328939]
-visible = false
+[node name="LoadButtons" type="Control" parent="CanvasLayer" unique_id=1553451132]
+layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 154.0
-offset_top = -145.0
-offset_right = 258.0
-offset_bottom = -41.0
+offset_left = 141.0
+offset_top = -242.0
+offset_right = 238.0
+offset_bottom = -141.5
 grow_vertical = 0
-icon = ExtResource("2_lgkbt")
+scale = Vector2(2, 2)
 
-[node name="UnloadButton" type="Button" parent="CanvasLayer" unique_id=177598676]
+[node name="LoadTouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/LoadButtons" unique_id=1484233737]
 visible = false
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 157.0
-offset_top = -146.0
-offset_right = 261.0
-offset_bottom = -42.0
-grow_vertical = 0
-icon = ExtResource("3_wrukd")
+texture_normal = ExtResource("2_lgkbt")
+texture_pressed = ExtResource("3_t8e4g")
+
+[node name="UnloadTouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/LoadButtons" unique_id=1470725429]
+visible = false
+texture_normal = ExtResource("3_wrukd")
+texture_pressed = ExtResource("5_ferti")
 
 [node name="LoadPos" type="Marker3D" parent="." unique_id=1960464610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.807562, 0)
@@ -62,5 +62,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wrukd")
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
-[connection signal="pressed" from="CanvasLayer/LoadButton" to="." method="_on_load_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UnloadButton" to="." method="_on_unload_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LoadButtons/LoadTouchScreenButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LoadButtons/UnloadTouchScreenButton" to="." method="_on_unload_button_pressed"]

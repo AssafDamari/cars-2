@@ -1,10 +1,10 @@
 extends Node3D
 
-@onready var load_button: Button = $CanvasLayer/LoadButton
-@onready var unload_button: Button = $CanvasLayer/UnloadButton
 @onready var load_pos: Marker3D = $LoadPos
 @onready var active_marker: MeshInstance3D = $ActiveMarker
 @onready var area_3d: Area3D = $Area3D
+@onready var load_button: TouchScreenButton = $CanvasLayer/LoadButtons/LoadTouchScreenButton
+@onready var unload_button: TouchScreenButton = $CanvasLayer/LoadButtons/UnloadTouchScreenButton
 
 var currentActiveCargo: RigidBody3D = null
 var current_unload_area: Node3D = null
