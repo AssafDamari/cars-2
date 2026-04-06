@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://id13ux6gtf3n" path="res://materials/light_blue.tres" id="4_nxx2m"]
 [ext_resource type="Material" uid="uid://b3w71v6w4y2xd" path="res://materials/red.tres" id="5_0fsb6"]
 [ext_resource type="Material" uid="uid://dstm1evqenur1" path="res://materials/orange.tres" id="6_vh06j"]
+[ext_resource type="Material" uid="uid://b61e2vikqmcwc" path="res://materials/red_light.tres" id="7_vh06j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o10oq"]
 radius = 0.7871094
@@ -15,6 +16,8 @@ height = 4.2077637
 size = Vector3(2, 0.3, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5kkg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wdmn"]
 
 [node name="NpxCar" type="VehicleBody3D" unique_id=495299180]
 mass = 500.0
@@ -113,3 +116,16 @@ surface_material_override/0 = ExtResource("6_vh06j")
 transform = Transform3D(1.0339375, 0, 0, 0, 1.6288364, 0, 0, 0, 0.43221703, -0.02534914, 0.87676394, 0)
 mesh = SubResource("BoxMesh_o10oq")
 surface_material_override/0 = ExtResource("4_nxx2m")
+
+[node name="brake_indicator" type="Node3D" parent="." unique_id=1817002138]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="brake_indicator" unique_id=290101515]
+transform = Transform3D(0.46639365, 0, 0, 0, 0.27147847, 0, 0, 0, 0.08982265, 0.7460927, 0.40454412, -2.0133011)
+mesh = SubResource("BoxMesh_2wdmn")
+surface_material_override/0 = ExtResource("7_vh06j")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="brake_indicator" unique_id=255041248]
+transform = Transform3D(0.46639365, 0, 0, 0, 0.27147847, 0, 0, 0, 0.08982265, -0.7411847, 0.412333, -2.0001965)
+mesh = SubResource("BoxMesh_2wdmn")
+surface_material_override/0 = ExtResource("7_vh06j")

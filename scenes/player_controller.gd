@@ -33,12 +33,27 @@ func _physics_process(delta: float) -> void:
 	vehicle.steering = move_toward(vehicle.steering, steer_target, delta * vehicle.steering_speed)
 	
 	# 3. Braking
-	if Input.is_action_pressed("ui_accept") or joystick_input.y > 0.9:
-		vehicle.engine_force = 0
-		vehicle.brake = vehicle.max_brake_force
+	if should_brake(joystick_input):
+		vehicle.brake_car()
+		#speed_slider.value = 0
+		vehicle.show_brake_indicator()
 	else:
 		vehicle.brake = 0.0
+		vehicle.hide_brake_indicator()
 
-
+func should_brake(joystick_input: Vector2) -> bool:
+	if Input.is_action_pressed("ui_accept"):
+		# brake button clicked
+		return true
+	elif joystick_input.y > 0.9 and speed_slider.value > 0:
+		# going forward and joystick pulled down
+		return true
+	elif joystick_input.y < -0.9 and speed_slider.value < 0:
+		# going back and joystick pulled up
+		return true
+	# no need to brake
+	return false
+	
+		
 func _on_button_pressed() -> void:
 	get_tree().reload_current_scene()

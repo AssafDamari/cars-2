@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2bq3717vt6oy" path="res://textures/icon_unload_black.png" id="5_ferti"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ypayn"]
-radius = 1.8677905
+radius = 2.4281359
 
 [sub_resource type="TorusMesh" id="TorusMesh_lgkbt"]
 inner_radius = 0.95

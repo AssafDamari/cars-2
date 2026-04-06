@@ -9,13 +9,12 @@ albedo_texture = ExtResource("1_3inec")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_c2ln5"]
-size = Vector3(0.65, 0.65, 0.65)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_telwu"]
-size = Vector3(0.65, 0.65, 0.65)
+size = Vector3(0.994043, 0.98427737, 1.0018555)
 
 [node name="Box" type="RigidBody3D" unique_id=74203526 groups=["CARGO"]]
-mass = 30.0
+mass = 60.0
 physics_material_override = SubResource("PhysicsMaterial_3inec")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1514663111]
@@ -23,4 +22,5 @@ material_override = SubResource("StandardMaterial3D_ks2v0")
 mesh = SubResource("BoxMesh_c2ln5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1758466730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0019042939, 0.003955081, -4.8831105e-05)
 shape = SubResource("BoxShape3D_telwu")

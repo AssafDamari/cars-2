@@ -70,8 +70,11 @@ func _physics_process(delta: float) -> void:
 
 	# --- Decision ---
 	if is_blocked:
-		apply_braking()
-		return
+		vehicle.brake_car()
+		vehicle.show_brake_indicator()
+	else:
+		vehicle.brake = 0.0
+		vehicle.hide_brake_indicator()
 
 	drive_towards(local_target, delta, speed_sq)
 
@@ -95,10 +98,6 @@ func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
 	else:
 		vehicle.engine_force = 0.0
 
-
-func apply_braking() -> void:
-	vehicle.engine_force = 0.0
-	vehicle.brake = vehicle.max_brake_force
 
 
 func _on_collision_sensor_entered(body: Node3D) -> void:

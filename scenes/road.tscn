@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://d0ycqu7wtrw8n"]
+
+[ext_resource type="Material" uid="uid://b27hq6heoaxvn" path="res://materials/road.tres" id="1_mv8x7"]
+[ext_resource type="Material" uid="uid://bftr5rtq1pas2" path="res://materials/gray.tres" id="2_my2y2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7icjy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fy6l0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_my2y2"]
+size = Vector3(54.920654, 0.10723877, 7.949196)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy6l0"]
+size = Vector3(54.994705, 0.1583252, 2.9866943)
+
+[node name="Road" type="StaticBody3D" unique_id=1909937670]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1760344841]
+transform = Transform3D(55, 0, 0, 0, 0.1, 0, 0, 0, 8, 0, 0, 0)
+mesh = SubResource("BoxMesh_7icjy")
+surface_material_override/0 = ExtResource("1_mv8x7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=853297575]
+transform = Transform3D(55, 0, 0, 0, 0.15, 0, 0, 0, 3, 0, 0.024362251, 5.4753747)
+material_override = ExtResource("2_my2y2")
+mesh = SubResource("BoxMesh_fy6l0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=556824880]
+transform = Transform3D(55, 0, 0, 0, 0.15, 0, 0, 0, 3, 0, 0.025484383, -5.4920077)
+material_override = ExtResource("2_my2y2")
+mesh = SubResource("BoxMesh_fy6l0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=742677354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0178833, -0.004180908, -0.017040253)
+shape = SubResource("BoxShape3D_my2y2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=57683792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0025558472, 0.024353027, -5.489899)
+shape = SubResource("BoxShape3D_fy6l0")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1536096304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0025558472, 0.024353027, 5.469089)
+shape = SubResource("BoxShape3D_fy6l0")
