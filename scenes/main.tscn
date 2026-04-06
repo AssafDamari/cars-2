@@ -229,7 +229,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5620956, 2.6521802, 6.6364
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5620956, 2.6521802, 8.327319)
 
 [node name="UnloadingArea" parent="." unique_id=1699998781 instance=ExtResource("12_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.76721, 0.39553988, -33.54263)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.232788, 0.39553988, -134.54263)
 
 [node name="House1" type="StaticBody3D" parent="." unique_id=2043380409]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 50.361588, 0, -65.42265)

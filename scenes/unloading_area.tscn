@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bmt3vy8hxe5ya"]
 
+[ext_resource type="Texture2D" uid="uid://cxufqsi74xkk8" path="res://textures/uv-texture.png" id="1_kjkff"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_o8lru"]
-radius = 2.0026093
+radius = 6.0348897
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qsk8"]
+albedo_texture = ExtResource("1_kjkff")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o8lru"]
 top_radius = 2.0
-bottom_radius = 2.0
+bottom_radius = 6.0
 height = 0.1
 
 [node name="UnloadingArea" type="Area3D" unique_id=1699998781 groups=["UNLOADING_AREA"]]
@@ -14,4 +19,5 @@ height = 0.1
 shape = SubResource("SphereShape3D_o8lru")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=880973422]
+material_override = SubResource("StandardMaterial3D_8qsk8")
 mesh = SubResource("CylinderMesh_o8lru")
