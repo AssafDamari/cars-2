@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://djlvejcullers" path="res://scenes/car_1.gd" id="6_car1script"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
-size = Vector3(1.7609863, 0.32789308, 4)
+size = Vector3(1.7609863, 0.5631744, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gfnuu"]
 size = Vector3(1.8417358, 0.554718, 0.12463379)
@@ -71,7 +71,7 @@ center_of_mass_mode = 1
 script = ExtResource("6_car1script")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004272461, 0.16711098, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004272461, 0.3420667, 0)
 shape = SubResource("BoxShape3D_3e54y")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1415441947]
