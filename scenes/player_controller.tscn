@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="3_lwvb4"]
 [ext_resource type="Texture2D" uid="uid://0e6uu2ooyhur" path="res://textures/icon_pedal_brake.png" id="5_iu0n4"]
 [ext_resource type="Texture2D" uid="uid://ct6umjr3y3kaq" path="res://textures/icon_pedal_brake_black.png" id="6_ngi1a"]
-[ext_resource type="Texture2D" uid="uid://d1kf8t1q37no0" path="res://textures/icon_pedal.png" id="8_ba4vk"]
 [ext_resource type="Texture2D" uid="uid://16omjqh27c3l" path="res://textures/icon_arrow_rotate.png" id="8_ga2kn"]
 [ext_resource type="Script" uid="uid://le2y1bavsjxc" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="9_sdupd"]
 [ext_resource type="Texture2D" uid="uid://01srmdbuabf7" path="res://textures/icon_steering_wheel.png" id="10_34smf"]
 [ext_resource type="Texture2D" uid="uid://dlf0vtvb7xr5u" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_5.png" id="11_kdses"]
+[ext_resource type="PackedScene" uid="uid://16w2c4issiw" path="res://scenes/gear_slider.tscn" id="11_mfmwq"]
 
 [sub_resource type="GDScript" id="GDScript_aq10k"]
 resource_name = "speedometer"
@@ -30,9 +30,6 @@ font_size = 70
 font_color = Color(1.1070073e-06, 0.77062076, 0.21262565, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ga2kn"]
-font_size = 50
 
 [node name="PlayerController" type="Node3D" unique_id=193088310]
 script = ExtResource("1_d4y06")
@@ -62,16 +59,16 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -137.0
-offset_bottom = -274.0
+offset_bottom = -372.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(291.5, 643)
+pivot_offset = Vector2(360, 594)
 script = ExtResource("9_sdupd")
 joystick_mode = 1
 scale_factor = 3.0
+relative_position = Vector2(0.5, 0.85)
 joystick_texture = ExtResource("10_34smf")
-joystick_opacity = 0.332
+joystick_opacity = 0.146
 stick_use_textures = false
 stick_texture = ExtResource("11_kdses")
 stick_opacity = 0.295
@@ -84,17 +81,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -246.0
-offset_right = 42.0
-offset_bottom = -123.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="TouchScreenButtonBrake" type="TouchScreenButton" parent="Player controllsUI/Brake" unique_id=1117390335]
+position = Vector2(-143, -357)
+scale = Vector2(3, 3)
 texture_normal = ExtResource("5_iu0n4")
 texture_pressed = ExtResource("6_ngi1a")
 action = "ui_accept"
@@ -113,76 +107,23 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_ba4vk")
 
-[node name="Button" type="Button" parent="Player controllsUI" unique_id=749655137]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 41.0
-offset_top = -147.0
-offset_right = 145.0
-offset_bottom = -35.0
-grow_vertical = 0
+[node name="Reload" type="Button" parent="Player controllsUI" unique_id=749655137]
+offset_left = 178.0
+offset_top = -61.0
+offset_right = 282.0
+offset_bottom = 51.0
+scale = Vector2(2, 2)
 icon = ExtResource("8_ga2kn")
 
-[node name="SpeedSlider" type="VSlider" parent="Player controllsUI" unique_id=834922451]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = -183.0
-offset_bottom = 615.5
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_icons/grabber = ExtResource("8_ba4vk")
-theme_override_icons/grabber_highlight = ExtResource("8_ba4vk")
-min_value = -2000.0
-max_value = 2000.0
-step = 20.0
-tick_count = 3
-ticks_on_borders = true
-ticks_position = 2
-
-[node name="Label" type="Label" parent="Player controllsUI/SpeedSlider" unique_id=252589100]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -65.0
-offset_bottom = 69.0
-grow_horizontal = 0
-text = "D"
-label_settings = SubResource("LabelSettings_ga2kn")
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Player controllsUI/SpeedSlider" unique_id=1614437536]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 15.5
-offset_top = 396.0
-offset_right = 73.0625
-offset_bottom = 465.0
-grow_horizontal = 2
-text = "N"
-label_settings = SubResource("LabelSettings_ga2kn")
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="Player controllsUI/SpeedSlider" unique_id=814046226]
-layout_mode = 1
+[node name="GearSlider" parent="Player controllsUI" unique_id=612517197 instance=ExtResource("11_mfmwq")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -63.0
-offset_top = -69.0
+offset_left = -332.0
+offset_top = -493.0
+offset_right = -54.0
+offset_bottom = -99.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "R"
-label_settings = SubResource("LabelSettings_ga2kn")
-horizontal_alignment = 1
 
-[connection signal="pressed" from="Player controllsUI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Player controllsUI/Reload" to="." method="_on_button_pressed"]

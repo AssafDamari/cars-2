@@ -2,23 +2,15 @@ extends Node3D
 @onready var vehicle: Car = get_parent() as Car
 @onready var joystick: VirtualJoystickPlus = $"Player controllsUI/VirtualJoystickPlus"
 @onready var debug_lable: Label = $"Player controllsUI/DebugLable"
-@onready var speed_slider: VSlider = $"Player controllsUI/SpeedSlider"
-
+@onready var gear_slider: GearSlider = $"Player controllsUI/GearSlider"
 
 func _physics_process(delta: float) -> void:
 	
 	var joystick_input := joystick.get_value()
-	
 	# 1. power 
-	if joystick_input.y < -0.9:
-		speed_slider.value += 20
-	
-	if joystick_input.y > 0.9:
-		speed_slider.value -= 20
-		
 	var speed_sq = vehicle.linear_velocity.length_squared()
 	if speed_sq < vehicle.max_speed * vehicle.max_speed:
-		vehicle.engine_force = speed_slider.value
+		vehicle.engine_force = get_engine_force()
 	else:
 		vehicle.engine_force = 0.0
 	
@@ -41,16 +33,24 @@ func _physics_process(delta: float) -> void:
 		vehicle.brake = 0.0
 		vehicle.hide_brake_indicator()
 
+func get_engine_force():
+	if gear_slider.current_gear == gear_slider.Gear.DRIVE:
+		return 2000
+	elif gear_slider.current_gear == gear_slider.Gear.NEUTRAL:
+		return 0
+	elif gear_slider.current_gear == gear_slider.Gear.REVERSE:
+		return -1000
+		
 func should_brake(joystick_input: Vector2) -> bool:
 	if Input.is_action_pressed("ui_accept"):
 		# brake button clicked
 		return true
-	elif joystick_input.y > 0.9 and speed_slider.value > 0:
-		# going forward and joystick pulled down
-		return true
-	elif joystick_input.y < -0.9 and speed_slider.value < 0:
-		# going back and joystick pulled up
-		return true
+	#elif joystick_input.y > 0.9:
+		## going forward and joystick pulled down
+		#return true
+	#elif joystick_input.y < -0.9:
+		## going back and joystick pulled up
+		#return true
 	# no need to brake
 	return false
 	
