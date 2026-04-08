@@ -59,10 +59,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -372.0
+offset_bottom = -413.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(360, 594)
+pivot_offset = Vector2(360, 573.5)
 script = ExtResource("9_sdupd")
 joystick_mode = 1
 scale_factor = 3.0
@@ -108,19 +108,18 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_ba4vk")
 
 [node name="Reload" type="Button" parent="Player controllsUI" unique_id=749655137]
-offset_left = 178.0
-offset_top = -61.0
-offset_right = 282.0
-offset_bottom = 51.0
+offset_right = 119.5
+offset_bottom = 138.0
 scale = Vector2(2, 2)
 icon = ExtResource("8_ga2kn")
+icon_alignment = 1
 
 [node name="GearSlider" parent="Player controllsUI" unique_id=612517197 instance=ExtResource("11_mfmwq")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 offset_left = -332.0
-offset_top = -493.0
+offset_top = -439.0
 offset_right = -54.0
 offset_bottom = -99.0
 grow_horizontal = 0

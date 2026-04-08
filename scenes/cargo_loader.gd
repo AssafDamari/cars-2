@@ -6,6 +6,7 @@ extends Node3D
 
 @onready var load_button: TouchScreenButton = $CanvasLayer/LoadButtons/LoadTouchScreenButton
 @onready var unload_button: TouchScreenButton = $CanvasLayer/LoadButtons/UnloadTouchScreenButton
+@onready var load_area_marker: MeshInstance3D = $LoadArea/LoadAreaMarker
 
 var nearby_cargo: Array[RigidBody3D] = []
 var current_unload_area: Area3D = null
@@ -119,7 +120,9 @@ func update_ui():
 	nearby_cargo = nearby_cargo.filter(func(c): return is_instance_valid(c))
 	
 	# LOAD button: show if cargo nearby
-	load_button.visible = nearby_cargo.size() > 0
+	var showLoad: bool = nearby_cargo.size() > 0
+	load_button.visible = showLoad
+	load_area_marker.visible = showLoad
 	
 	# UNLOAD button: only if cargo on truck AND in unload area
 	unload_button.visible = has_cargo_on_truck() and current_unload_area != null
