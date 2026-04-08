@@ -46,7 +46,7 @@ func _update_gear_from_pos(pos: Vector2) -> void:
 
 func _draw() -> void:
 	# Visualizing the slider in the editor and game
-	var rect_height = size.y / 3.0
+	var rect_height: float = size.y / 3.0
 	var gear_names = ["DRIVE", "NEUTRAL", "REVERSE"]
 	
 	for i in range(3):
@@ -56,9 +56,12 @@ func _draw() -> void:
 		draw_rect(rect, color, true)
 		draw_rect(rect, Color.BLACK, false, 2.0) # Border
 		
-		# Draw simple text label
-		# Get the default font from the control itself or the global theme
 		var default_font = get_theme_default_font()
-		var font_size = get_theme_default_font_size()
+		# Wrap the font size in int() to satisfy the compiler
+		var font_size: int = int(get_theme_default_font_size())
 
-		draw_string(default_font, rect.position + Vector2(10, rect_height/2 + font_size/2), gear_names[i], HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
+		# Also ensure the Y position calculation is cast to int if needed, 
+		# though draw_string usually handles Vector2 floats fine.
+		var text_pos = rect.position + Vector2(10, (rect_height / 2) + (font_size / 2.0))
+		
+		draw_string(default_font, text_pos, gear_names[i], HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)

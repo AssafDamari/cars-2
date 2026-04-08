@@ -41,7 +41,7 @@ func get_engine_force():
 	elif gear_slider.current_gear == gear_slider.Gear.REVERSE:
 		return -1000
 		
-func should_brake(joystick_input: Vector2) -> bool:
+func should_brake(_joystick_input: Vector2) -> bool:
 	if Input.is_action_pressed("ui_accept"):
 		# brake button clicked
 		return true
