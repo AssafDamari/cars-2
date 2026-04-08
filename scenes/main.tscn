@@ -184,8 +184,9 @@ color = Color(0.16584054, 0.15587628, 0.15587655, 1)
 
 [node name="CargoLoader" parent="Car1" unique_id=1528885774 instance=ExtResource("6_eb6dy")]
 
-[node name="Camera3DFollow" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
+[node name="CameraGimble" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)
+target_node_path = NodePath("../Car1")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=786759993]
 
