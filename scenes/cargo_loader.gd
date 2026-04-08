@@ -48,7 +48,7 @@ func get_closest_cargo():
 		if not is_instance_valid(c):
 			continue
 		
-		# ❌ Skip cargo already on truck
+		# Skip cargo already on truck
 		if is_cargo_on_truck(c):
 			continue
 		
