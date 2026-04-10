@@ -116,7 +116,7 @@ func _calculate_desired_camera_position() -> Vector3:
 
 	# Position the camera "behind" the target along this yaw-derived direction.
 	# The 'horizontal_offset' determines the distance.
-	calculated_pos -= forward_xz_yaw_only * horizontal_offset
+	calculated_pos -= forward_xz_yaw_only * -horizontal_offset
 
 	# 4. Apply "finish mode" offset (sideways).
 	# This is also based on the target's yaw only.

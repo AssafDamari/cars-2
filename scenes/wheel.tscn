@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bsn7hnnen3jl4" path="res://textures/texture_11.png" id="2_b52vq"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_b52vq"]
-height = 0.35
+top_radius = 0.35
+bottom_radius = 0.35
+height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b52vq"]
 albedo_color = Color(0.51718444, 0.5171845, 0.51718444, 1)
@@ -13,9 +15,9 @@ uv1_scale = Vector3(2.64, 2.64, 2.64)
 uv1_triplanar = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_drh0d"]
-top_radius = 0.3
-bottom_radius = 0.3
-height = 0.4
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.33
 
 [node name="Wheel" type="Node3D" unique_id=1097093256]
 

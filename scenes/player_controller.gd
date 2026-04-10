@@ -21,8 +21,8 @@ func _physics_process(delta: float) -> void:
 	if steer_input == 0.0:
 		steer_input = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	
-	var steer_target = steer_input * vehicle.max_steering_angle
-	vehicle.steering = move_toward(vehicle.steering, steer_target, delta * vehicle.steering_speed)
+	var steer_target = steer_input 
+	vehicle.steering = move_toward(vehicle.steering, steer_target, delta)
 	
 	# 3. Braking
 	if should_brake(joystick_input):

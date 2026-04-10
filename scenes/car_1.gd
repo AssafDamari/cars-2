@@ -4,7 +4,6 @@ extends VehicleBody3D
 @export var color: Color = Color.WHITE
 @export var max_speed: float = 20
 @export var max_brake_force: float = 20.0
-@export var max_steering_angle: float = 0.4 
 @export var steering_speed: float = 0.3
 @onready var body_mesh: MeshInstance3D = $Body/MeshInstance3D
 @onready var brake_indicator: Node3D = $brake_indicator
