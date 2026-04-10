@@ -89,7 +89,7 @@ func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
 	var target_steering = steer_error * steer_p + error_change * steer_d
 	target_steering = clamp(target_steering, -0.6, 0.6)
 
-	vehicle.steering = lerp(vehicle.steering, target_steering, delta * vehicle.steering_speed)
+	vehicle.steering = lerp(vehicle.steering, target_steering, delta)
 
 	# --- Throttle ---
 	if speed_sq < vehicle.max_speed * vehicle.max_speed:

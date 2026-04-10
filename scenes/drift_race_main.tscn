@@ -74,17 +74,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.83946, 0.78312206, -50.3
 color = Color(0.9601279, 0.8207987, 1.540184e-06, 1)
 max_speed = 40.0
 max_brake_force = 30.0
-steering_speed = 10.0
 
 [node name="NpcCarController" parent="NpxCar" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
 
 [node name="CameraGimble" parent="." unique_id=1837012276 instance=ExtResource("7_t013y")]
 target_node_path = NodePath("../Car2")
+follow_speed = 4.0
 
 [node name="Car2" parent="." unique_id=1835131583 instance=ExtResource("7_xhr36")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 max_speed = 30.0
-steering_speed = 0.5
 
 [node name="PlayerController" parent="Car2" unique_id=193088310 instance=ExtResource("5_t7hxj")]

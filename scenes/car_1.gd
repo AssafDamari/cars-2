@@ -4,9 +4,12 @@ extends VehicleBody3D
 @export var color: Color = Color.WHITE
 @export var max_speed: float = 20
 @export var max_brake_force: float = 20.0
-@export var steering_speed: float = 0.3
 @onready var body_mesh: MeshInstance3D = $Body/MeshInstance3D
 @onready var brake_indicator: Node3D = $brake_indicator
+@onready var wheel_front_left: VehicleWheel3D = $VehicleWheel3DFrontLeft
+@onready var wheel_front_right: VehicleWheel3D = $VehicleWheel3DFrontRight
+@onready var wheel_back_right: VehicleWheel3D = $VehicleWheel3DBackRight
+@onready var wheel_back_left: VehicleWheel3D = $VehicleWheel3DBackLeft
 
 
 func _ready() -> void:
