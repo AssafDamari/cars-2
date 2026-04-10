@@ -107,7 +107,7 @@ height = 5.922
 height = 13.933594
 radius = 3.8510742
 
-[node name="main" type="Node3D" unique_id=699808080]
+[node name="CargoLoadingMain" type="Node3D" unique_id=699808080]
 
 [node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.583282, 0)

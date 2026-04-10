@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://limuefm350ho"]
+
+[ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="1_8y83r"]
+[ext_resource type="PackedScene" uid="uid://dtp5bt81r57mc" path="res://scenes/npx_car.tscn" id="2_vpt2y"]
+[ext_resource type="PackedScene" uid="uid://oic2u1tn4ubi" path="res://scenes/npc_car_controller.tscn" id="3_b42pj"]
+[ext_resource type="PackedScene" uid="uid://dq5vm2aqyrech" path="res://scenes/player_controller.tscn" id="5_t7hxj"]
+[ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="7_t013y"]
+[ext_resource type="PackedScene" uid="uid://dupjxv1uqom6m" path="res://scenes/car_2.tscn" id="7_xhr36"]
+[ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="8_pcnhv"]
+[ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="9_y1rrw"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e8ne1"]
+size = Vector2(300, 300)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6uys"]
+albedo_color = Color(0.48570347, 0.48570353, 0.48570347, 1)
+albedo_texture = ExtResource("8_pcnhv")
+metallic_specular = 0.0
+
+[sub_resource type="Curve3D" id="Curve3D_78wvi"]
+closed = true
+_data = {
+"points": PackedVector3Array(-0.6804428, 0, 25.856857, 0.6804428, 0, -25.856857, -121.89526, 0, -17.18792, -38.785286, 0, 21.09375, 38.785286, 0, -21.09375, -105.90485, 0, -115.512024, -34.362396, 0, 1.020668, 34.362396, 0, -1.020668, 10.110789, 0, -109.38803, -14, 0, -23, 14, 0, 23, 108, 0, -104, 3.0619812, 0, -21.774193, -3.0619812, 0, 21.774193, 108.074684, 0, -48.231445, 4.422882, 0, -24.155746, -4.422882, 0, 24.155746, 120.66288, 0, -3.6623986, 27.155441, 0, 7.580365, -27.155441, 0, -7.580365, 37.09439, 0, 7.058565, 30.086422, 0, -6.017288, -30.086422, 0, 6.017288, -37.2598, 0, -61.838802, 10.645962, 0, -22.680546, -10.645962, 0, 22.680546, -67.8091, 0, -10.460442, -31.475033, 0, -20.829063, 31.475033, 0, 20.829063, -75.67786, 0, 49.712387, -40.45021, 0, -19.097439, 40.45021, 0, 19.097439, 29.21251, 0, 46.815334, -22.680573, 0, -14.348907, 22.680573, 0, 14.348907, 113.1723, 0, 43.69512, 19.44043, 0, -17.58899, -19.44043, 0, 17.58899, 121.04108, 0, 107.5709, 29.94466, 0, -0.8718109, -29.94466, 0, 0.8718109, -11.802066, 0, 93.68485, 22.696327, 0, 27.161057, -22.696327, 0, -27.161057, -118.72458, 0, 93.22198),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udrkq"]
+albedo_color = Color(0.7666196, 0.76661956, 0.76661956, 1)
+albedo_texture = ExtResource("9_y1rrw")
+metallic_specular = 0.0
+uv1_scale = Vector3(8, 8, 8)
+texture_filter = 0
+
+[sub_resource type="Curve3D" id="Curve3D_7r8dl"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.9337959, -4.8816204e-05, -25.935146, 0, 0, 0, 0, 0, 0, 26.299809, -4.8816204e-05, 6.7833443, 0, 0, 0, 0, 0, 0, 73.90706, -4.8816204e-05, 18.547298, 0, 0, 0, 0, 0, 0, 115.264694, -4.8816204e-05, 12.113887, 0, 0, 0, 0, 0, 0, 126.31586, -4.8816204e-05, -12.873276, 0, 0, 0, 0, 0, 0, 110.87567, -4.8816204e-05, -41.54791, 0, 0, 0, 0, 0, 0, 120.985306, -4.8816204e-05, -68.56824, 0, 0, 0, 0, 0, 0, 131.22021, -4.8816204e-05, -99.3041, 0, 0, 0, 0, 0, 0, 115.41241, -4.8816204e-05, -123.56725, 0, 0, 0, 0, 0, 0, 82.693924, -4.8816204e-05, -131.47115, 0, 0, 0, 0, 0, 0, 34.351433, -4.8816204e-05, -119.15577, 0, 0, 0, 0, 0, 0, 5.14841, -4.8816204e-05, -112.74659, 0, 0, 0, 0, 0, 0, -40.620716, -4.8816204e-05, -123.04005, 0, 0, 0, 0, 0, 0, -79.77261, -4.8816204e-05, -126.16485, 0, 0, 0, 0, 0, 0, -119.2969, -4.8816204e-05, -107.64271, 0, 0, 0, 0, 0, 0, -130.50941, -4.8816204e-05, -76.027084, 0, 0, 0, 0, 0, 0, -124.995056, -4.8816204e-05, -24.559792, 0, 0, 0, 0, 0, 0, -130.52979, -4.8816204e-05, 23.0377, 0, 0, 0, 0, 0, 0, -130.7136, -4.8816204e-05, 68.62301, 0, 0, 0, 0, 0, 0, -118.2144, -4.8816204e-05, 97.29764, 0, 0, 0, 0, 0, 0, -88.62071, -4.8816204e-05, 106.672035, 0, 0, 0, 0, 0, 0, -45.057335, -4.8816204e-05, 103.36343, 0, 0, 0, 0, 0, 0, -13.441719, -4.8816204e-05, 97.11383, 0, 0, 0, 0, 0, 0, 20.931068, -4.8816204e-05, 102.44437, 0, 0, 0, 0, 0, 0, 67.743256, -4.8816204e-05, 113.595406, 0, 0, 0, 0, 0, 0, 104.137985, -4.8816204e-05, 117.455444, 0, 0, 0, 0, 0, 0, 123.989655, -4.8816204e-05, 111.38966, 0, 0, 0, 0, 0, 0, 137.22409, -4.8816204e-05, 82.347404, 0, 0, 0, 0, 0, 0, 130.23924, -4.8816204e-05, 56.062332, 0, 0, 0, 0, 0, 0, 108.18184, -4.8816204e-05, 36.394474, 0, 0, 0, 0, 0, 0, 78.58815, -4.8816204e-05, 44.48219, 0, 0, 0, 0, 0, 0, 54.32501, -4.8816204e-05, 50.180355, 0, 0, 0, 0, 0, 0, 26.569431, -4.8816204e-05, 40.25452, 0, 0, 0, 0, 0, 0, -1.5537643, -4.8816204e-05, 38.600216, 0, 0, 0, 0, 0, 0, -36.415215, -4.8816204e-05, 48.595097, 0, 0, 0, 0, 0, 0, -61.045967, -4.8816204e-05, 51.16846, 0, 0, 0, 0, 0, 0, -84.75769, -4.8816204e-05, 34.6254, 0, 0, 0, 0, 0, 0, -80.1624, -4.8816204e-05, 15.325172, 0, 0, 0, 0, 0, 0, -64.8033, -4.8816204e-05, -10.798573, 0, 0, 0, 0, 0, 0, -55.98033, -4.8816204e-05, -39.10558, 0, 0, 0, 0, 0, 0, -40.72397, -4.8816204e-05, -56.935318, 0, 0, 0, 0, 0, 0, -25.46759, -4.8816204e-05, -56.016262),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 42
+
+[node name="DriftRaceMain" type="Node3D" unique_id=10070383]
+
+[node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_8y83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.583282, 0)
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1678575866]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=54374525]
+shape = SubResource("WorldBoundaryShape3D_w4aej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=74750457]
+mesh = SubResource("PlaneMesh_e8ne1")
+surface_material_override/0 = SubResource("StandardMaterial3D_m6uys")
+
+[node name="Track" type="Node3D" parent="." unique_id=508046483]
+
+[node name="Path3D" type="Path3D" parent="Track" unique_id=2099874970]
+rotation_order = 0
+curve = SubResource("Curve3D_78wvi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Track" unique_id=1689039370]
+use_collision = true
+polygon = PackedVector2Array(-9, 0.15, -10, 0, 10, 0, 9, 0.15)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+material = SubResource("StandardMaterial3D_udrkq")
+
+[node name="NpcPath3D1" type="Path3D" parent="." unique_id=710576476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+curve = SubResource("Curve3D_7r8dl")
+
+[node name="NpxCar" parent="." unique_id=495299180 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.83946, 0.78312206, -50.34976)
+color = Color(0.9601279, 0.8207987, 1.540184e-06, 1)
+max_speed = 40.0
+max_brake_force = 30.0
+steering_speed = 10.0
+
+[node name="NpcCarController" parent="NpxCar" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="NpxCar2" parent="." unique_id=2100857834 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.83946, 0.78312206, 14.650242)
+color = Color(0.9622356, 1.347661e-06, 0.47792023, 1)
+max_speed = 30.0
+max_brake_force = 30.0
+steering_speed = 10.0
+
+[node name="NpcCarController" parent="NpxCar2" unique_id=1193941647 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="NpxCar3" parent="." unique_id=1972701825 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.83946, 0.78312206, 75.65024)
+color = Color(0.27238393, 0.41317165, 1, 1)
+max_speed = 30.0
+max_brake_force = 30.0
+max_steering_angle = 0.5
+steering_speed = 10.0
+
+[node name="NpcCarController" parent="NpxCar3" unique_id=2003539980 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../NpcPath3D1")
+
+[node name="CameraGimble" parent="." unique_id=1837012276 instance=ExtResource("7_t013y")]
+transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)
+target_node_path = NodePath("../Car2")
+
+[node name="Car2" parent="." unique_id=1835131583 instance=ExtResource("7_xhr36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+color = Color(0.46417636, 0.4861712, 0.4648553, 1)
+max_speed = 30.0
+steering_speed = 0.5
+
+[node name="PlayerController" parent="Car2" unique_id=193088310 instance=ExtResource("5_t7hxj")]

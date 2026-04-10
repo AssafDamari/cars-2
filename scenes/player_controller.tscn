@@ -54,6 +54,7 @@ offset_bottom = 138.0
 grow_horizontal = 0
 
 [node name="VirtualJoystickPlus" type="Control" parent="Player controllsUI" unique_id=1499984360]
+visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 3
 anchors_preset = 15
@@ -66,6 +67,7 @@ pivot_offset = Vector2(360, 573.5)
 script = ExtResource("9_sdupd")
 joystick_mode = 1
 scale_factor = 3.0
+only_mobile = true
 relative_position = Vector2(0.5, 0.85)
 joystick_texture = ExtResource("10_34smf")
 joystick_opacity = 0.146

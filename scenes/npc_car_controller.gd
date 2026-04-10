@@ -31,7 +31,6 @@ func _ready() -> void:
 	if path_node:
 		curve = path_node.curve
 		path_length = curve.get_baked_length()
-		print("Controller ready. Vehicle: ", vehicle.name, ", Path: ", path_node.name, ", Curve length: ", path_length)
 	else:
 		push_error("NPC Controller path_node is not set for ", name, " and could not be auto-found")
 	
@@ -101,7 +100,6 @@ func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
 
 
 func _on_collision_sensor_entered(body: Node3D) -> void:
-	print("Collision sensor entered by: ", body.name)
 	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = true
 
