@@ -67,7 +67,7 @@ func _apply_dynamic_drift(steer_input: float, delta: float) -> void:
 	
 func get_engine_force():
 	if gear_slider.current_gear == gear_slider.Gear.DRIVE:
-		return 2000
+		return 2500
 	elif gear_slider.current_gear == gear_slider.Gear.NEUTRAL:
 		return 0
 	elif gear_slider.current_gear == gear_slider.Gear.REVERSE:

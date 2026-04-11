@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c8elfxgitkeaa"]
+
+[ext_resource type="Script" uid="uid://bqqbb60id56ti" path="res://skid_marks_3d.gd" id="1_05esd"]
+[ext_resource type="Material" uid="uid://dktpviw6pfaxw" path="res://materials/skid_marks.tres" id="2_aosoa"]
+
+[node name="SkidMarks3D" type="Node3D" unique_id=2080819160]
+script = ExtResource("1_05esd")
+
+[node name="LeftWheel" type="Marker3D" parent="." unique_id=1638197406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933232, 0, 0)
+
+[node name="RightWheel" type="Marker3D" parent="." unique_id=926575817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9963478, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1991586081]
+material_override = ExtResource("2_aosoa")

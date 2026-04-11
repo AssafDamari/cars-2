@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="7_t013y"]
 [ext_resource type="PackedScene" uid="uid://dupjxv1uqom6m" path="res://scenes/car_2.tscn" id="7_xhr36"]
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="8_pcnhv"]
+[ext_resource type="PackedScene" uid="uid://c8elfxgitkeaa" path="res://skid_marks_3d.tscn" id="9_8y83r"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="9_y1rrw"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
@@ -69,13 +70,64 @@ path_u_distance = 1.0
 path_joined = true
 material = SubResource("StandardMaterial3D_udrkq")
 
-[node name="NpxCar" parent="." unique_id=495299180 groups=["CAR"] instance=ExtResource("2_vpt2y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.83946, 0.78312206, -50.34976)
+[node name="NpxCar2" parent="." unique_id=495299180 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(-0.79277927, 0, -0.6095089, 0, 1, 0, 0.6095089, 0, -0.79277927, 10.737793, 2.1784058, 0)
+mass = 1200.0
 color = Color(0.9601279, 0.8207987, 1.540184e-06, 1)
-max_speed = 40.0
+max_speed = 100.0
 max_brake_force = 30.0
 
-[node name="NpcCarController" parent="NpxCar" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+[node name="NpcCarController" parent="NpxCar2" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../Track/Path3D")
+
+[node name="NpxCar3" parent="." unique_id=295658590 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(0.21042061, 0, -0.97761095, 0, 1, 0, 0.97761095, 0, 0.21042061, 29.186373, 2.1784058, 1.8173351)
+mass = 1200.0
+color = Color(0.9014044, 0.31227604, 0.0874945, 1)
+max_speed = 100.0
+max_brake_force = 30.0
+
+[node name="NpcCarController" parent="NpxCar3" unique_id=1288169253 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../Track/Path3D")
+
+[node name="NpxCar4" parent="." unique_id=594060854 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(0.21042061, 0, -0.97761095, 0, 1, 0, 0.97761095, 0, 0.21042061, 49.74224, 2.1784058, -2.6071014)
+mass = 1200.0
+color = Color(0.84343964, 0, 0.4363155, 1)
+max_speed = 100.0
+max_brake_force = 30.0
+
+[node name="NpcCarController" parent="NpxCar4" unique_id=1258715308 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../Track/Path3D")
+
+[node name="NpxCar5" parent="." unique_id=871587878 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(0.21042061, 0, -0.97761095, 0, 1, 0, 0.97761095, 0, 0.21042061, 70.891464, 2.1784058, -7.159253)
+mass = 1200.0
+color = Color(0.5973377, 0.0864523, 0.81388146, 1)
+max_speed = 100.0
+max_brake_force = 30.0
+
+[node name="NpcCarController" parent="NpxCar5" unique_id=1384836423 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../Track/Path3D")
+
+[node name="NpxCar6" parent="." unique_id=1716243182 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(-0.104077145, 0, -0.9945692, 0, 1, 0, 0.9945692, 0, -0.104077145, 89.27146, 2.1784058, -11.115356)
+mass = 1200.0
+color = Color(0.2054047, 0.3009732, 0.97322065, 1)
+max_speed = 100.0
+max_brake_force = 30.0
+
+[node name="NpcCarController" parent="NpxCar6" unique_id=772090592 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
+path_node = NodePath("../../Track/Path3D")
+
+[node name="NpxCar7" parent="." unique_id=30639115 groups=["CAR"] instance=ExtResource("2_vpt2y")]
+transform = Transform3D(0.99726176, 0, -0.07395185, 0, 1, 0, 0.07395185, 0, 0.99726176, 113.70708, 2.1784058, -8.558281)
+mass = 1200.0
+color = Color(0, 0.5734509, 0.36424175, 1)
+max_speed = 100.0
+max_brake_force = 30.0
+
+[node name="NpcCarController" parent="NpxCar7" unique_id=251146656 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
 
 [node name="CameraGimble" parent="." unique_id=1837012276 instance=ExtResource("7_t013y")]
@@ -84,6 +136,14 @@ follow_speed = 4.0
 
 [node name="Car2" parent="." unique_id=1835131583 instance=ExtResource("7_xhr36")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-max_speed = 30.0
+max_speed = 40.0
 
 [node name="PlayerController" parent="Car2" unique_id=193088310 instance=ExtResource("5_t7hxj")]
+
+[node name="SkidMarks3D" parent="Car2" unique_id=2080819160 instance=ExtResource("9_8y83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3071809)
+max_points = 100
+mark_width = 0.2
+min_speed = 6.0
+slip_threshold = 3.0
+fade_speed = 0.75

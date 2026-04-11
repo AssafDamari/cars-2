@@ -52,7 +52,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.8,
 use_as_traction = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.35
-wheel_friction_slip = 2.5
+wheel_friction_slip = 2.0
 suspension_stiffness = 40.0
 
 [node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=862881802 instance=ExtResource("2_04eve")]
@@ -62,7 +62,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8
 use_as_traction = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.35
-wheel_friction_slip = 2.5
+wheel_friction_slip = 2.0
 suspension_stiffness = 40.0
 
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("2_04eve")]
