@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://b2bq3717vt6oy" path="res://textures/icon_unload_black.png" id="5_ferti"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t8e4g"]
-size = Vector3(6, 0.5, 4)
+size = Vector3(5, 0.5, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_t8e4g"]
-size = Vector3(4, 0.5, 3)
+size = Vector3(5, 0.5, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ferti"]
 transparency = 1
@@ -23,6 +23,7 @@ size = Vector3(1.7225952, 1.0025635, 2.738037)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blb2s"]
 transparency = 1
+albedo_color = Color(0.39215687, 0.65882355, 1, 0.47058824)
 
 [sub_resource type="SphereMesh" id="SphereMesh_t8e4g"]
 radius = 0.05
@@ -32,30 +33,28 @@ height = 0.1
 script = ExtResource("1_ftntb")
 
 [node name="LoadArea" type="Area3D" parent="." unique_id=1967734903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23856182, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LoadArea" unique_id=1618796785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 shape = SubResource("BoxShape3D_t8e4g")
 
 [node name="LoadAreaMarker" type="MeshInstance3D" parent="LoadArea" unique_id=1223855858]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1.3, 0, 0, -2.02)
 mesh = SubResource("BoxMesh_t8e4g")
 surface_material_override/0 = SubResource("StandardMaterial3D_ferti")
 
 [node name="BedArea" type="Area3D" parent="." unique_id=1198680475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1262441, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BedArea" unique_id=401945944]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03213501, 1.1633124, -0.6685791)
 shape = SubResource("BoxShape3D_ferti")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="BedArea" unique_id=54764416]
-transform = Transform3D(1.6883984, 0, 0, 0, 1, 0, 0, 0, 2.7679658, 0.034684658, 1.1707678, -0.6607847)
-visible = false
+transform = Transform3D(1.6883984, 0, 0, 0, 1, 0, 0, 0, 2.7679658, 0, 0, 0)
 mesh = SubResource("BoxMesh_ferti")
 surface_material_override/0 = SubResource("StandardMaterial3D_blb2s")
 
 [node name="LoadPos" type="Marker3D" parent="." unique_id=1960464610]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4287846, -1.1845871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7406933, -0.18458712)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LoadPos" unique_id=1965195873]
 mesh = SubResource("SphereMesh_t8e4g")

@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://c46wyujvnotrj" path="res://scenes/car_1.tscn" id="2_qo751"]
 [ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://df8yalotnk7fh" path="res://scenes/box.tscn" id="4_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dupjxv1uqom6m" path="res://scenes/car_2.tscn" id="5_ig4lt"]
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="5_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dq5vm2aqyrech" path="res://scenes/player_controller.tscn" id="5_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://oic2u1tn4ubi" path="res://scenes/npc_car_controller.tscn" id="6_cs8s8"]
 [ext_resource type="PackedScene" uid="uid://bgysdvmxdmqs1" path="res://scenes/cargo_loader.tscn" id="6_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://i3mut64ucg30" path="res://scenes/bridge.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://dtp5bt81r57mc" path="res://scenes/npx_car.tscn" id="9_85g3d"]
-[ext_resource type="PackedScene" uid="uid://oic2u1tn4ubi" path="res://scenes/npc_car_controller.tscn" id="10_npcctrl"]
 [ext_resource type="PackedScene" uid="uid://bmt3vy8hxe5ya" path="res://scenes/unloading_area.tscn" id="12_eb6dy"]
 [ext_resource type="Material" uid="uid://b1nuors7t8wg" path="res://materials/brown.tres" id="15_muem4"]
 [ext_resource type="Material" uid="uid://c04criplo2dgp" path="res://materials/white.tres" id="16_0ld40"]
@@ -116,73 +116,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.583282, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 curve = SubResource("Curve3D_0ld40")
 
-[node name="NpxCar" parent="." unique_id=495299180 groups=["CAR"] instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.83946, 4.783122, -50.34976)
-color = Color(0.9601279, 0.8207987, 1.540184e-06, 1)
-max_speed = 40.0
-max_brake_force = 30.0
-steering_speed = 10.0
-
-[node name="NpcCarController" parent="NpxCar" unique_id=1893882791 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
-path_node = NodePath("../../NpcPath3D1")
-
-[node name="NpxCar2" parent="." unique_id=1586543886 groups=["CAR"] instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.83946, 4.783122, 19.650242)
-color = Color(0, 0.55244225, 0.9018781, 1)
-max_speed = 40.0
-max_brake_force = 30.0
-steering_speed = 10.0
-
-[node name="NpcCarController" parent="NpxCar2" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
-path_node = NodePath("../../NpcPath3D1")
-
-[node name="NpxCar3" parent="." unique_id=590754646 groups=["CAR"] instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.839462, 4.783122, -24.349758)
-color = Color(0.98100024, 3.85046e-07, 0.5433609, 1)
-max_speed = 40.0
-max_brake_force = 30.0
-steering_speed = 10.0
-
-[node name="NpcCarController" parent="NpxCar3" unique_id=547187223 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
-path_node = NodePath("../../NpcPath3D1")
-
-[node name="NpxCar4" parent="." unique_id=1427147447 groups=["CAR"] instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.16054, 4.783122, -24.349758)
-color = Color(0.14507118, 0.6617467, 0, 1)
-max_speed = 40.0
-max_brake_force = 30.0
-steering_speed = 10.0
-
-[node name="NpcCarController" parent="NpxCar4" unique_id=896724071 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
-path_node = NodePath("../../NpcPath3D1")
-
-[node name="NpxCar5" parent="." unique_id=2076058461 groups=["CAR"] instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8394623, 4.783122, -111.34976)
-color = Color(0.7448801, 0.2684367, 1, 1)
-max_speed = 40.0
-max_brake_force = 30.0
-steering_speed = 10.0
-
-[node name="NpcCarController" parent="NpxCar5" unique_id=1446155703 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
-path_node = NodePath("../../NpcPath3D1")
-
-[node name="NpxCar6" parent="." unique_id=98786027 groups=["CAR"] instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8394623, 4.783122, 94.65024)
-color = Color(0.9710588, 0.3440431, 0, 1)
-max_speed = 40.0
-max_brake_force = 30.0
-steering_speed = 10.0
-
-[node name="NpcCarController" parent="NpxCar6" unique_id=1531451393 node_paths=PackedStringArray("path_node") instance=ExtResource("10_npcctrl")]
-path_node = NodePath("../../NpcPath3D1")
-
 [node name="Car1" parent="." unique_id=1835131583 groups=["CAR"] instance=ExtResource("2_qo751")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 color = Color(0.16584054, 0.15587628, 0.15587655, 1)
 
 [node name="PlayerController" parent="Car1" unique_id=193088310 instance=ExtResource("5_ya4ey")]
+engine_force_fwd = 1000.0
+steering_limit = 0.3
 
 [node name="CargoLoader" parent="Car1" unique_id=1528885774 instance=ExtResource("6_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.7)
+
+[node name="Car3" parent="." unique_id=1609179608 instance=ExtResource("5_ig4lt")]
+transform = Transform3D(0.30218685, 0, 0.95324874, 0, 1, 0, -0.95324874, 0, 0.30218685, 38.33378, 2.4017944, 5.2560983)
+color = Color(0.9023831, 5.583167e-06, 0.5573703, 1)
+max_speed = 40.0
+
+[node name="NpcCarController" parent="Car3" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("6_cs8s8")]
+path_node = NodePath("../../NpcPath3D1")
 
 [node name="CameraGimble" parent="." unique_id=2139757482 instance=ExtResource("3_jyhfs")]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 2.7503166, 1.8271985, 3.5695868)
@@ -223,10 +174,10 @@ material = SubResource("StandardMaterial3D_o6xl0")
 transform = Transform3D(19.999996, 0, 0, 0, 20, 0, 0, 0, 19.999996, 0, 0, 139.49092)
 
 [node name="Box" parent="." unique_id=74203526 instance=ExtResource("4_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5620956, 2.6521802, 6.6364985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.969492, 2.6521802, -0.36350155)
 
 [node name="Box2" parent="." unique_id=57168869 instance=ExtResource("4_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5620956, 2.6521802, 8.327319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0428753, 2.6521802, 3.107151)
 
 [node name="UnloadingArea" parent="." unique_id=1699998781 instance=ExtResource("12_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.232788, 0.39553988, -134.54263)

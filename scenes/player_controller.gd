@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var engine_force_fwd: float = 2000 
 @export var base_friction: float = 6.0
 @export var drift_friction: float = 3.5
 @export var steering_limit: float = 0.5
@@ -67,7 +68,7 @@ func _apply_dynamic_drift(steer_input: float, delta: float) -> void:
 	
 func get_engine_force():
 	if gear_slider.current_gear == gear_slider.Gear.DRIVE:
-		return 2500
+		return engine_force_fwd
 	elif gear_slider.current_gear == gear_slider.Gear.NEUTRAL:
 		return 0
 	elif gear_slider.current_gear == gear_slider.Gear.REVERSE:
@@ -89,3 +90,7 @@ func should_brake(_joystick_input: Vector2) -> bool:
 		
 func _on_button_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

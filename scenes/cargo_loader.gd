@@ -21,7 +21,7 @@ func _on_load_area_body_entered(body):
 			update_ui()
 
 func _on_load_area_body_exited(body):
-	if body in nearby_cargo:
+	if body is RigidBody3D and body in nearby_cargo:
 		nearby_cargo.erase(body)
 		update_ui()
 

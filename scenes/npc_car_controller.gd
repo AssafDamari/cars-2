@@ -2,17 +2,16 @@ extends Node3D
 
 @export var path_node: Path3D
 
-@export_group("Steering Tuning")
+@export var engine_force_fwd: float = 2000 
 @export var steer_p: float = 0.8 
 @export var steer_d: float = 0.3 
-
-@export_group("Look Ahead Settings")
 @export var min_look_ahead: float = 5.0
 @export var max_look_ahead: float = 40.0
 @export var speed_factor: float = 0.8
 
 @onready var vehicle: Car = get_parent() as Car
 @onready var collision_sensor: Area3D = $CollisionSensor
+@onready var marker: MeshInstance3D = $marker
 
 # Cached values
 var curve: Curve3D
@@ -65,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		target_offset = fmod(target_offset, path_length)
 
 	var target_point = path_transform * curve.sample_baked(target_offset)
+	marker.global_position = target_point
 	var local_target = vehicle.to_local(target_point)
 
 	# --- Decision ---
@@ -82,7 +82,10 @@ func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
 	vehicle.brake = 0.0
 
 	# --- Steering (PD controller) ---
-	var steer_error = atan2(target.x, target.z)
+	# We use -target.z because -Z is now forward.
+	# We use -target.x because positive steering in Godot usually turns the wheels Left.
+	var steer_error = atan2(-target.x, -target.z) 
+	
 	var error_change = (steer_error - last_steer_error) / delta
 	last_steer_error = steer_error
 
@@ -93,12 +96,11 @@ func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
 
 	# --- Throttle ---
 	if speed_sq < vehicle.max_speed * vehicle.max_speed:
-		vehicle.engine_force = 4000.0
+		# If the car moves backward after your change, 
+		# change engine_force_fwd to a negative value or use: -engine_force_fwd
+		vehicle.engine_force = engine_force_fwd
 	else:
 		vehicle.engine_force = 0.0
-		print("reached max speed")
-
-
 
 func _on_collision_sensor_entered(body: Node3D) -> void:
 	if body != vehicle and body.is_in_group("CAR"):
