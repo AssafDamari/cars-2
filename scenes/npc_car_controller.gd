@@ -1,29 +1,64 @@
 extends Node3D
 
+@export_group("Path Following")
+## The Path3D node the NPC will follow.
+## Effect: Provides the spatial track data that guides the car's general route.
 @export var path_node: Path3D
 
-@export var engine_force_fwd: float = 2000 
-@export var steer_p: float = 0.8 
-@export var steer_d: float = 0.3 
+## Minimum distance in meters the car looks ahead for a target point.
+## Effect: Prevents the car from micro-adjusting and spinning out at slow speeds. 
+## Lower values = twitchy at low speed; Higher values = smooth but sluggish.
 @export var min_look_ahead: float = 5.0
+
+## Maximum distance in meters the car looks ahead for a target point.
+## Effect: Prevents the car from looking too far down the track at high speeds. 
+## Lower values = sharp turning/cutting corners; Higher values = takes wider, smoother racing lines.
 @export var max_look_ahead: float = 40.0
+
+## Controls how rapidly the look-ahead distance scales up as the car speeds up.
+## Effect: Higher values push the look-ahead point further away faster as speed increases.
 @export var speed_factor: float = 0.8
 
-@onready var vehicle: Car = get_parent() as Car
+
+@export_group("Driving Dynamics")
+## The default forward force applied to the vehicle's wheels.
+## Effect: Higher values create faster acceleration and a higher top climbing speed.
+@export var engine_force_fwd: float = 2000.0
+
+## Proportional gain for steering (PD Controller).
+## Effect: Dictates how hard the car tries to steer toward the error. 
+## Higher values = aggressive turning and tighter correction; Too high = side-to-side wobbling.
+@export var steer_p: float = 0.8
+
+## Derivative gain for steering (PD Controller).
+## Effect: Dampens the steering to prevent the car from overshooting the target. 
+## Higher values = smoother transitions, counteracts wobbling; Too high = sluggish steering response.
+@export var steer_d: float = 0.3
+
+## The maximum distance (in meters) an NPC can drift left or right from the center of the path.
+## Effect: Higher values create wider spacing between cars, effectively creating multi-lane behavior.
+@export var max_lane_offset: float = 2.5 
+
+
+@onready var vehicle: VehicleBody3D = get_parent() as VehicleBody3D
 @onready var collision_sensor: Area3D = $CollisionSensor
 @onready var marker: MeshInstance3D = $marker
 
-# Cached values
+# --- Internal state ---
 var curve: Curve3D
 var path_length: float = 0.0
+var last_steer_error: float = 0.0 # Stores previous frame's error for the 'D' part of PD steering.
+var is_blocked: bool = false # Flag that stops the car if another car is detected ahead.
 
-# Steering state
-var last_steer_error: float = 0.0
-var is_blocked: bool = false
+# --- Individual Variation ---
+var individual_lane_offset: float = 0.0 # This specific NPC's chosen distance from the path center.
+var personality_speed_mod: float = 1.0 # Multiplier for this specific NPC's top speed.
 
 
 func _ready() -> void:
-	if not vehicle is VehicleBody3D:
+	## Effect: Validates nodes, caches curve calculations for performance, connects signals, 
+	## and initiates the randomized variations so each spawned NPC behaves uniquely.
+	if not vehicle:
 		push_error("NPC Controller must be child of a VehicleBody3D")
 		return
 	
@@ -31,87 +66,119 @@ func _ready() -> void:
 		curve = path_node.curve
 		path_length = curve.get_baked_length()
 	else:
-		push_error("NPC Controller path_node is not set for ", name, " and could not be auto-found")
-	
+		push_error("NPC Controller path_node is not set.")
+
 	if collision_sensor:
 		collision_sensor.body_entered.connect(_on_collision_sensor_entered)
 		collision_sensor.body_exited.connect(_on_collision_sensor_exited)
 
-	apply_car_color_to_marker()
+	_apply_random_variation()
+	_apply_car_color_to_marker()
+
+
+func _apply_random_variation() -> void:
+	## Effect: Breaks the "conga line" effect. It forces each car to take a different lane 
+	## and modifies its personality variables slightly so cars don't drive at the exact same speeds or turn rates.
+	
+	# Randomize lateral position (lane)
+	individual_lane_offset = randf_range(-max_lane_offset, max_lane_offset)
+	
+	# Randomize driving style (creates fast/slow cars and aggressive/lazy turners)
+	personality_speed_mod = randf_range(0.9, 1.1)
+	steer_p *= randf_range(0.8, 1.2)
+	min_look_ahead *= randf_range(0.8, 1.2)
+
 
 func _physics_process(delta: float) -> void:
+	## Effect: The main brain. Every physics frame it updates the NPC's desired look-ahead, 
+	## figures out where the track is, applies the lateral offset, projects that into 3D world space, 
+	## updates the visual helper marker, and makes the decision to either stop or drive.
 	if not curve or not vehicle:
 		return
 
-	# --- Speed ---
 	var vel = vehicle.linear_velocity
 	var speed_sq = vel.length_squared()
 
-	# --- Dynamic look-ahead ---
+	# 1. Calculate Look-Ahead (further ahead = smoother lines at speed)
 	var look_ahead = min(max_look_ahead, min_look_ahead + sqrt(speed_sq) * speed_factor)
 
-	# --- Cache transforms ---
+	# 2. Get Path Coordinates (finds where the car currently maps onto the 3D curve)
 	var path_transform = path_node.global_transform
 	var inv_path_transform = path_transform.affine_inverse()
-
-	# --- Current position on path ---
-	var global_pos = vehicle.global_transform.origin
-	var local_pos = inv_path_transform * global_pos
+	var local_pos = inv_path_transform * vehicle.global_transform.origin
 	var current_offset = curve.get_closest_offset(local_pos)
 
-	# --- Target point ---
-	var target_offset = current_offset + look_ahead
-	if path_length > 0.0:
-		target_offset = fmod(target_offset, path_length)
+	# 3. Calculate Target Point with Lateral Offset
+	# Wrap-around logic for looping tracks
+	var target_path_offset = fmod(current_offset + look_ahead, path_length) 
+	
+	# Sample points to calculate the "Right" vector for perpendicular lane offsetting
+	var raw_pos = curve.sample_baked(target_path_offset)
+	var ahead_pos = curve.sample_baked(fmod(target_path_offset + 0.5, path_length))
+	var dir = (ahead_pos - raw_pos).normalized()
+	var side_vec = dir.cross(Vector3.UP).normalized()
+	
+	# Push the target point to the left or right based on the individual's lane offset
+	var offset_pos = raw_pos + (side_vec * individual_lane_offset)
+	var target_point_global = path_transform * offset_pos
+	
+	# Update debug marker position so you can visually track where the car wants to go
+	if marker:
+		marker.global_position = target_point_global
 
-	var target_point = path_transform * curve.sample_baked(target_offset)
-	marker.global_position = target_point
-	var local_target = vehicle.to_local(target_point)
-
-	# --- Decision ---
+	# 4. Obstacle Avoidance Decision
 	if is_blocked:
-		vehicle.brake_car()
-		vehicle.show_brake_indicator()
+		vehicle.brake = 1.0 
+		vehicle.engine_force = 0.0
 	else:
 		vehicle.brake = 0.0
-		vehicle.hide_brake_indicator()
-
-	drive_towards(local_target, delta, speed_sq)
+		_drive_towards(vehicle.to_local(target_point_global), delta, speed_sq)
 
 
-func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
-
-	# --- Steering (PD controller) ---
-	# We use -target.z because -Z is now forward.
-	# We use -target.x because positive steering in Godot usually turns the wheels Left.
-	var steer_error = atan2(-target.x, -target.z) 
+func _drive_towards(local_target: Vector3, delta: float, speed_sq: float) -> void:
+	## Effect: Applies the mechanical control inputs to the VehicleBody3D based on where 
+	## the offset target is relative to the car's current position.
 	
+	# PD Controller for Steering
+	# atan2(-x, -z) reads angles natively in Godot's -Z forward system
+	var steer_error = atan2(-local_target.x, -local_target.z)
+	
+	# D (Derivative) detects how fast the error is closing to prevent overshooting
 	var error_change = (steer_error - last_steer_error) / delta
 	last_steer_error = steer_error
 
+	# Combine P and D calculations to get final steering amount
 	var target_steering = steer_error * steer_p + error_change * steer_d
-	target_steering = clamp(target_steering, -0.6, 0.6)
+	
+	# Smooth the steering application so the wheels don't instantly snap left/right
+	vehicle.steering = lerp(vehicle.steering, clamp(target_steering, -0.6, 0.6), 10 * delta)
 
-	vehicle.steering = lerp(vehicle.steering, target_steering, 10 * delta)
-
-	# --- Throttle ---
-	if speed_sq < vehicle.max_speed * vehicle.max_speed:
-		# If the car moves backward after your change, 
-		# change engine_force_fwd to a negative value or use: -engine_force_fwd
+	# Throttle Logic
+	# Applies continuous gas unless the car exceeds its specific top speed.
+	var target_speed_limit = vehicle.max_speed * personality_speed_mod
+	if speed_sq < (target_speed_limit * target_speed_limit):
 		vehicle.engine_force = engine_force_fwd
 	else:
 		vehicle.engine_force = 0.0
 
+
 func _on_collision_sensor_entered(body: Node3D) -> void:
+	## Effect: Prevents bumper-to-bumper collisions. If the car's front Area3D detects 
+	## another vehicle in group "CAR", it trips the 'is_blocked' state and brakes.
 	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = true
 
+
 func _on_collision_sensor_exited(body: Node3D) -> void:
+	## Effect: Clears the brake state once the obstruction pulls away or turns.
 	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = false
 
-func apply_car_color_to_marker() -> void:
-	var material := marker.get_active_material(0).duplicate(true)
-	material.albedo_color = vehicle.color
-	marker.set_surface_override_material(0, material)
-	
+
+func _apply_car_color_to_marker() -> void:
+	## Effect: Purely cosmetic. It colors the little target marker to match the color 
+	## of the car chasing it, making it easy to see which marker belongs to which NPC.
+	if marker and vehicle.get("color"):
+		var material := marker.get_active_material(0).duplicate(true)
+		material.albedo_color = vehicle.color
+		marker.set_surface_override_material(0, material)
