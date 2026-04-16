@@ -130,10 +130,11 @@ func _physics_process(delta: float) -> void:
 	if is_blocked:
 		vehicle.brake = 1.0 
 		vehicle.engine_force = 0.0
+		vehicle.show_brake_indicator()
 	else:
 		vehicle.brake = 0.0
 		_drive_towards(vehicle.to_local(target_point_global), delta, speed_sq)
-
+		vehicle.hide_brake_indicator()
 
 func _drive_towards(local_target: Vector3, delta: float, speed_sq: float) -> void:
 	## Effect: Applies the mechanical control inputs to the VehicleBody3D based on where 

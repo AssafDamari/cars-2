@@ -70,8 +70,9 @@ metadata/_custom_type_script = "uid://le2y1bavsjxc"
 [node name="TopToolbar" type="HBoxContainer" parent="Player controllsUI" unique_id=410289884]
 offset_left = 46.0
 offset_top = 35.0
-offset_right = 464.0
-offset_bottom = 139.0
+offset_right = 488.0
+offset_bottom = 167.0
+theme_override_constants/separation = 15
 
 [node name="Menu" type="Button" parent="Player controllsUI/TopToolbar" unique_id=1739595216]
 layout_mode = 2
