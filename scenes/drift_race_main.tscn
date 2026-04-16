@@ -42,14 +42,6 @@ uv1_triplanar = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_8y83r"]
 size = Vector2(5, 20)
 
-[sub_resource type="Curve3D" id="Curve3D_8y83r"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 21.787476, 0, -10.033794, 0, 0, 0, 0, 0, 0, 26.919159, 0, -30.75788, 0, 0, 0, 0, 0, 0, 11.129386, 0, -42.40284, 0, 0, 0, 0, 0, 0, -9.002595, 0, -29.968388, 0, 0, 0, 0, 0, 0, -12.555291, 0, 0.42693678),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
-
 [node name="DriftRaceMain" type="Node3D" unique_id=10070383]
 
 [node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("1_8y83r")]
@@ -64,13 +56,13 @@ shape = SubResource("WorldBoundaryShape3D_w4aej")
 mesh = SubResource("PlaneMesh_e8ne1")
 surface_material_override/0 = SubResource("StandardMaterial3D_m6uys")
 
-[node name="Track" type="Node3D" parent="." unique_id=508046483]
+[node name="Track" type="Node3D" parent="." unique_id=508046483 groups=["TRACK"]]
 
-[node name="Path3D" type="Path3D" parent="Track" unique_id=2099874970]
+[node name="Path3D" type="Path3D" parent="Track" unique_id=2099874970 groups=["TRACK"]]
 rotation_order = 0
 curve = SubResource("Curve3D_78wvi")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Track" unique_id=1689039370]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Track" unique_id=1689039370 groups=["TRACK"]]
 use_collision = true
 polygon = PackedVector2Array(-9, 0.15, -10, 0, 10, 0, 9, 0.15)
 mode = 2
@@ -100,7 +92,9 @@ transform = Transform3D(0.12730703, 4.3355726e-08, 0.99186337, -4.3355726e-08, 1
 max_speed = 50.0
 
 [node name="PlayerController" parent="PlayerCar" unique_id=193088310 instance=ExtResource("5_t7hxj")]
+engine_force_fwd = null
 base_friction = 5.0
+drift_friction = null
 steering_limit = 0.4
 
 [node name="SkidMarks3D" parent="PlayerCar" unique_id=2080819160 instance=ExtResource("9_8y83r")]
@@ -157,6 +151,3 @@ max_brake_force = 30.0
 [node name="NpcCarController" parent="Car7" unique_id=422612843 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
 speed_factor = 0.9
-
-[node name="NpcPath3D" type="Path3D" parent="." unique_id=207369647]
-curve = SubResource("Curve3D_8y83r")
