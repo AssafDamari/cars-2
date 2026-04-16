@@ -148,7 +148,7 @@ shape = SubResource("WorldBoundaryShape3D_0wfyh")
 mesh = SubResource("PlaneMesh_tbgi4")
 surface_material_override/0 = SubResource("StandardMaterial3D_tbgi4")
 
-[node name="Track" type="Node3D" parent="." unique_id=1449795340]
+[node name="Track" type="Node3D" parent="." unique_id=1449795340 groups=["TRACK"]]
 
 [node name="Path3D" type="Path3D" parent="Track" unique_id=379289771]
 rotation_order = 0

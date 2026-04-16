@@ -37,21 +37,6 @@ script = ExtResource("1_d4y06")
 
 [node name="Player controllsUI" type="CanvasLayer" parent="." unique_id=406770995]
 
-[node name="TopToolbar" type="HBoxContainer" parent="Player controllsUI" unique_id=410289884]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Menu" type="Button" parent="Player controllsUI/TopToolbar" unique_id=1739595216]
-layout_mode = 2
-icon = ExtResource("2_1kmjt")
-
-[node name="Reload" type="Button" parent="Player controllsUI/TopToolbar" unique_id=749655137]
-layout_mode = 2
-icon = ExtResource("8_ga2kn")
-
-[node name="FpsLabel" parent="Player controllsUI/TopToolbar" unique_id=706279772 instance=ExtResource("3_lwvb4")]
-layout_mode = 2
-
 [node name="Speedometer" parent="Player controllsUI" unique_id=1149325968 instance=ExtResource("2_mfmwq")]
 offset_left = -131.5
 offset_top = 112.5
@@ -81,6 +66,23 @@ stick_use_textures = false
 stick_texture = ExtResource("11_kdses")
 stick_opacity = 0.295
 metadata/_custom_type_script = "uid://le2y1bavsjxc"
+
+[node name="TopToolbar" type="HBoxContainer" parent="Player controllsUI" unique_id=410289884]
+offset_left = 46.0
+offset_top = 35.0
+offset_right = 464.0
+offset_bottom = 139.0
+
+[node name="Menu" type="Button" parent="Player controllsUI/TopToolbar" unique_id=1739595216]
+layout_mode = 2
+icon = ExtResource("2_1kmjt")
+
+[node name="Reload" type="Button" parent="Player controllsUI/TopToolbar" unique_id=749655137]
+layout_mode = 2
+icon = ExtResource("8_ga2kn")
+
+[node name="FpsLabel" parent="Player controllsUI/TopToolbar" unique_id=706279772 instance=ExtResource("3_lwvb4")]
+layout_mode = 2
 
 [node name="Brake" type="Control" parent="Player controllsUI" unique_id=90182225]
 layout_mode = 3

@@ -37,6 +37,7 @@ func _ready() -> void:
 		collision_sensor.body_entered.connect(_on_collision_sensor_entered)
 		collision_sensor.body_exited.connect(_on_collision_sensor_exited)
 
+	apply_car_color_to_marker()
 
 func _physics_process(delta: float) -> void:
 	if not curve or not vehicle:
@@ -79,7 +80,6 @@ func _physics_process(delta: float) -> void:
 
 
 func drive_towards(target: Vector3, delta: float, speed_sq: float) -> void:
-	vehicle.brake = 0.0
 
 	# --- Steering (PD controller) ---
 	# We use -target.z because -Z is now forward.
@@ -109,3 +109,9 @@ func _on_collision_sensor_entered(body: Node3D) -> void:
 func _on_collision_sensor_exited(body: Node3D) -> void:
 	if body != vehicle and body.is_in_group("CAR"):
 		is_blocked = false
+
+func apply_car_color_to_marker() -> void:
+	var material := marker.get_active_material(0).duplicate(true)
+	material.albedo_color = vehicle.color
+	marker.set_surface_override_material(0, material)
+	

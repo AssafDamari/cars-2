@@ -7,6 +7,8 @@ size = Vector3(2, 1, 2)
 
 [sub_resource type="SphereMesh" id="SphereMesh_85q8k"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85q8k"]
+
 [node name="NpcCarController" type="Node3D" unique_id=706778789]
 script = ExtResource("1_gkbsm")
 
@@ -19,3 +21,4 @@ shape = SubResource("BoxShape3D_abc12")
 [node name="marker" type="MeshInstance3D" parent="." unique_id=1835148634]
 top_level = true
 mesh = SubResource("SphereMesh_85q8k")
+surface_material_override/0 = SubResource("StandardMaterial3D_85q8k")
