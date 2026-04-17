@@ -3,8 +3,8 @@ extends VehicleBody3D
 
 @export var color: Color = Color.WHITE
 @export var max_speed: float = 40
-@export var max_engine_force = 2000
-@export var max_brake_force: float = 40.0
+@export var max_engine_force: float = 2000
+@export var max_brake_force: float = 20.0
 
 @onready var body_mesh: MeshInstance3D = $Body/MeshInstance3D
 @onready var brake_indicator: Node3D = $brake_indicator
