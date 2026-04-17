@@ -19,9 +19,9 @@ func _physics_process(delta: float) -> void:
 	var speed_sq = vehicle.linear_velocity.length_squared()
 	if speed_sq < vehicle.max_speed * vehicle.max_speed:
 		# Apply the calculated modifier to the engine force
-		vehicle.engine_force = get_engine_force() 
+		vehicle.max_engine_force = get_engine_force() 
 	else:
-		vehicle.engine_force = 0.0
+		vehicle.max_engine_force = 0.0
 	
 	# Steering Logic
 	var steer_input = -joystick_input.x	

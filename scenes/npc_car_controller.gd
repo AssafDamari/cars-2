@@ -37,7 +37,7 @@ extends Node3D
 
 ## The maximum distance (in meters) an NPC can drift left or right from the center of the path.
 ## Effect: Higher values create wider spacing between cars, effectively creating multi-lane behavior.
-@export var max_lane_offset: float = 2.5 
+@export var max_lane_offset: float = 4 
 
 
 @onready var vehicle: VehicleBody3D = get_parent() as VehicleBody3D

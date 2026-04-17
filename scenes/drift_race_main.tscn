@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dupjxv1uqom6m" path="res://scenes/car_2.tscn" id="7_xhr36"]
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="8_pcnhv"]
 [ext_resource type="PackedScene" uid="uid://c8elfxgitkeaa" path="res://skid_marks_3d.tscn" id="9_8y83r"]
+[ext_resource type="PackedScene" uid="uid://cy8jt5fkkjp64" path="res://scenes/offroad_modifier.tscn" id="9_vpt2y"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="9_y1rrw"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
@@ -89,9 +90,6 @@ follow_speed = 3.0
 
 [node name="PlayerCar" parent="." unique_id=1835131583 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.12730703, 4.3355726e-08, 0.99186337, -4.3355726e-08, 1, -3.814662e-08, -0.99186337, -3.814662e-08, 0.12730703, 71.935875, 1.0000002, 19.702877)
-color = null
-max_speed = 50.0
-max_brake_force = null
 
 [node name="PlayerController" parent="PlayerCar" unique_id=193088310 instance=ExtResource("5_t7hxj")]
 base_friction = 5.0
@@ -105,21 +103,18 @@ min_speed = 6.0
 slip_threshold = 3.0
 fade_speed = 0.75
 
+[node name="OffroadModifier" parent="PlayerCar" unique_id=1474312524 instance=ExtResource("9_vpt2y")]
+
 [node name="Car3" parent="." unique_id=802733930 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.30218685, 0, 0.95324874, 0, 1, 0, -0.95324874, 0, 0.30218685, 38.33378, 2.4017944, 5.2560983)
 color = Color(0.9999997, 0.32379958, 0.6676832, 1)
-max_speed = 40.0
-max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car3" unique_id=207386006 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
-max_lane_offset = 3.5
 
 [node name="Car4" parent="." unique_id=433489742 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.9927888, -3.978389e-08, 0.11987698, 3.6427835e-08, 1, 3.0187167e-08, -0.11987698, -2.5602622e-08, 0.9927888, 19.496765, 2.401794, -14.0553465)
 color = Color(0.12490577, 0.15137452, 0.44892174, 1)
-max_speed = 40.0
-max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car4" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
@@ -127,31 +122,20 @@ path_node = NodePath("../../Track/Path3D")
 [node name="Car5" parent="." unique_id=203620579 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.8681989, -4.2730484e-08, -0.49621648, 6.3358144e-08, 1, 2.474117e-08, 0.49621648, -5.291961e-08, 0.8681989, 23.585499, 2.4017932, -41.919273)
 color = Color(0.7933533, 0.42143095, 5.7756904e-07, 1)
-max_speed = 40.0
-max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car5" unique_id=1684484684 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
-max_lane_offset = 4.0
 
 [node name="Car6" parent="." unique_id=874623433 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.8681989, -4.2730484e-08, -0.49621648, 6.3358144e-08, 1, 2.474117e-08, 0.49621648, -5.291961e-08, 0.8681989, 37.86968, 2.4017925, -66.91141)
 color = Color(0.15497765, 0.54698354, 0.6373933, 1)
-max_speed = 40.0
-max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car6" unique_id=1532950237 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
-max_lane_offset = 4.0
 
 [node name="Car7" parent="." unique_id=905435745 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.95672727, -4.2730484e-08, 0.29098618, 2.5482553e-08, 1, 6.306361e-08, -0.29098618, -5.2919614e-08, 0.95672727, 44.35057, 2.401792, -81.45247)
 color = Color(0, 0.41230127, 0.3076829, 1)
-max_speed = 50.0
-max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car7" unique_id=422612843 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
-max_look_ahead = 30.0
-speed_factor = 0.9
-max_lane_offset = 5.0
