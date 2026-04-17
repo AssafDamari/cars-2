@@ -89,12 +89,12 @@ follow_speed = 3.0
 
 [node name="PlayerCar" parent="." unique_id=1835131583 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.12730703, 4.3355726e-08, 0.99186337, -4.3355726e-08, 1, -3.814662e-08, -0.99186337, -3.814662e-08, 0.12730703, 71.935875, 1.0000002, 19.702877)
+color = null
 max_speed = 50.0
+max_brake_force = null
 
 [node name="PlayerController" parent="PlayerCar" unique_id=193088310 instance=ExtResource("5_t7hxj")]
-engine_force_fwd = null
 base_friction = 5.0
-drift_friction = null
 steering_limit = 0.4
 
 [node name="SkidMarks3D" parent="PlayerCar" unique_id=2080819160 instance=ExtResource("9_8y83r")]
@@ -132,6 +132,7 @@ max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car5" unique_id=1684484684 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
+max_lane_offset = 4.0
 
 [node name="Car6" parent="." unique_id=874623433 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.8681989, -4.2730484e-08, -0.49621648, 6.3358144e-08, 1, 2.474117e-08, 0.49621648, -5.291961e-08, 0.8681989, 37.86968, 2.4017925, -66.91141)
@@ -141,13 +142,16 @@ max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car6" unique_id=1532950237 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
+max_lane_offset = 4.0
 
 [node name="Car7" parent="." unique_id=905435745 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.95672727, -4.2730484e-08, 0.29098618, 2.5482553e-08, 1, 6.306361e-08, -0.29098618, -5.2919614e-08, 0.95672727, 44.35057, 2.401792, -81.45247)
 color = Color(0, 0.41230127, 0.3076829, 1)
-max_speed = 40.0
+max_speed = 50.0
 max_brake_force = 30.0
 
 [node name="NpcCarController" parent="Car7" unique_id=422612843 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
+max_look_ahead = 30.0
 speed_factor = 0.9
+max_lane_offset = 5.0

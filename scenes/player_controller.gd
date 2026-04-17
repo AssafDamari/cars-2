@@ -1,10 +1,7 @@
+class_name PlayerController
 extends Node3D
 
-@export_group("Engine Settings")
 @export var engine_force_fwd: float = 2000 
-@export var off_road_penalty: float = 0.25 # Only 25% power when off-track
-
-@export_group("Physics Settings")
 @export var base_friction: float = 6.0
 @export var drift_friction: float = 3.5
 @export var steering_limit: float = 0.5
@@ -13,34 +10,27 @@ extends Node3D
 @onready var joystick: VirtualJoystickPlus = $"Player controllsUI/VirtualJoystickPlus"
 @onready var debug_lable: Label = $"Player controllsUI/DebugLable"
 @onready var gear_slider: GearSlider = $"Player controllsUI/GearSlider"
-@onready var track_sensor: RayCast3D = $TrackSensor
-@onready var debug: MeshInstance3D = $MeshInstance3D
 
-# Internal state
-var _current_modifier: float = 1.0
 
 func _physics_process(delta: float) -> void:
 	var joystick_input := joystick.get_value()
-	
-	# 1. Surface Detection & Penalty
-	_handle_off_road_logic(delta)
-	
-	# 2. Power Logic
+		
+	# Power Logic
 	var speed_sq = vehicle.linear_velocity.length_squared()
 	if speed_sq < vehicle.max_speed * vehicle.max_speed:
 		# Apply the calculated modifier to the engine force
-		vehicle.engine_force = get_engine_force() * _current_modifier
+		vehicle.engine_force = get_engine_force() 
 	else:
 		vehicle.engine_force = 0.0
 	
-	# 3. Steering Logic
+	# Steering Logic
 	var steer_input = -joystick_input.x	
 	if steer_input == 0.0:
 		steer_input = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	
 	vehicle.steering = lerp(vehicle.steering, steer_input * steering_limit, 10 * delta)	
 	
-	# 4. Braking Logic
+	# Braking Logic
 	if should_brake(joystick_input):
 		vehicle.brake_car()
 		vehicle.show_brake_indicator()
@@ -50,21 +40,6 @@ func _physics_process(delta: float) -> void:
 	
 	_apply_dynamic_drift(steer_input, delta)
 
-func _handle_off_road_logic(_delta: float) -> void:
-	var target_mod = 1.0 # Default to full speed
-	
-	if track_sensor.is_colliding():
-		var collider = track_sensor.get_collider()
-		# If the raycast hits something NOT in the TRACK group
-		if not collider.is_in_group("TRACK"):
-			target_mod = off_road_penalty
-	else:
-		# If raycast hits nothing (in the air or out of bounds)
-		target_mod = off_road_penalty
-	
-	# Smoothly interpolate the modifier so the car doesn't jerk
-	_current_modifier = target_mod
-	debug.visible = false if target_mod == 1.0 else true
 	
 func _apply_dynamic_drift(steer_input: float, delta: float) -> void:
 	var speed = vehicle.linear_velocity.length()

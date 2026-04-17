@@ -32,11 +32,6 @@ font_color = Color(1.1070073e-06, 0.77062076, 0.21262565, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_mfmwq"]
-top_radius = 2.0
-bottom_radius = 2.0
-height = 0.1
-
 [node name="PlayerController" type="Node3D" unique_id=193088310]
 script = ExtResource("1_d4y06")
 
@@ -133,13 +128,6 @@ offset_right = -54.0
 offset_bottom = -99.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[node name="TrackSensor" type="RayCast3D" parent="." unique_id=750401503]
-transform = Transform3D(1, 0, 0, 0, 0.9999846, 0.005550122, 0, -0.005550122, 0.9999846, 0, 0, 0)
-target_position = Vector3(0, -0.5, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1652458344]
-mesh = SubResource("CylinderMesh_mfmwq")
 
 [connection signal="pressed" from="Player controllsUI/TopToolbar/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Player controllsUI/TopToolbar/Reload" to="." method="_on_button_pressed"]
