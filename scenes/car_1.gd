@@ -21,7 +21,12 @@ func _ready() -> void:
 	apply_color_to_mesh(color)
 
 func _physics_process(delta: float) -> void:
-	engine_force = max_engine_force * engine_force_modifier
+	var speed_sq = linear_velocity.length_squared()
+	if speed_sq < max_speed * max_speed:
+		engine_force = max_engine_force * engine_force_modifier
+	else:
+		engine_force = 0.0
+	
 
 
 func apply_color_to_mesh(_color: Color) -> void:

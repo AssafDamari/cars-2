@@ -96,11 +96,8 @@ func _physics_process(delta: float) -> void:
 	if not curve or not vehicle:
 		return
 
-	var vel = vehicle.linear_velocity
-	var speed_sq = vel.length_squared()
-
 	# 1. Calculate Look-Ahead (further ahead = smoother lines at speed)
-	var look_ahead = min(max_look_ahead, min_look_ahead + sqrt(speed_sq) * speed_factor)
+	var look_ahead = min(max_look_ahead, min_look_ahead + vehicle.linear_velocity.length() * speed_factor)
 
 	# 2. Get Path Coordinates (finds where the car currently maps onto the 3D curve)
 	var path_transform = path_node.global_transform
@@ -133,9 +130,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		vehicle.brake = 0.0
 		vehicle.hide_brake_indicator()
-		_drive_towards(vehicle.to_local(target_point_global), delta, speed_sq)
+		_drive_towards(vehicle.to_local(target_point_global), delta)
 
-func _drive_towards(local_target: Vector3, delta: float, speed_sq: float) -> void:
+func _drive_towards(local_target: Vector3, delta: float) -> void:
 	## Effect: Applies the mechanical control inputs to the VehicleBody3D based on where 
 	## the offset target is relative to the car's current position.
 	
@@ -154,12 +151,7 @@ func _drive_towards(local_target: Vector3, delta: float, speed_sq: float) -> voi
 	vehicle.steering = lerp(vehicle.steering, clamp(target_steering, -0.6, 0.6), 10 * delta)
 
 	# Throttle Logic
-	# Applies continuous gas unless the car exceeds its specific top speed.
-	var target_speed_limit = vehicle.max_speed * personality_speed_mod
-	if speed_sq < (target_speed_limit * target_speed_limit):
-		vehicle.engine_force = engine_force_fwd
-	else:
-		vehicle.engine_force = 0.0
+	vehicle.engine_force = engine_force_fwd
 
 
 func _on_collision_sensor_entered(body: Node3D) -> void:
