@@ -6,7 +6,7 @@ extends VehicleBody3D
 @export var max_engine_force: float = 2000
 @export var max_brake_force: float = 20.0
 
-@onready var body_mesh: MeshInstance3D = $Body/MeshInstance3D
+@onready var body: Node3D = $Body
 @onready var brake_indicator: Node3D = $brake_indicator
 @onready var wheel_front_left: VehicleWheel3D = $VehicleWheel3DFrontLeft
 @onready var wheel_front_right: VehicleWheel3D = $VehicleWheel3DFrontRight
@@ -20,7 +20,7 @@ var engine_force_modifier: float = 1.0
 func _ready() -> void:
 	apply_color_to_mesh(color)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var speed_sq = linear_velocity.length_squared()
 	if speed_sq < max_speed * max_speed:
 		engine_force = max_engine_force * engine_force_modifier
@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 
 
 func apply_color_to_mesh(_color: Color) -> void:
+	var body_mesh := get_first_mesh_instance(body)
 	var material := body_mesh.get_active_material(0).duplicate(true)
 	material.albedo_color = _color
 	body_mesh.set_surface_override_material(0, material)
@@ -49,5 +50,12 @@ func hide_brake_indicator():
 	if brake_indicator.visible:
 		brake_indicator.visible = false
 
-	
+func get_first_mesh_instance(node: Node) -> MeshInstance3D:
+	for child in node.get_children():
+		if child is MeshInstance3D:
+			return child
+		var result = get_first_mesh_instance(child)
+		if result:
+			return result
+	return null
 	

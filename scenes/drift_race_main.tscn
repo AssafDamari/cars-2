@@ -90,6 +90,7 @@ follow_speed = 3.0
 
 [node name="PlayerCar" parent="." unique_id=1835131583 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.12730703, 4.3355726e-08, 0.99186337, -4.3355726e-08, 1, -3.814662e-08, -0.99186337, -3.814662e-08, 0.12730703, 71.935875, 1.0000002, 19.702877)
+color = Color(0.0023410798, 0.26161793, 0.94421154, 1)
 
 [node name="PlayerController" parent="PlayerCar" unique_id=193088310 instance=ExtResource("5_t7hxj")]
 base_friction = 5.0
@@ -114,28 +115,28 @@ path_node = NodePath("../../Track/Path3D")
 
 [node name="Car4" parent="." unique_id=433489742 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.9927888, -3.978389e-08, 0.11987698, 3.6427835e-08, 1, 3.0187167e-08, -0.11987698, -2.5602622e-08, 0.9927888, 19.496765, 2.401794, -14.0553465)
-color = Color(0.12490577, 0.15137452, 0.44892174, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="NpcCarController" parent="Car4" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
 
 [node name="Car5" parent="." unique_id=203620579 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.8681989, -4.2730484e-08, -0.49621648, 6.3358144e-08, 1, 2.474117e-08, 0.49621648, -5.291961e-08, 0.8681989, 23.585499, 2.4017932, -41.919273)
-color = Color(0.7933533, 0.42143095, 5.7756904e-07, 1)
+color = Color(0.9835704, 0.34278867, 0, 1)
 
 [node name="NpcCarController" parent="Car5" unique_id=1684484684 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
 
 [node name="Car6" parent="." unique_id=874623433 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.8681989, -4.2730484e-08, -0.49621648, 6.3358144e-08, 1, 2.474117e-08, 0.49621648, -5.291961e-08, 0.8681989, 37.86968, 2.4017925, -66.91141)
-color = Color(0.15497765, 0.54698354, 0.6373933, 1)
+color = Color(0.60469794, 0.0039347853, 0.96071845, 1)
 
 [node name="NpcCarController" parent="Car6" unique_id=1532950237 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
 
 [node name="Car7" parent="." unique_id=905435745 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.95672727, -4.2730484e-08, 0.29098618, 2.5482553e-08, 1, 6.306361e-08, -0.29098618, -5.2919614e-08, 0.95672727, 44.35057, 2.401792, -81.45247)
-color = Color(0, 0.41230127, 0.3076829, 1)
+color = Color(0, 0.57797545, 0.30073464, 1)
 
 [node name="NpcCarController" parent="Car7" unique_id=422612843 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
