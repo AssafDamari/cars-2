@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dcuevj7qev1kp" path="res://scenes/npc_car_controller.gd" id="1_gkbsm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_abc12"]
-size = Vector3(2, 1, 2)
+size = Vector3(1.715271, 1, 2)
 
 [sub_resource type="SphereMesh" id="SphereMesh_85q8k"]
 
@@ -16,6 +16,7 @@ script = ExtResource("1_gkbsm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionSensor" unique_id=752035735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032653809, 0, 0)
 shape = SubResource("BoxShape3D_abc12")
 
 [node name="marker" type="MeshInstance3D" parent="." unique_id=1835148634]

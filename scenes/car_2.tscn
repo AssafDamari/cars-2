@@ -70,9 +70,10 @@ suspension_stiffness = 40.0
 [node name="Body" type="Node3D" parent="." unique_id=712893536]
 
 [node name="car_1_body_model" parent="Body" unique_id=1921755796 instance=ExtResource("6_ny206")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4562111, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3855096, 0)
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07693064, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="brake_indicator" unique_id=1819731316]
 transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, -0.5631511, 0.71610117, 1.9956114)
