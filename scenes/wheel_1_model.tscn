@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b3af4b0v1gfj5"]
+
+[ext_resource type="PackedScene" uid="uid://biyxmc2la32ol" path="res://models/wheel1_model.blend" id="1_3k1be"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_tp641"]
+
+[node name="wheel1_model" unique_id=1460260939 instance=ExtResource("1_3k1be")]
+
+[node name="Cylinder" parent="." index="0" unique_id=397237948]
+surface_material_override/0 = ExtResource("2_tp641")

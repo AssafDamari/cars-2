@@ -3,7 +3,6 @@ extends VehicleBody3D
 
 @export var color: Color = Color.WHITE
 @export var max_speed: float = 40
-@export var max_engine_force: float = 2000
 @export var max_brake_force: float = 20.0
 
 @onready var body: Node3D = $Body
@@ -12,7 +11,7 @@ extends VehicleBody3D
 @onready var wheel_front_right: VehicleWheel3D = $VehicleWheel3DFrontRight
 @onready var wheel_back_right: VehicleWheel3D = $VehicleWheel3DBackRight
 @onready var wheel_back_left: VehicleWheel3D = $VehicleWheel3DBackLeft
-
+var engine_force_to_apply: float = 0
 
 # Internal state
 var engine_force_modifier: float = 1.0
@@ -23,7 +22,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	var speed_sq = linear_velocity.length_squared()
 	if speed_sq < max_speed * max_speed:
-		engine_force = max_engine_force * engine_force_modifier
+		engine_force = engine_force_to_apply * engine_force_modifier
 	else:
 		engine_force = 0.0
 	

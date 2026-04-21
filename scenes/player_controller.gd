@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	var joystick_input := joystick.get_value()
 		
 	# Power Logic
-	vehicle.max_engine_force = get_engine_force() 
+	vehicle.engine_force_to_apply = get_engine_force() 
 	
 	# Steering Logic
 	var steer_input = -joystick_input.x	

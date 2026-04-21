@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djlvejcullers" path="res://scenes/car_1.gd" id="1_ny206"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_04eve"]
-[ext_resource type="PackedScene" uid="uid://dg41upgc0yrmi" path="res://scenes/car_1_body_model.tscn" id="6_ny206"]
+[ext_resource type="PackedScene" uid="uid://ct0fpmv7ay8b1" path="res://scenes/car_2_body_model.tscn" id="4_ilqg0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e85k8"]
 friction = 0.0
@@ -69,11 +69,11 @@ suspension_stiffness = 40.0
 
 [node name="Body" type="Node3D" parent="." unique_id=712893536]
 
-[node name="car_1_body_model" parent="Body" unique_id=1921755796 instance=ExtResource("6_ny206")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3855096, 0)
+[node name="car_2_body_model" parent="Body" unique_id=600277083 instance=ExtResource("4_ilqg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21465063, 0)
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07693064, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06128931, 0.12579083)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="brake_indicator" unique_id=1819731316]
 transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, -0.5631511, 0.71610117, 1.9956114)
