@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://4r8d6pnwkm0d"]
+
+[ext_resource type="Script" uid="uid://beqhlgnfkjsfu" path="res://scenes/minimap.gd" id="1_lj7mc"]
+
+[node name="Minimap" type="Control" unique_id=1768555498]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+script = ExtResource("1_lj7mc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=490366527]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.14901961)
+
+[node name="TrackLine" type="Line2D" parent="." unique_id=407772532]
+default_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+
+[node name="Indicators" type="Node2D" parent="." unique_id=1243943678]
