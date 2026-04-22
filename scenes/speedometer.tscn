@@ -20,6 +20,5 @@ offset_right = 110.0
 offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "00 kmhw"
 label_settings = SubResource("LabelSettings_ecky1")
 script = ExtResource("1_speedometer_script")

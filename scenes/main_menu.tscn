@@ -25,12 +25,12 @@ theme_override_constants/separation = 17
 
 [node name="CargoButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1085543078]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 200
 text = " Cargo "
 
 [node name="DriftButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1316545394]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 200
 text = " Drift "
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CargoButton" to="." method="_on_cargo_button_pressed"]
