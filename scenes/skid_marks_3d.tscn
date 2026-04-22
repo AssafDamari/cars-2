@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c8elfxgitkeaa"]
+
+[ext_resource type="Script" uid="uid://yb8ltju0obj2" path="res://addons/trail/GD/trail_renderer.gd" id="1_0c38j"]
+[ext_resource type="Script" uid="uid://bqqbb60id56ti" path="res://scenes/skid_marks_3d.gd" id="1_gnonc"]
+[ext_resource type="Material" uid="uid://dktpviw6pfaxw" path="res://materials/skid_marks.tres" id="3_hr8db"]
+
+[sub_resource type="Curve" id="Curve_hr8db"]
+_data = [Vector2(0, 0.020630479), 0.0, 0.0, 0, 0, Vector2(1, 0.17921948), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="SkidMarks3D" type="Node3D" unique_id=2080819160]
+script = ExtResource("1_gnonc")
+
+[node name="Left" type="Node3D" parent="." unique_id=84014844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95788574, 0, 0)
+script = ExtResource("1_0c38j")
+lifetime = 0.5
+curve = SubResource("Curve_hr8db")
+alignment = 0
+material = ExtResource("3_hr8db")
+
+[node name="Right" type="Node3D" parent="." unique_id=1148860489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95642924, 0, 0)
+script = ExtResource("1_0c38j")
+lifetime = 0.5
+curve = SubResource("Curve_hr8db")
+alignment = 0
+material = ExtResource("3_hr8db")

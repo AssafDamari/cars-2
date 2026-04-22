@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://0gpdoqe6yf2k" path="res://scenes/camera_3d_follow.tscn" id="7_t013y"]
 [ext_resource type="PackedScene" uid="uid://dupjxv1uqom6m" path="res://scenes/car_2.tscn" id="7_xhr36"]
 [ext_resource type="Texture2D" uid="uid://cia5lbul6m3ls" path="res://textures/texture_08.png" id="8_pcnhv"]
-[ext_resource type="PackedScene" uid="uid://c8elfxgitkeaa" path="res://skid_marks_3d.tscn" id="9_8y83r"]
+[ext_resource type="PackedScene" uid="uid://c8elfxgitkeaa" path="res://scenes/skid_marks_3d.tscn" id="9_b42pj"]
 [ext_resource type="PackedScene" uid="uid://cy8jt5fkkjp64" path="res://scenes/offroad_modifier.tscn" id="9_vpt2y"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="9_y1rrw"]
 
@@ -97,12 +97,10 @@ engine_force_fwd = 2500.0
 drift_friction = 4.0
 steering_limit = 0.4
 
-[node name="SkidMarks3D" parent="PlayerCar" unique_id=2080819160 instance=ExtResource("9_8y83r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07919502, 1.304575)
-max_points = 200
-slip_threshold = 3.0
-
 [node name="OffroadModifier" parent="PlayerCar" unique_id=1474312524 instance=ExtResource("9_vpt2y")]
+
+[node name="SkidMarks3D" parent="PlayerCar" unique_id=2080819160 instance=ExtResource("9_b42pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119208336, 1.2902527)
 
 [node name="Car4" parent="." unique_id=540535111 instance=ExtResource("7_xhr36")]
 transform = Transform3D(0.71952164, -3.978389e-08, 0.69447005, 1.0845114e-08, 1, 4.605036e-08, -0.69447005, -2.5602622e-08, 0.71952164, 36.280254, 2.4017951, 11.97716)
