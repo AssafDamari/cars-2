@@ -26,3 +26,7 @@ lifetime = 0.5
 curve = SubResource("Curve_hr8db")
 alignment = 0
 material = ExtResource("3_hr8db")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1752653083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68856955, -1.2574472)
+aabb = AABB(-1, -0.7295233, -1.9919871, 2, 1.4590466, 3.9839742)

@@ -103,10 +103,13 @@ steering_limit = 0.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119208336, 1.2902527)
 
 [node name="Car4" parent="." unique_id=540535111 instance=ExtResource("7_xhr36")]
-transform = Transform3D(0.71952164, -3.978389e-08, 0.69447005, 1.0845114e-08, 1, 4.605036e-08, -0.69447005, -2.5602622e-08, 0.71952164, 36.280254, 2.4017951, 11.97716)
+transform = Transform3D(0.2507855, 0, 0.9680427, 0, 1, 0, -0.9680427, 0, 0.2507855, 36.280254, 1.0133731, 12.339329)
 color = Color(0, 0, 0, 1)
 
 [node name="NpcCarController" parent="Car4" unique_id=706778789 node_paths=PackedStringArray("path_node") instance=ExtResource("3_b42pj")]
 path_node = NodePath("../../Track/Path3D")
 engine_force_fwd = 2500.0
 steer_p = 0.5
+
+[node name="SkidMarks3D2" parent="Car4" unique_id=77600638 instance=ExtResource("9_b42pj")]
+transform = Transform3D(0.8720095, 6.259761e-08, 0.48948902, -2.8781894e-08, 1, -7.660953e-08, -0.48948902, 5.271582e-08, 0.8720095, 0, -0.15949011, 1.4269552)
