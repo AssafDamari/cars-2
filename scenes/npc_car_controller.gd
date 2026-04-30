@@ -17,7 +17,7 @@ extends Node3D
 
 ## Controls how rapidly the look-ahead distance scales up as the car speeds up.
 ## Effect: Higher values push the look-ahead point further away faster as speed increases.
-@export var speed_factor: float = 0.8
+@export var speed_factor: float = 1.0
 
 
 @export_group("Driving Dynamics")
@@ -37,7 +37,7 @@ extends Node3D
 
 ## The maximum distance (in meters) an NPC can drift left or right from the center of the path.
 ## Effect: Higher values create wider spacing between cars, effectively creating multi-lane behavior.
-@export var max_lane_offset: float = 4 
+@export var max_lane_offset: float = 6 
 
 
 @onready var vehicle: VehicleBody3D = get_parent() as VehicleBody3D
