@@ -13,12 +13,13 @@ color_ramp = SubResource("Gradient_4bqxd")
 seamless = true
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4fla"]
-sky_top_color = Color(0.2911, 0.465642, 0.71, 1)
+sky_top_color = Color(0.5172591, 0.67082286, 1, 1)
+sky_horizon_color = Color(0.5396571, 0.6681167, 0.8119204, 1)
 sky_cover = SubResource("NoiseTexture2D_un4dl")
-sky_cover_modulate = Color(0.72, 0.72, 0.72, 1)
-ground_bottom_color = Color(0.1705, 0.2356, 0.31, 1)
+ground_bottom_color = Color(0, 0.27385265, 0.21385846, 1)
+ground_horizon_color = Color(0.50950164, 0.7061123, 0.61549443, 1)
+ground_curve = 0.050982494
 sun_angle_max = 15.0
-energy_multiplier = 1.5
 
 [sub_resource type="Sky" id="Sky_h35h7"]
 sky_material = SubResource("ProceduralSkyMaterial_u4fla")
@@ -26,6 +27,8 @@ sky_material = SubResource("ProceduralSkyMaterial_u4fla")
 [sub_resource type="Environment" id="Environment_g32t6"]
 background_mode = 2
 sky = SubResource("Sky_h35h7")
+ambient_light_color = Color(0.7146291, 0.71462905, 0.71462905, 1)
+ambient_light_sky_contribution = 0.0
 
 [node name="Enviroment" type="Node3D" unique_id=994865547]
 

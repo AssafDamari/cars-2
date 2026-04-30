@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://djlvejcullers" path="res://scenes/car_1.gd" id="1_ny206"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_04eve"]
+[ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="4_e85k8"]
 [ext_resource type="PackedScene" uid="uid://ct0fpmv7ay8b1" path="res://scenes/car_2_body_model.tscn" id="4_ilqg0"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e85k8"]
-friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
 size = Vector3(1.8, 0.7, 4)
@@ -18,7 +16,6 @@ albedo_color = Color(0.92514765, 0, 0.22996902, 1)
 
 [node name="Car2" type="VehicleBody3D" unique_id=1835131583 groups=["CAR"]]
 mass = 1200.0
-physics_material_override = SubResource("PhysicsMaterial_e85k8")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.2, -0.2)
 script = ExtResource("1_ny206")
@@ -68,19 +65,23 @@ suspension_stiffness = 40.0
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("2_04eve")]
 
 [node name="Body" type="Node3D" parent="." unique_id=712893536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18357468, 0.007267952)
 
 [node name="car_2_body_model" parent="Body" unique_id=600277083 instance=ExtResource("4_ilqg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21465063, 0)
+
+[node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68282545, 0.012778282)
+size = Vector3(2, 1.1086926, 4.339899)
+texture_albedo = ExtResource("4_e85k8")
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06128931, 0.12579083)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="brake_indicator" unique_id=1819731316]
-transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, -0.5631511, 0.71610117, 1.9956114)
+transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, -0.6411028, 0.55153656, 2.123429)
 mesh = SubResource("BoxMesh_u2fa2")
 surface_material_override/0 = SubResource("StandardMaterial3D_8j6vf")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="brake_indicator" unique_id=1867515743]
-transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, 0.55333424, 0.71610117, 1.9956114)
+transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, 0.6475258, 0.55153656, 2.123429)
 mesh = SubResource("BoxMesh_u2fa2")
 surface_material_override/0 = SubResource("StandardMaterial3D_8j6vf")
