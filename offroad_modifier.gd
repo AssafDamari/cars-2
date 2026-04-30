@@ -1,6 +1,6 @@
 extends Node3D
 ## Only 10% power when off-track
-@export var off_road_penalty: float = 0.1
+@export var off_road_penalty: float = 0.25
 @onready var vehicle: Car = get_parent() as Car
 @onready var dust: GPUParticles3D = $DustParticles
 @onready var track_sensor: RayCast3D = $TrackSensor
