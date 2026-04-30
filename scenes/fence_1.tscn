@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ed1v6a4oftai"]
+
+[ext_resource type="PackedScene" uid="uid://07b4mb0ep8aa" path="res://models/fence1.blend" id="1_jp1x4"]
+[ext_resource type="Texture2D" uid="uid://chyepcc6kr5li" path="res://textures/atlas.png" id="2_dgf5d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kimmt"]
+albedo_texture = ExtResource("2_dgf5d")
+metallic_specular = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hwlu"]
+size = Vector3(0.1262207, 1.7561035, 6.696411)
+
+[node name="fence1" unique_id=1495965492 instance=ExtResource("1_jp1x4")]
+
+[node name="Cube" parent="." index="0" unique_id=739829863]
+surface_material_override/0 = SubResource("StandardMaterial3D_kimmt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1491607722]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=274266898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006958008, 0.84020996, 0.010314941)
+shape = SubResource("BoxShape3D_0hwlu")
