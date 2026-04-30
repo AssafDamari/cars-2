@@ -24,7 +24,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0.14901961)
 
 [node name="TrackLine" type="Line2D" parent="." unique_id=407772532]
-width = 32.0
-default_color = Color(0, 0, 0, 1)
+width = 30.0
+default_color = Color(0.16062862, 0.16062862, 0.16062862, 1)
 
 [node name="Indicators" type="Node2D" parent="." unique_id=1243943678]
