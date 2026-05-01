@@ -27,8 +27,6 @@ sky_material = SubResource("ProceduralSkyMaterial_u4fla")
 [sub_resource type="Environment" id="Environment_g32t6"]
 background_mode = 2
 sky = SubResource("Sky_h35h7")
-ambient_light_color = Color(0.7146291, 0.71462905, 0.71462905, 1)
-ambient_light_sky_contribution = 0.0
 
 [node name="Enviroment" type="Node3D" unique_id=994865547]
 

@@ -70,9 +70,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18357468, 0.007267952)
 [node name="car_2_body_model" parent="Body" unique_id=600277083 instance=ExtResource("4_ilqg0")]
 
 [node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68282545, 0.012778282)
-size = Vector3(2, 1.1086926, 4.339899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68282545, 0.08749223)
+size = Vector3(2, 1.1086926, 4.1572404)
 texture_albedo = ExtResource("4_e85k8")
+cull_mask = 1047554
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
 

@@ -6,6 +6,7 @@
 [node name="car_2_body_model" unique_id=600277083 instance=ExtResource("1_tucyg")]
 
 [node name="Cube" parent="." index="0" unique_id=816976935]
+layers = 2
 surface_material_override/0 = ExtResource("2_uiysl")
 
 [node name="Cube_001" parent="." index="1" unique_id=1085731021]
