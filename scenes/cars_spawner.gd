@@ -7,11 +7,31 @@ var offroad_modifier = "res://scenes/offroad_modifier.tscn"
 var distance_between_cars: float = 10.0
 
 var colors: Array[Color] = [
-		Color.CHARTREUSE,
-		Color.CORAL,
-		Color.CRIMSON,
-		Color.DARK_MAGENTA,
-		Color.DEEP_PINK
+		Color.from_rgba8(141, 6, 6),
+		Color.from_rgba8(249, 0, 0),
+		Color.from_rgba8(255, 115, 115),
+		Color.from_rgba8(230, 83, 0),
+		Color.from_rgba8(255, 126, 0),
+		Color.from_rgba8(251, 174, 111),
+		Color.from_rgba8(0, 101, 48),
+		Color.from_rgba8(0, 184, 87),
+		Color.from_rgba8(0, 255, 120),
+		Color.from_rgba8(102, 189, 0),
+		Color.from_rgba8(136, 253, 0),
+		Color.from_rgba8(0, 45, 105),
+		Color.from_rgba8(0, 79, 154),
+		Color.from_rgba8(0, 132, 255),
+		Color.from_rgba8(0, 221, 255),
+		Color.from_rgba8(63, 0, 88),
+		Color.from_rgba8(123, 0, 172),
+		Color.from_rgba8(102,2, 174),
+		Color.from_rgba8(185, 8, 255),
+		Color.from_rgba8(255, 0, 204),
+		Color.from_rgba8(255, 156,235),
+		Color.from_rgba8(66, 0, 0),
+		Color.from_rgba8(120, 2, 2),
+		Color.from_rgba8(120, 70, 29),
+		Color.from_rgba8(240, 195, 152),
 	]
 var car_types = {
 	1: "res://scenes/car_1.tscn",
