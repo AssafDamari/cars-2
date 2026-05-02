@@ -28,16 +28,16 @@ extends Node3D
 ## Proportional gain for steering (PD Controller).
 ## Effect: Dictates how hard the car tries to steer toward the error. 
 ## Higher values = aggressive turning and tighter correction; Too high = side-to-side wobbling.
-@export var steer_p: float = 0.8
+@export var steer_p: float = 0.5
 
 ## Derivative gain for steering (PD Controller).
 ## Effect: Dampens the steering to prevent the car from overshooting the target. 
 ## Higher values = smoother transitions, counteracts wobbling; Too high = sluggish steering response.
-@export var steer_d: float = 0.3
+@export var steer_d: float = 0.7
 
 ## The maximum distance (in meters) an NPC can drift left or right from the center of the path.
 ## Effect: Higher values create wider spacing between cars, effectively creating multi-lane behavior.
-@export var max_lane_offset: float = 6 
+@export var max_lane_offset: float = 5 
 
 
 @onready var vehicle: VehicleBody3D = get_parent() as VehicleBody3D

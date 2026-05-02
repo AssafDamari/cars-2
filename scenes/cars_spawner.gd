@@ -1,0 +1,81 @@
+class_name CarsSpawner
+extends Node3D
+
+var npc_car_controller = "res://scenes/npc_car_controller.tscn"
+var skid_marks_3d = "res://scenes/skid_marks_3d.tscn"
+var offroad_modifier = "res://scenes/offroad_modifier.tscn"
+var distance_between_cars: float = 10.0
+
+var colors: Array[Color] = [
+		Color.CHARTREUSE,
+		Color.CORAL,
+		Color.CRIMSON,
+		Color.DARK_MAGENTA,
+		Color.DEEP_PINK
+	]
+var car_types = {
+	1: "res://scenes/car_1.tscn",
+	2: "res://scenes/car_2.tscn"
+}
+
+func spawn_cars(number_of_cars: int, car_type: int, path: Path3D) -> Array[Car]:
+	var spawned_cars: Array[Car] = []
+	
+	# Pre-load scenes for better performance on mobile
+	var car_scene_path = car_types.get(car_type, car_types[1])
+	var car_scene: PackedScene = load(car_scene_path)
+	var npc_ctrl_scene: PackedScene = load(npc_car_controller)
+	var player_ctrl_scene: PackedScene = load("res://scenes/player_controller.tscn")
+	var skid_marks_scene: PackedScene = load(skid_marks_3d)
+	var offroad_mod_scene: PackedScene = load(offroad_modifier)
+	var camera_scene: PackedScene = load("res://scenes/camera_3d_follow.tscn")
+	
+	for i in range(number_of_cars):
+		# Instance the car according to car_type
+		var car: Car = car_scene.instantiate()
+		
+		# Add car to the scene tree first so global_position works
+		add_child(car)
+		
+		# Position car on the path using distance_between_cars
+		var offset = i * distance_between_cars
+		var local_pos = path.curve.sample_baked(offset)
+		car.global_position = path.global_transform * local_pos
+		
+		# Orient car towards the next point on path for a natural start
+		var next_pos = path.curve.sample_baked(offset + 1.0)
+		var global_next_pos = path.global_transform * next_pos
+		if car.global_position.distance_to(global_next_pos) > 0.1:
+			car.look_at_from_position(car.global_position, global_next_pos, Vector3.UP)
+		
+		# Add components as child nodes
+		car.add_child(skid_marks_scene.instantiate())
+		car.add_child(offroad_mod_scene.instantiate())
+		
+		# The first car is the Player car, others are NPC cars
+		if i == 0:
+			car.name = "PlayerCar"
+			car.color = Color.RED
+			car.apply_color_to_mesh(car.color)
+			
+			var player_ctrl = player_ctrl_scene.instantiate()
+			player_ctrl.engine_force_fwd = 2500
+			car.add_child(player_ctrl)
+			
+			var camera_gimble = camera_scene.instantiate()
+			car.add_child(camera_gimble)
+		else:
+			car.name = "NpcCar" + str(i)
+			# Set color from colors array cyclically for NPCs
+			car.color = colors[(i - 1) % colors.size()]
+			car.apply_color_to_mesh(car.color)
+			
+			var npc_ctrl = npc_ctrl_scene.instantiate()
+			# Setup the NpcCarController
+			npc_ctrl.path_node = path
+			npc_ctrl.engine_force_fwd = 2500
+			car.add_child(npc_ctrl)
+		
+		spawned_cars.append(car)
+		
+	return spawned_cars

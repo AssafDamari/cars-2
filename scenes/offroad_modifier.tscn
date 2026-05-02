@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cy8jt5fkkjp64"]
 
-[ext_resource type="Script" uid="uid://dn1aggmrcsu4u" path="res://offroad_modifier.gd" id="1_8d1lc"]
+[ext_resource type="Script" uid="uid://dn1aggmrcsu4u" path="res://scenes/offroad_modifier.gd" id="1_8d1lc"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8d1lc"]
 emission_shape = 3

@@ -19,6 +19,7 @@ var engine_force_modifier: float = 1.0
 func _ready() -> void:
 	apply_color_to_mesh(color)
 
+
 func _physics_process(_delta: float) -> void:
 	var speed_sq = linear_velocity.length_squared()
 	if speed_sq < max_speed * max_speed:
@@ -26,7 +27,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		engine_force = 0.0
 	
-
 
 func apply_color_to_mesh(_color: Color) -> void:
 	var body_mesh := get_first_mesh_instance(body)
@@ -37,17 +37,21 @@ func apply_color_to_mesh(_color: Color) -> void:
 		if child_mesh is MeshInstance3D:
 			child_mesh.set_surface_override_material(0, material)
 
+
 func brake_car():
 	engine_force = 0
 	brake = max_brake_force
+
 
 func show_brake_indicator():
 	if not brake_indicator.visible:
 		brake_indicator.visible = true
 	
+
 func hide_brake_indicator():
 	if brake_indicator.visible:
 		brake_indicator.visible = false
+
 
 func get_first_mesh_instance(node: Node) -> MeshInstance3D:
 	for child in node.get_children():
