@@ -9,7 +9,7 @@
 friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
-size = Vector3(1.8, 0.7, 4)
+size = Vector3(1.8, 0.59133303, 4.020508)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e85k8"]
 radius = 0.215
@@ -21,6 +21,9 @@ height = 1.226
 shading_mode = 0
 albedo_color = Color(0.92514765, 0, 0.22996902, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ilqg0"]
+radius = 0.7
+
 [node name="Car2" type="VehicleBody3D" unique_id=1835131583 groups=["CAR"]]
 mass = 1200.0
 physics_material_override = SubResource("PhysicsMaterial_ilqg0")
@@ -29,11 +32,11 @@ center_of_mass = Vector3(0, -0.2, -0.2)
 script = ExtResource("1_ny206")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5763948, 0.002319336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52206135, -0.00793457)
 shape = SubResource("BoxShape3D_3e54y")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1730387036]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0.43351787, -2.1360722)
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0.43351787, -1.9814122)
 shape = SubResource("CapsuleShape3D_e85k8")
 
 [node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
@@ -98,3 +101,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8j6vf")
 transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, 0.6475258, 0.55153656, 2.123429)
 mesh = SubResource("BoxMesh_u2fa2")
 surface_material_override/0 = SubResource("StandardMaterial3D_8j6vf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=2031185311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9551296, 0)
+shape = SubResource("SphereShape3D_ilqg0")

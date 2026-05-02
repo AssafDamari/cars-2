@@ -15,7 +15,7 @@
 size = Vector2(400, 400)
 
 [sub_resource type="Gradient" id="Gradient_b42pj"]
-colors = PackedColorArray(3.8263947e-06, 0.54741055, 0.23820761, 1, 0.158999, 0.46636117, 0, 1)
+colors = PackedColorArray(0, 0.61977875, 0.36611006, 1, 1.6605109e-06, 0.5650277, 0.26212087, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k0c37"]
 frequency = 0.081
