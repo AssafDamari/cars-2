@@ -5,8 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="4_e85k8"]
 [ext_resource type="PackedScene" uid="uid://ct0fpmv7ay8b1" path="res://scenes/car_2_body_model.tscn" id="4_ilqg0"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ilqg0"]
+friction = 0.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
 size = Vector3(1.8, 0.7, 4)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e85k8"]
+radius = 0.215
+height = 1.226
 
 [sub_resource type="BoxMesh" id="BoxMesh_u2fa2"]
 
@@ -16,6 +23,7 @@ albedo_color = Color(0.92514765, 0, 0.22996902, 1)
 
 [node name="Car2" type="VehicleBody3D" unique_id=1835131583 groups=["CAR"]]
 mass = 1200.0
+physics_material_override = SubResource("PhysicsMaterial_ilqg0")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.2, -0.2)
 script = ExtResource("1_ny206")
@@ -23,6 +31,10 @@ script = ExtResource("1_ny206")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5763948, 0.002319336)
 shape = SubResource("BoxShape3D_3e54y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1730387036]
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0.43351787, -2.1360722)
+shape = SubResource("CapsuleShape3D_e85k8")
 
 [node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8, 0.2, -1.4)
