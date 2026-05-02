@@ -8,30 +8,13 @@ var distance_between_cars: float = 10.0
 
 var colors: Array[Color] = [
 		Color.from_rgba8(141, 6, 6),
-		Color.from_rgba8(249, 0, 0),
-		Color.from_rgba8(255, 115, 115),
-		Color.from_rgba8(230, 83, 0),
 		Color.from_rgba8(255, 126, 0),
-		Color.from_rgba8(251, 174, 111),
-		Color.from_rgba8(0, 101, 48),
-		Color.from_rgba8(0, 184, 87),
+		Color.from_rgba8(255, 216, 62),
+		Color.from_rgba8(0, 73, 70),
 		Color.from_rgba8(0, 255, 120),
-		Color.from_rgba8(102, 189, 0),
-		Color.from_rgba8(136, 253, 0),
-		Color.from_rgba8(0, 45, 105),
 		Color.from_rgba8(0, 79, 154),
 		Color.from_rgba8(0, 132, 255),
-		Color.from_rgba8(0, 221, 255),
-		Color.from_rgba8(63, 0, 88),
-		Color.from_rgba8(123, 0, 172),
-		Color.from_rgba8(102,2, 174),
-		Color.from_rgba8(185, 8, 255),
 		Color.from_rgba8(255, 0, 204),
-		Color.from_rgba8(255, 156,235),
-		Color.from_rgba8(66, 0, 0),
-		Color.from_rgba8(120, 2, 2),
-		Color.from_rgba8(120, 70, 29),
-		Color.from_rgba8(240, 195, 152),
 	]
 var car_types = {
 	1: "res://scenes/car_1.tscn",
@@ -75,7 +58,7 @@ func spawn_cars(number_of_cars: int, car_type: int, path: Path3D) -> Array[Car]:
 		# The first car is the Player car, others are NPC cars
 		if i == 0:
 			car.name = "PlayerCar"
-			car.color = Color.RED
+			car.color = Color.from_rgba8(249, 0, 0)
 			car.apply_color_to_mesh(car.color)
 			
 			var player_ctrl = player_ctrl_scene.instantiate()

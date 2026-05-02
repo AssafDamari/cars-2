@@ -18,9 +18,9 @@ func _ready():
 	path_3d = get_node(path_node_path)
 	track_line = $TrackLine
 	indicators_container = $Indicators
-	
 	bake_track_to_2d()
-	setup_car_indicators()
+	GlobalSignals.cars_setup_done.connect(setup_car_indicators)
+
 
 func bake_track_to_2d():
 	var curve = path_3d.curve

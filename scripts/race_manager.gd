@@ -5,4 +5,5 @@ extends Node3D
 @onready var path_3d: Path3D = $Track/Path3D
 
 func _ready() -> void:
-	var _cars = cars_spawner.spawn_cars(10, 2, path_3d)
+	var cars = cars_spawner.spawn_cars(10, 2, path_3d)
+	GlobalSignals.cars_setup_done.emit()

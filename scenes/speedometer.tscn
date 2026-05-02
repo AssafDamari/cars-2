@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://f64whos56byr"]
 
-[ext_resource type="Script" uid="uid://ctyss7h1p8ecg" path="res://scenes/speedometer.gd" id="1_speedometer_script"]
+[ext_resource type="Script" uid="uid://ctyss7h1p8ecg" path="res://scripts/speedometer.gd" id="1_speedometer_script"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecky1"]
 font_size = 60

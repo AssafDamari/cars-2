@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0gpdoqe6yf2k"]
 
-[ext_resource type="Script" uid="uid://cmm2nquv4xcg3" path="res://scenes/camera_3d_follow.gd" id="1_camera_script"]
+[ext_resource type="Script" uid="uid://cmm2nquv4xcg3" path="res://scripts/camera_3d_follow.gd" id="1_camera_script"]
 
 [node name="Camera3DFollow" type="Node3D" unique_id=1837012276]
 transform = Transform3D(0.64139605, 0, 0.76720995, 0, 1, 0, -0.76720995, 0, 0.64139605, 0, 0, 0)

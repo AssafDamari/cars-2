@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1y6yhe347n7s"]
 
-[ext_resource type="Script" uid="uid://bauo65gd260mj" path="res://scenes/fps_label.gd" id="1_fps_script"]
+[ext_resource type="Script" uid="uid://bauo65gd260mj" path="res://scripts/fps_label.gd" id="1_fps_script"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_24yv0"]
 font_size = 60

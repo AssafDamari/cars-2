@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://limuefm350ho"]
 
 [ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="1_8y83r"]
-[ext_resource type="Script" uid="uid://bt2idbrbr2pq8" path="res://scenes/race_manager.gd" id="1_t7hxj"]
+[ext_resource type="Script" uid="uid://bt2idbrbr2pq8" path="res://scripts/race_manager.gd" id="1_t7hxj"]
 [ext_resource type="Texture2D" uid="uid://dhabl3c1wiyfd" path="res://textures/checker.jpg" id="4_vpt2y"]
 [ext_resource type="PackedScene" uid="uid://4y4bm6jsr25g" path="res://scenes/cars_spawner.tscn" id="9_37wop"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="9_y1rrw"]
@@ -15,10 +15,10 @@
 size = Vector2(400, 400)
 
 [sub_resource type="Gradient" id="Gradient_b42pj"]
-colors = PackedColorArray(0, 0.4322959, 0.1707184, 1, 0.2137798, 0.51409274, 0.28650844, 1)
+colors = PackedColorArray(3.8263947e-06, 0.54741055, 0.23820761, 1, 0.158999, 0.46636117, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k0c37"]
-frequency = 0.0393
+frequency = 0.081
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7hxj"]
 width = 128

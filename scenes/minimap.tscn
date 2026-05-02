@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4r8d6pnwkm0d"]
 
-[ext_resource type="Script" uid="uid://beqhlgnfkjsfu" path="res://scenes/minimap.gd" id="1_lj7mc"]
+[ext_resource type="Script" uid="uid://beqhlgnfkjsfu" path="res://scripts/minimap.gd" id="1_lj7mc"]
 
 [node name="Minimap" type="Control" unique_id=1768555498]
 custom_minimum_size = Vector2(400, 400)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dq5vm2aqyrech"]
 
-[ext_resource type="Script" uid="uid://bqv5dx5kqebu2" path="res://scenes/player_controller.gd" id="1_d4y06"]
+[ext_resource type="Script" uid="uid://bqv5dx5kqebu2" path="res://scripts/player_controller.gd" id="1_d4y06"]
 [ext_resource type="Texture2D" uid="uid://dvurkhjpnyk33" path="res://textures/icon_menu.png" id="2_1kmjt"]
 [ext_resource type="PackedScene" uid="uid://f64whos56byr" path="res://scenes/speedometer.tscn" id="2_mfmwq"]
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="3_lwvb4"]

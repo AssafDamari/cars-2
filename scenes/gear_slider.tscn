@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://16w2c4issiw"]
 
-[ext_resource type="Script" uid="uid://exoygrh8fjsp" path="res://scenes/gear_slider.gd" id="1_weebh"]
+[ext_resource type="Script" uid="uid://exoygrh8fjsp" path="res://scripts/gear_slider.gd" id="1_weebh"]
 
 [node name="GearSlider" type="Control" unique_id=612517197]
 custom_minimum_size = Vector2(100, 300)
