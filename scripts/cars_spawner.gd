@@ -21,7 +21,7 @@ var car_types = {
 	2: "res://scenes/car_2.tscn"
 }
 
-func spawn_cars(number_of_cars: int, car_type: int, path: Path3D) -> Array[Car]:
+func spawn_cars(number_of_cars: int, car_type: int, path: Path3D, engine_force_base: int = 2600) -> Array[Car]:
 	var spawned_cars: Array[Car] = []
 	
 	# Pre-load scenes for better performance on mobile
@@ -63,7 +63,7 @@ func spawn_cars(number_of_cars: int, car_type: int, path: Path3D) -> Array[Car]:
 			car.apply_color_to_mesh(car.color)
 			
 			var player_ctrl = player_ctrl_scene.instantiate()
-			player_ctrl.engine_force_fwd = 2700
+			player_ctrl.engine_force_fwd = engine_force_base
 			car.add_child(player_ctrl)
 			
 			var camera_gimble = camera_scene.instantiate()
@@ -77,7 +77,7 @@ func spawn_cars(number_of_cars: int, car_type: int, path: Path3D) -> Array[Car]:
 			var npc_ctrl = npc_ctrl_scene.instantiate()
 			# Setup the NpcCarController
 			npc_ctrl.path_node = path
-			npc_ctrl.engine_force_fwd = 2600
+			npc_ctrl.engine_force_fwd = engine_force_base * randf_range(0.8, 1.0)
 			car.add_child(npc_ctrl)
 		
 		spawned_cars.append(car)
