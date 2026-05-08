@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cybsilsq56cbl"]
+
+[ext_resource type="PackedScene" uid="uid://jyptmsvh3usr" path="res://models/rock1.blend" id="1_5yrgr"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_nkco8"]
+
+[node name="rock1" unique_id=1275480080 instance=ExtResource("1_5yrgr")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1567812880]
+surface_material_override/0 = ExtResource("2_nkco8")

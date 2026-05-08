@@ -59,10 +59,11 @@ func spawn_cars(number_of_cars: int, car_type: int, path: Path3D) -> Array[Car]:
 		if i == 0:
 			car.name = "PlayerCar"
 			car.color = Color.from_rgba8(249, 0, 0)
+			car.add_to_group("PLAYER")
 			car.apply_color_to_mesh(car.color)
 			
 			var player_ctrl = player_ctrl_scene.instantiate()
-			player_ctrl.engine_force_fwd = 2500
+			player_ctrl.engine_force_fwd = 2700
 			car.add_child(player_ctrl)
 			
 			var camera_gimble = camera_scene.instantiate()
@@ -76,7 +77,7 @@ func spawn_cars(number_of_cars: int, car_type: int, path: Path3D) -> Array[Car]:
 			var npc_ctrl = npc_ctrl_scene.instantiate()
 			# Setup the NpcCarController
 			npc_ctrl.path_node = path
-			npc_ctrl.engine_force_fwd = 2500
+			npc_ctrl.engine_force_fwd = 2600
 			car.add_child(npc_ctrl)
 		
 		spawned_cars.append(car)
