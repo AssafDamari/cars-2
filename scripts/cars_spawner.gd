@@ -16,6 +16,7 @@ var colors: Array[Color] = [
 		Color.from_rgba8(0, 132, 255),
 		Color.from_rgba8(255, 0, 204),
 	]
+	
 var car_types = {
 	1: "res://scenes/car_1.tscn",
 	2: "res://scenes/car_2.tscn"

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dg02bd2ei32lh"]
+
+[ext_resource type="PackedScene" uid="uid://di4n38624na7b" path="res://models/mountains_edge.blend" id="1_iqc1h"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_ye5nh"]
+
+[node name="mountains_edge" unique_id=1114277047 instance=ExtResource("1_iqc1h")]
+
+[node name="Plane_001" parent="." index="1" unique_id=629506421]
+surface_material_override/0 = ExtResource("2_ye5nh")
+
+[node name="Plane_002" parent="." index="2" unique_id=617351394]
+surface_material_override/0 = ExtResource("2_ye5nh")
+
+[node name="Plane_003" parent="." index="3" unique_id=597222124]
+surface_material_override/0 = ExtResource("2_ye5nh")
+
+[node name="Plane_004" parent="." index="4" unique_id=1407425737]
+surface_material_override/0 = ExtResource("2_ye5nh")

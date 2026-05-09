@@ -7,6 +7,7 @@ func _on_cargo_button_pressed() -> void:
 
 func _on_drift_button_pressed() -> void:
 	GlobalSceneManager.load_drift_race({
+		"track_number": 1,
 		"number_of_cars": 10,
 		"car_type": 2
 	})

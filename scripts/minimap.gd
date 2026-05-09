@@ -1,6 +1,6 @@
+class_name Minimap
 extends Control
 
-@export var path_node_path: NodePath
 @export var update_interval: float = 0.5 # 500ms update rate
 
 var path_3d: Path3D
@@ -14,14 +14,43 @@ var timer: float = 0.0
 # Dictionary to map Car nodes to their Dot nodes { car_ref: color_rect_ref }
 var car_dots = {}
 
+
 func _ready():
-	path_3d = get_node(path_node_path)
-	track_line = $TrackLine
-	indicators_container = $Indicators
-	bake_track_to_2d()
+	GlobalSignals.track_setup_done.connect(setup_track)
 	GlobalSignals.cars_setup_done.connect(setup_car_indicators)
 
 
+func _process(delta):
+	timer += delta
+	if timer >= update_interval:
+		update_positions()
+		timer = 0.0
+		
+	
+func setup_track():
+	var track: Track = get_tree().get_nodes_in_group("TRACK")[0]
+	path_3d = track.get_path_3d()
+	track_line = $TrackLine
+	indicators_container = $Indicators
+	bake_track_to_2d()
+
+
+func setup_car_indicators():
+	# Find all cars in a specific group
+	var cars = get_tree().get_nodes_in_group("CAR")
+	for car in cars:
+		var dot = ColorRect.new()
+		dot.color = car.color
+		dot.size = Vector2(15, 15)
+		# Distinguish player from AI
+		if car.is_in_group("PLAYER"):
+			dot.size = 1.5 * dot.size
+			
+		dot.pivot_offset = dot.size / 2
+		indicators_container.add_child(dot)
+		car_dots[car] = dot
+		
+		
 func bake_track_to_2d():
 	var curve = path_3d.curve
 	var points_3d = curve.get_baked_points()
@@ -49,26 +78,6 @@ func bake_track_to_2d():
 		
 	track_line.points = final_points
 
-func setup_car_indicators():
-	# Find all cars in a specific group
-	var cars = get_tree().get_nodes_in_group("CAR")
-	for car in cars:
-		var dot = ColorRect.new()
-		dot.color = car.color
-		dot.size = Vector2(15, 15)
-		# Distinguish player from AI
-		if car.is_in_group("PLAYER"):
-			dot.size = 1.5 * dot.size
-			
-		dot.pivot_offset = dot.size / 2
-		indicators_container.add_child(dot)
-		car_dots[car] = dot
-
-func _process(delta):
-	timer += delta
-	if timer >= update_interval:
-		update_positions()
-		timer = 0.0
 
 func update_positions():
 	var ui_size = size
