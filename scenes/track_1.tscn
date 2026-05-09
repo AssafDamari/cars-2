@@ -91,9 +91,12 @@ path_joined = true
 material = SubResource("StandardMaterial3D_udrkq")
 
 [node name="FinishLine" type="MeshInstance3D" parent="." unique_id=651061646]
-transform = Transform3D(0.989147, -6.4224706e-09, -0.146929, 6.422472e-09, 0.99999994, -4.743995e-10, 0.14692901, -4.743996e-10, 0.98914695, 66.586975, 0.16000013, 14.904149)
+transform = Transform3D(0.99985534, -6.409382e-09, 0.017016133, 6.4191212e-09, 0.9999999, -5.177685e-10, -0.01701612, 6.2691896e-10, 0.9998553, -18.413025, 0.16000013, -129.82382)
 material_override = SubResource("StandardMaterial3D_b42pj")
 mesh = SubResource("PlaneMesh_8y83r")
+
+[node name="StartPosition" type="Marker3D" parent="." unique_id=23874234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.14999998, -130)
 
 [node name="Trees" type="Node3D" parent="." unique_id=399488253]
 

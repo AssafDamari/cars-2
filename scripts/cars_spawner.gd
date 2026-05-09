@@ -22,7 +22,7 @@ var car_types = {
 	2: "res://scenes/car_2.tscn"
 }
 
-func spawn_cars(number_of_cars: int, car_type: int, path: Path3D, engine_force_base: int = 2600) -> Array[Car]:
+func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_base: int = 2600) -> Array[Car]:
 	var spawned_cars: Array[Car] = []
 	
 	# Pre-load scenes for better performance on mobile
@@ -40,9 +40,13 @@ func spawn_cars(number_of_cars: int, car_type: int, path: Path3D, engine_force_b
 		
 		# Add car to the scene tree first so global_position works
 		add_child(car)
-		
-		# Position car on the path using distance_between_cars
-		var offset = i * distance_between_cars
+		var start_pos: Marker3D = track.get_start_position()
+		var path = track.get_path_3d()
+		# Find the closest offset on the path to the start_pos marker
+		var start_local_pos = path.global_transform.affine_inverse() * start_pos.global_position
+		var start_offset = path.curve.get_closest_offset(start_local_pos)
+		# Position car on the path using distance_between_cars from start_pos
+		var offset = start_offset + i * distance_between_cars
 		var local_pos = path.curve.sample_baked(offset)
 		car.global_position = path.global_transform * local_pos
 		

@@ -33,5 +33,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = " Drift "
 
+[node name="DriftButton2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1247854332]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = " Drift 2"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CargoButton" to="." method="_on_cargo_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/DriftButton" to="." method="_on_drift_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/DriftButton2" to="." method="_on_drift_button_2_pressed"]

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b7vv7i3q3srcn"]
+
+[ext_resource type="Script" uid="uid://bjfabcqelapj5" path="res://scripts/track.gd" id="1_4mu13"]
+[ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="2_5hw7b"]
+[ext_resource type="Texture2D" uid="uid://dhabl3c1wiyfd" path="res://textures/checker.jpg" id="3_banxg"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e8ne1"]
+size = Vector2(400, 400)
+
+[sub_resource type="Gradient" id="Gradient_b42pj"]
+colors = PackedColorArray(0, 0.61977875, 0.36611006, 1, 1.6605109e-06, 0.5650277, 0.26212087, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k0c37"]
+frequency = 0.081
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7hxj"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_k0c37")
+color_ramp = SubResource("Gradient_b42pj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6uys"]
+albedo_color = Color(0.57700837, 0.5770084, 0.57700837, 1)
+albedo_texture = SubResource("NoiseTexture2D_t7hxj")
+metallic_specular = 0.0
+
+[sub_resource type="Curve3D" id="Curve3D_uvx6w"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 54.766735, 0, -40.028152, 0, 0, 0, 0, 0, 0, 116.9492, 0, -140.2815, 0, 0, 0, 0, 0, 0, -10.0444145, 0, -176.11371, 0, 0, 0, 0, 0, 0, -93.301636, 0, -123.94623, 0, 0, 0, 0, 0, 0, -89.61302, 0, -39.108173, 0, 0, 0, 0, 0, 0, 80.59004, 0, 62.065147, 0, 0, 0, 0, 0, 0, 116.9492, 0, 128.46016, 0, 0, 0, 0, 0, 0, -6.3557854, 0, 174.30432, 0, 0, 0, 0, 0, 0, -95.936356, 0, 156.91516, 0, 0, 0, 0, 0, 0, -122.283585, 0, 88.412384, 0, 0, 0, 0, 0, 0, -78.02025, 0, 38.879612, 0, 0, 0, 0, 0, 0, -43.15353, 12.000002, 15.724997, 0, 0, 0, 0, 0, 0, -5.624281, 11.999999, -13.253274),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udrkq"]
+albedo_texture = ExtResource("2_5hw7b")
+metallic_specular = 0.0
+uv1_scale = Vector3(8, 8, 8)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b42pj"]
+albedo_texture = ExtResource("3_banxg")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8y83r"]
+size = Vector2(5, 20)
+
+[node name="Track2" type="Node3D" unique_id=559056600 groups=["TRACK"]]
+script = ExtResource("1_4mu13")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1815963593]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=180051787]
+shape = SubResource("WorldBoundaryShape3D_w4aej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1604103975]
+mesh = SubResource("PlaneMesh_e8ne1")
+surface_material_override/0 = SubResource("StandardMaterial3D_m6uys")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=213254033 groups=["TRACK"]]
+rotation_order = 0
+curve = SubResource("Curve3D_uvx6w")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1179472955 groups=["TRACK"]]
+use_collision = true
+polygon = PackedVector2Array(-9, 0.15, -10, 0, 10, 0, 9, 0.15)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 4.5
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+material = SubResource("StandardMaterial3D_udrkq")
+
+[node name="FinishLine" type="MeshInstance3D" parent="." unique_id=651061646]
+transform = Transform3D(0.83437675, -6.4072783e-09, -0.5511944, 4.9888778e-09, 0.9999999, -4.0723847e-09, 0.5511945, 6.480578e-10, 0.83437663, -55.79236, 0.29358202, -18.725943)
+material_override = SubResource("StandardMaterial3D_b42pj")
+mesh = SubResource("PlaneMesh_8y83r")
+
+[node name="StartPosition" type="Marker3D" parent="." unique_id=1572386782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, -15)
