@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="2_5hw7b"]
 [ext_resource type="Texture2D" uid="uid://dhabl3c1wiyfd" path="res://textures/checker.jpg" id="3_banxg"]
 [ext_resource type="PackedScene" uid="uid://i3mut64ucg30" path="res://scenes/bridge.tscn" id="4_4ngia"]
+[ext_resource type="PackedScene" uid="uid://di47udnmytubo" path="res://scenes/ramp.tscn" id="5_d3gf4"]
+[ext_resource type="PackedScene" uid="uid://c5v3io1f32kel" path="res://scenes/bumper.tscn" id="6_f5cs5"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
 
@@ -30,7 +32,7 @@ metallic_specular = 0.0
 [sub_resource type="Curve3D" id="Curve3D_uvx6w"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 26.383656, 0, -39.667526, 7.5, 0, 21.6, -7.5, 0, -21.6, 144.143, 0, -123.414444, 22.300001, 0, -2.2, -22.300001, 0, 2.2, -10.0444145, 0, -176.11371, 11.8, 0, -15.6, -11.8, 0, 15.6, -93.301636, 0, -123.94623, -8.6, 0, -15.5, 8.6, 0, 15.5, -89.61302, 0, -39.108173, 0, 0, 0, 0, 0, 0, 121.39702, 0, 65.62044, 30, 0, -41.5, -30, 0, 41.5, 150.16054, 0, 138.95686, 41, 0, -0.4, -41, 0, 0.4, -12.160698, 0, 176.88829, 23.7, 0, 12.400001, -23.7, 0, -12.400001, -126.36829, 0, 151.00778, -2.5, 0, 14.1, 2.5, 0, -14.1, -150.28395, 0, 99.18176, 0, 0, 0, 0, 0, 0, -69.578415, 0, 36.235344, 0, 0, 0, 0, 0, 0, -37.31626, 9.83905, 10.352032, 0, 0, 0, 0, 0, 0, -5.473446, 10.164286, -14.973801),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 26.383656, 0.23554611, -39.667526, -13.083893, 0, 43.07321, 13.083893, 0, -43.07321, 144.143, 0, -123.414444, 22.300001, 0, -2.2, -22.300001, 0, 2.2, -10.0444145, 0, -176.11371, 11.8, 0, -15.6, -11.8, 0, 15.6, -93.301636, 0, -123.94623, -8.6, 0, -15.5, 8.6, 0, 15.5, -89.61302, 0, -39.108173, 0, 0, 0, 0, 0, 0, 121.39702, 0, 65.62044, 30, 0, -41.5, -30, 0, 41.5, 150.16054, 0, 138.95686, 41, 0, -0.4, -41, 0, 0.4, -12.160698, 0, 176.88829, 23.7, 0, 12.400001, -23.7, 0, -12.400001, -126.36829, 0, 151.00778, -2.5, 0, 14.1, 2.5, 0, -14.1, -150.28395, 0, 99.18176, 0, 0, 0, 0, 0, 0, -69.578415, 0, 36.235344, 0, 0, 0, 0, 0, 0, -37.31626, 10.139726, 10.352032, 0, 0, 0, 0, 0, 0, -5.458707, 10.360985, -14.988724),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 13
@@ -48,17 +50,6 @@ uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8y83r"]
 size = Vector2(5, 20)
-
-[sub_resource type="PrismMesh" id="PrismMesh_4ngia"]
-left_to_right = 1.0
-size = Vector3(2, 0.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3gf4"]
-albedo_texture = ExtResource("2_5hw7b")
-uv1_triplanar = true
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f5cs5"]
-points = PackedVector3Array(-1, -0.25, -0.5, -1, -0.25, 0.5, 1, 0.25, -0.5, 1, -0.25, -0.5, 1, -0.25, 0.5, 1, 0.25, 0.5)
 
 [node name="Track2" type="Node3D" unique_id=559056600 groups=["TRACK"]]
 script = ExtResource("1_4mu13")
@@ -103,12 +94,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, -18)
 [node name="Bridge" parent="." unique_id=276212995 instance=ExtResource("4_4ngia")]
 transform = Transform3D(15.79154, 0, 12.27303, 0, 20, 0, -12.27303, 0, 15.79154, -20.889498, 0, -2.368978)
 
-[node name="Ramp" type="StaticBody3D" parent="." unique_id=1873912134]
-transform = Transform3D(-9.971405, 0, 0.7557038, 0, 10, 0, -0.7557038, 0, -9.971405, -10.116348, 2.4286356, 177.65236)
+[node name="Ramp" parent="." unique_id=77877622 instance=ExtResource("5_d3gf4")]
+transform = Transform3D(-19.998337, 1.4665193e-07, -0.25795522, 1.464824e-07, 19.999998, 1.4089182e-08, 0.25795522, 1.2198713e-08, -19.998337, 21.517174, 1.668014, 176.30588)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ramp" unique_id=772687222]
-mesh = SubResource("PrismMesh_4ngia")
-surface_material_override/0 = SubResource("StandardMaterial3D_d3gf4")
+[node name="Bumper" parent="." unique_id=1677048967 instance=ExtResource("6_f5cs5")]
+transform = Transform3D(0.8660254, 0.5, -2.1855694e-08, 0, -4.371139e-08, -1, -0.5, 0.8660254, -3.7855173e-08, 99.85427, -1.2469989, -77.546844)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp" unique_id=1722682405]
-shape = SubResource("ConvexPolygonShape3D_f5cs5")
+[node name="Bumper2" parent="." unique_id=1795340417 instance=ExtResource("6_f5cs5")]
+transform = Transform3D(0.8660254, 0.5, -2.1855694e-08, 0, -4.371139e-08, -1, -0.5, 0.8660254, -3.7855173e-08, 80.63496, -1.2469989, -65.78118)
+
+[node name="Bumper3" parent="." unique_id=683011223 instance=ExtResource("6_f5cs5")]
+transform = Transform3D(0.95261896, -0.30416608, -2.1855694e-08, -3.233441e-08, -2.9413798e-08, -1, 0.30416608, 0.95261896, -3.7855173e-08, 82.70174, -1.3123761, -166.29019)
+
+[node name="Bumper4" parent="." unique_id=1952045452 instance=ExtResource("6_f5cs5")]
+transform = Transform3D(0.9741773, -0.22578424, -2.1855694e-08, -2.9838425e-08, -3.1942978e-08, -1, 0.22578424, 0.9741773, -3.7855173e-08, 53.86201, -1.2896322, -169.82231)
+
+[node name="Bumper5" parent="." unique_id=467973939 instance=ExtResource("6_f5cs5")]
+transform = Transform3D(0.99431187, -0.10650706, -2.1855694e-08, -2.5763221e-08, -3.5312066e-08, -1, 0.10650706, 0.99431187, -3.7855173e-08, 33.52119, -1.2680967, -173.28233)

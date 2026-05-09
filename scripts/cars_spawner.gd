@@ -22,7 +22,7 @@ var car_types = {
 	2: "res://scenes/car_2.tscn"
 }
 
-func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_base: int = 2600) -> Array[Car]:
+func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_base: int) -> Array[Car]:
 	var spawned_cars: Array[Car] = []
 	
 	# Pre-load scenes for better performance on mobile

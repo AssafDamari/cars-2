@@ -1,14 +1,8 @@
 [gd_scene format=3 uid="uid://i3mut64ucg30"]
 
-[ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="2_1q54l"]
-
 [sub_resource type="PrismMesh" id="PrismMesh_7ct4w"]
 left_to_right = 1.0
 size = Vector3(2, 0.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yibb0"]
-albedo_texture = ExtResource("2_1q54l")
-uv1_triplanar = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_im2sa"]
 points = PackedVector3Array(-1, -0.25, -0.5, -1, -0.25, 0.5, 1, 0.25, -0.5, 1, -0.25, -0.5, 1, -0.25, 0.5, 1, 0.25, 0.5)
@@ -19,10 +13,6 @@ points = PackedVector3Array(-1, -0.25, -0.5, -1, -0.25, 0.5, 1, 0.25, -0.5, 1, -
 [sub_resource type="BoxMesh" id="BoxMesh_im2sa"]
 size = Vector3(2, 0.1, 0.935)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1q54l"]
-albedo_texture = ExtResource("2_1q54l")
-uv1_triplanar = true
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_yibb0"]
 size = Vector3(2, 0.10117187, 1)
 
@@ -31,7 +21,6 @@ size = Vector3(2, 0.10117187, 1)
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1638152258]
 transform = Transform3D(-1, 2.479381e-10, -8.742278e-08, 2.4794572e-10, 1, -8.742207e-08, 8.742278e-08, -8.742207e-08, -1, 1.9866328, 0.26335776, 0)
 mesh = SubResource("PrismMesh_7ct4w")
-surface_material_override/0 = SubResource("StandardMaterial3D_yibb0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1151651890]
 transform = Transform3D(-1, 2.479381e-10, -8.742278e-08, 2.4794572e-10, 1, -8.742207e-08, 8.742278e-08, -8.742207e-08, -1, 1.9866328, 0.26335776, 0)
@@ -40,7 +29,6 @@ shape = SubResource("ConvexPolygonShape3D_im2sa")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1697360403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.004269, 0.26335776, 0)
 mesh = SubResource("PrismMesh_7ct4w")
-surface_material_override/0 = SubResource("StandardMaterial3D_yibb0")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=894695615]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.004269, 0.26335776, 0)
@@ -49,7 +37,6 @@ shape = SubResource("ConvexPolygonShape3D_1q54l")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1114935664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4604501, 0)
 mesh = SubResource("BoxMesh_im2sa")
-surface_material_override/0 = SubResource("StandardMaterial3D_1q54l")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=233085137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45921314, 0)

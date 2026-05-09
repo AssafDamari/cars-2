@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://di47udnmytubo"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_4ngia"]
+left_to_right = 1.0
+size = Vector3(2, 0.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f5cs5"]
+points = PackedVector3Array(-1, -0.25, -0.5, -1, -0.25, 0.5, 1, 0.25, -0.5, 1, -0.25, -0.5, 1, -0.25, 0.5, 1, 0.25, 0.5)
+
+[node name="Ramp" type="StaticBody3D" unique_id=77877622 groups=["TRACK"]]
+transform = Transform3D(-19.998337, 1.4665193e-07, -0.25795436, 1.464824e-07, 19.999998, 1.40891805e-08, 0.25795436, 1.2198719e-08, -19.998337, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1805171406]
+mesh = SubResource("PrismMesh_4ngia")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=370177955]
+shape = SubResource("ConvexPolygonShape3D_f5cs5")
