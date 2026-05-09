@@ -3,9 +3,9 @@ extends Node
 # parameters used by different scenes globally
 var scene_parameters: Dictionary = {}
 
-func load_drift_race(params: Dictionary):
+func load_race(params: Dictionary):
 	scene_parameters = params
-	get_tree().change_scene_to_file("res://scenes/drift_race_main.tscn")
+	get_tree().change_scene_to_file("res://scenes/race.tscn")
 
 func load_cargo_loading(params: Dictionary):
 	scene_parameters = params
