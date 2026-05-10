@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="1_n0wxp"]
 [ext_resource type="Script" uid="uid://bjfabcqelapj5" path="res://scripts/track.gd" id="1_rfo33"]
-[ext_resource type="Texture2D" uid="uid://dhabl3c1wiyfd" path="res://textures/checker.jpg" id="2_rfo33"]
 [ext_resource type="PackedScene" uid="uid://yxpgkjob2dd1" path="res://scenes/tree_pine.tscn" id="3_5lbf2"]
 [ext_resource type="PackedScene" uid="uid://ed1v6a4oftai" path="res://scenes/fence_1.tscn" id="4_nlwo2"]
 [ext_resource type="PackedScene" uid="uid://cybsilsq56cbl" path="res://scenes/rock_1.tscn" id="5_0jqwv"]
@@ -45,14 +44,6 @@ metallic_specular = 0.0
 uv1_scale = Vector3(8, 8, 8)
 texture_filter = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b42pj"]
-albedo_texture = ExtResource("2_rfo33")
-uv1_scale = Vector3(0.2, 0.2, 0.2)
-uv1_triplanar = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_8y83r"]
-size = Vector2(5, 20)
-
 [node name="Track1" type="Node3D" unique_id=559056600 groups=["TRACK"]]
 script = ExtResource("1_rfo33")
 
@@ -84,11 +75,6 @@ path_continuous_u = true
 path_u_distance = 1.0
 path_joined = true
 material = SubResource("StandardMaterial3D_udrkq")
-
-[node name="FinishLine" type="MeshInstance3D" parent="." unique_id=651061646]
-transform = Transform3D(0.99985534, -6.409382e-09, 0.017016133, 6.4191212e-09, 0.9999999, -5.177685e-10, -0.01701612, 6.2691896e-10, 0.9998553, -18.413025, 0.16000013, -129.82382)
-material_override = SubResource("StandardMaterial3D_b42pj")
-mesh = SubResource("PlaneMesh_8y83r")
 
 [node name="StartPosition" type="Marker3D" parent="." unique_id=23874234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.14999998, -130)

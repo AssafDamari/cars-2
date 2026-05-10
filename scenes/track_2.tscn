@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bjfabcqelapj5" path="res://scripts/track.gd" id="1_4mu13"]
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="2_5hw7b"]
-[ext_resource type="Texture2D" uid="uid://dhabl3c1wiyfd" path="res://textures/checker.jpg" id="3_banxg"]
 [ext_resource type="PackedScene" uid="uid://i3mut64ucg30" path="res://scenes/bridge.tscn" id="4_4ngia"]
 [ext_resource type="PackedScene" uid="uid://di47udnmytubo" path="res://scenes/ramp.tscn" id="5_d3gf4"]
 [ext_resource type="PackedScene" uid="uid://c5v3io1f32kel" path="res://scenes/bumper.tscn" id="6_f5cs5"]
@@ -13,10 +12,12 @@
 size = Vector2(400, 400)
 
 [sub_resource type="Gradient" id="Gradient_b42pj"]
-colors = PackedColorArray(0, 0.61977875, 0.36611006, 1, 1.6605109e-06, 0.5650277, 0.26212087, 1)
+offsets = PackedFloat32Array(0.2003546, 1)
+colors = PackedColorArray(1, 0.7019608, 0, 1, 0.9882353, 0.61960787, 0.08627451, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k0c37"]
-frequency = 0.081
+seed = 1
+frequency = 0.0919
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7hxj"]
 width = 128
@@ -32,7 +33,7 @@ metallic_specular = 0.0
 [sub_resource type="Curve3D" id="Curve3D_uvx6w"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 26.383656, 0.23554611, -39.667526, -13.083893, 0, 43.07321, 13.083893, 0, -43.07321, 144.143, 0, -123.414444, 22.300001, 0, -2.2, -22.300001, 0, 2.2, -10.0444145, 0, -176.11371, 11.8, 0, -15.6, -11.8, 0, 15.6, -93.301636, 0, -123.94623, -8.6, 0, -15.5, 8.6, 0, 15.5, -89.61302, 0, -39.108173, 0, 0, 0, 0, 0, 0, 121.39702, 0, 65.62044, 30, 0, -41.5, -30, 0, 41.5, 150.16054, 0, 138.95686, 41, 0, -0.4, -41, 0, 0.4, -12.160698, 0, 176.88829, 23.7, 0, 12.400001, -23.7, 0, -12.400001, -126.36829, 0, 151.00778, -2.5, 0, 14.1, 2.5, 0, -14.1, -150.28395, 0, 99.18176, 0, 0, 0, 0, 0, 0, -69.578415, 0, 36.235344, 0, 0, 0, 0, 0, 0, -37.31626, 10.139726, 10.352032, 0, 0, 0, 0, 0, 0, -5.458707, 10.360985, -14.988724),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 26.383656, 0.23554611, -39.667526, -13.083893, 0, 43.07321, 13.083893, 0, -43.07321, 144.143, 0, -123.414444, 22.300001, 0, -2.2, -22.300001, 0, 2.2, -10.0444145, 0, -176.11371, 11.8, 0, -15.6, -11.8, 0, 15.6, -93.301636, 0, -123.94623, -8.6, 0, -15.5, 8.6, 0, 15.5, -89.61302, 0, -39.108173, 0, 0, 0, 0, 0, 0, 121.39702, 0, 65.62044, 30, 0, -41.5, -30, 0, 41.5, 150.16054, 0, 138.95686, 41, 0, -0.4, -41, 0, 0.4, -12.160698, 0, 176.88829, 23.7, 0, 12.400001, -23.7, 0, -12.400001, -126.36829, 0, 151.00778, -2.5, 0, 14.1, 2.5, 0, -14.1, -150.28395, 0, 99.18176, 0, 0, 0, 0, 0, 0, -70.186554, 0.001171027, 34.5232, 0, 0, 0, 0, 0, 0, -37.31626, 10.244899, 10.352032, 0, 0, 0, 0, 0, 0, -5.458707, 10.360985, -14.988724),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 13
@@ -42,14 +43,6 @@ albedo_texture = ExtResource("2_5hw7b")
 metallic_specular = 0.0
 uv1_scale = Vector3(8, 8, 8)
 texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b42pj"]
-albedo_texture = ExtResource("3_banxg")
-uv1_scale = Vector3(0.2, 0.2, 0.2)
-uv1_triplanar = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_8y83r"]
-size = Vector2(5, 20)
 
 [node name="Track2" type="Node3D" unique_id=559056600 groups=["TRACK"]]
 script = ExtResource("1_4mu13")
@@ -83,13 +76,8 @@ path_u_distance = 1.0
 path_joined = true
 material = SubResource("StandardMaterial3D_udrkq")
 
-[node name="FinishLine" type="MeshInstance3D" parent="." unique_id=651061646]
-transform = Transform3D(0.87924147, -6.4072783e-09, -0.42873865, 5.324825e-09, 0.9999999, -3.2598706e-09, 0.47637635, 6.480578e-10, 0.79131716, -56.049603, 0.5510917, -18.251152)
-material_override = SubResource("StandardMaterial3D_b42pj")
-mesh = SubResource("PlaneMesh_8y83r")
-
 [node name="StartPosition" type="Marker3D" parent="." unique_id=1572386782]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, -18)
+transform = Transform3D(0.88280827, 0, -0.46973354, 0, 1, 0, 0.46973354, 0, 0.88280827, -51.023815, 0, -18)
 
 [node name="Bridge" parent="." unique_id=276212995 instance=ExtResource("4_4ngia")]
 transform = Transform3D(15.79154, 0, 12.27303, 0, 20, 0, -12.27303, 0, 15.79154, -20.889498, 0, -2.368978)

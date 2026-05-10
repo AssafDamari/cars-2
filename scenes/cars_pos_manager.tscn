@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dnc8o3lmkmvr2"]
+
+[ext_resource type="Script" uid="uid://rtscysm73dlk" path="res://scripts/cars_pos_manager.gd" id="1_63d7n"]
+
+[node name="CarsPosManager" type="Node3D" unique_id=13164005]
+script = ExtResource("1_63d7n")
