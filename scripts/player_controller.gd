@@ -11,7 +11,9 @@ extends Node3D
 @onready var debug_lable: Label = $"Player controllsUI/DebugLable"
 @onready var gear_slider: GearSlider = $"Player controllsUI/GearSlider"
 
-
+func _ready() -> void:
+	GlobalSignals.show_debug_text.connect(show_debug_lable)
+	
 func _physics_process(delta: float) -> void:
 	var joystick_input := joystick.get_value()
 		
@@ -74,3 +76,6 @@ func _on_button_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	GlobalSceneManager.load_menu()
+
+func show_debug_lable(debug_text)->void:
+	debug_lable.text = debug_text

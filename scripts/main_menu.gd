@@ -11,7 +11,7 @@ func _on_drift_button_pressed() -> void:
 		"number_of_cars": 10,
 		"car_type": 2,
 		"engine_force_base": 2600,
-		"number_of_laps" : 3
+		"number_of_laps" : 1
 	})
 
 

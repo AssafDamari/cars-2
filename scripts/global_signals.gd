@@ -6,3 +6,7 @@ signal cars_setup_done
 
 @warning_ignore("unused_signal")
 signal track_setup_done
+
+
+@warning_ignore("unused_signal")
+signal show_debug_text(debug_text: String)

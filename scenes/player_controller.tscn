@@ -27,8 +27,7 @@ func _process(_delta: float) -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_ba4vk"]
-font_size = 70
-font_color = Color(1.1070073e-06, 0.77062076, 0.21262565, 1)
+font_size = 40
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 

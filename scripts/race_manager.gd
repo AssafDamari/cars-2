@@ -29,10 +29,12 @@ func setup_cars() -> void:
 	var car_type = GlobalSceneManager.scene_parameters.get("car_type", 2)
 	var engine_force_base = GlobalSceneManager.scene_parameters.get("engine_force_base", 2)
 	var _cars = cars_spawner.spawn_cars(num_cars, car_type, track, engine_force_base)
+	cars_pos_manager.set_number_of_laps(number_of_laps)
+	cars_pos_manager.set_track_path(track.get_path_3d())
 	cars_pos_manager.load_cars(_cars)
 	GlobalSignals.cars_setup_done.emit()
 
 
 func _on_finish_body_entered(body: Node3D) -> void:
 	if body.is_in_group("CAR"):
-		print(body.name)
+		cars_pos_manager.car_crossed_finish(body as Car)
