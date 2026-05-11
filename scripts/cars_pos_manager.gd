@@ -19,6 +19,9 @@ var cars: Array[Car] = []
 # Track path reference for distance-based sorting
 var track_path: Path3D
 
+var ResultsPanel = preload("res://scripts/race_results_panel.gd")
+var results_panel: Node = null
+
 signal car_finished(car: Car, position: int, finish_time: float)
 signal player_finished(position: int, finish_time: float, results: Array)
 signal race_complete()
@@ -70,10 +73,19 @@ func car_crossed_finish(car: Car) -> void:
 		car_finished.emit(car, data["position"], data["finish_time"])
 		print("[Race] %s finished in P%d — Time: %.2fs" % [car.name, data["position"], data["finish_time"]])
 
+		# Update floating results panel (if visible)
+		if results_panel:
+			results_panel.update_results(get_results())
+
 		# If the player finished, print results and emit signal
 		if car.is_in_group("PLAYER"):
-			_print_race_results()
-			player_finished.emit(data["position"], data["finish_time"], get_results())
+				# Show a floating results panel when the player finishes
+				if not results_panel:
+					results_panel = ResultsPanel.new()
+					get_tree().get_root().add_child(results_panel)
+				results_panel.update_results(get_results())
+				results_panel.show()
+				player_finished.emit(data["position"], data["finish_time"], get_results())
 
 		# Check if all cars are done
 		if finished_cars.size() == cars.size():
