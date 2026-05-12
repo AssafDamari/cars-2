@@ -84,7 +84,7 @@ func car_crossed_finish(car: Car) -> void:
 					results_panel = ResultsPanel.new()
 					get_tree().get_root().add_child(results_panel)
 				results_panel.update_results(get_results())
-				results_panel.show()
+				results_panel.display()
 				player_finished.emit(data["position"], data["finish_time"], get_results())
 
 		# Check if all cars are done
@@ -203,22 +203,3 @@ func _get_path_offset(car: Car) -> float:
 		return 0.0
 	var local_pos = track_path.global_transform.affine_inverse() * car.global_position
 	return track_path.curve.get_closest_offset(local_pos)
-
-
-## Prints a formatted leaderboard to the console and shows it in the debug label.
-func _print_race_results() -> void:
-	var results = get_results()
-	var text := "=== RACE RESULTS ===\n"
-	for entry in results:
-		var time_str: String
-		if entry["finished"]:
-			time_str = "%.2fs" % entry["finish_time"]
-		else:
-			time_str = "DNF"
-		var player_marker = "  ★" if entry["is_player"] else ""
-		var line = "P%d  %s  —  %s%s" % [entry["position"], entry["name"], time_str, player_marker]
-		text += line + "\n"
-		print(line)
-	text += "===================="
-	print("====================")
-	GlobalSignals.show_debug_text.emit(text)
