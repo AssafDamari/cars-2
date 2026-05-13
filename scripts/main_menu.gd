@@ -18,7 +18,7 @@ func _on_drift_button_pressed() -> void:
 func _on_drift_button_2_pressed() -> void:
 	GlobalSceneManager.load_race({
 		"track_number": 2,
-		"number_of_cars": 20,
+		"number_of_cars": 10,
 		"car_type": 2,
 		"engine_force_base": 2800,
 		"number_of_laps" : 2

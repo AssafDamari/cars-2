@@ -203,3 +203,9 @@ func _get_path_offset(car: Car) -> float:
 		return 0.0
 	var local_pos = track_path.global_transform.affine_inverse() * car.global_position
 	return track_path.curve.get_closest_offset(local_pos)
+
+
+func _exit_tree() -> void:
+	# Clean up the results panel when the race scene exits (e.g., when reloading or going to menu)
+	if results_panel and is_instance_valid(results_panel):
+		results_panel.queue_free()
