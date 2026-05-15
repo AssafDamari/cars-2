@@ -19,7 +19,8 @@ var colors: Array[Color] = [
 	
 var car_types = {
 	1: "res://scenes/car_1.tscn",
-	2: "res://scenes/car_2.tscn"
+	2: "res://scenes/car_2.tscn",
+	3: "res://scenes/car_3.tscn"
 }
 
 func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_base: int) -> Array[Car]:

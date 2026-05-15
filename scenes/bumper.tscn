@@ -12,11 +12,12 @@ height = 20.0
 radius = 2.0
 
 [node name="Bumper" type="StaticBody3D" unique_id=1677048967]
-transform = Transform3D(0.8660254, 0.5, 0, 2.1855694e-08, -3.7855173e-08, -1, -0.5, 0.8660254, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=197188712]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3907866, 6.079321e-08, 0)
 mesh = SubResource("CylinderMesh_d3gf4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=80159919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3907866, 6.079321e-08, 0)
 shape = SubResource("CylinderShape3D_f5cs5")

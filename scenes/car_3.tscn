@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://bhwd3pvi8i17a"]
+
+[ext_resource type="Script" uid="uid://djlvejcullers" path="res://scripts/car_1.gd" id="1_ifb1p"]
+[ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_s3xki"]
+[ext_resource type="PackedScene" uid="uid://cx68xx14v7n55" path="res://scenes/car_3_body_model.tscn" id="3_ifb1p"]
+[ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="4_x1m1d"]
+[ext_resource type="PackedScene" uid="uid://b3af4b0v1gfj5" path="res://scenes/wheel_1_model.tscn" id="5_s3xki"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ilqg0"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
+size = Vector3(1.7543213, 0.8016418, 3.3103027)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s3xki"]
+radius = 0.685
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2fa2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j6vf"]
+shading_mode = 0
+albedo_color = Color(0.92514765, 0, 0.22996902, 1)
+
+[node name="Car3" type="VehicleBody3D" unique_id=1835131583 groups=["CAR"]]
+mass = 1200.0
+physics_material_override = SubResource("PhysicsMaterial_ilqg0")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.2, -0.2)
+script = ExtResource("1_ifb1p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01639402, 0.58901393, 0.009765625)
+shape = SubResource("BoxShape3D_3e54y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1974930294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8892752, 0)
+shape = SubResource("SphereShape3D_s3xki")
+
+[node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8702913, 0.2, -1.1143914)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.4
+wheel_friction_slip = 5.0
+suspension_stiffness = 40.0
+
+[node name="Wheel" parent="VehicleWheel3DFrontLeft" unique_id=1097093256 instance=ExtResource("2_s3xki")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="VehicleWheel3DFrontRight" type="VehicleWheel3D" parent="." unique_id=2038555314]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.87, 0.2, -1.1143914)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.4
+wheel_friction_slip = 5.0
+suspension_stiffness = 40.0
+
+[node name="Wheel2" parent="VehicleWheel3DFrontRight" unique_id=1045903003 instance=ExtResource("2_s3xki")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="VehicleWheel3DBackRight" type="VehicleWheel3D" parent="." unique_id=2036089284]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.87, 0.2, 1.059829)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.4
+wheel_friction_slip = 5.0
+suspension_stiffness = 40.0
+
+[node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=862881802 instance=ExtResource("2_s3xki")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="VehicleWheel3DBackLeft" type="VehicleWheel3D" parent="." unique_id=389764362]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8702913, 0.2, 1.059829)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.4
+wheel_friction_slip = 5.0
+suspension_stiffness = 40.0
+
+[node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("2_s3xki")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="Body" type="Node3D" parent="." unique_id=712893536]
+
+[node name="car_3_body_model" parent="Body" unique_id=566866078 instance=ExtResource("3_ifb1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65756464, 0)
+
+[node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8364627, 0.04532242)
+size = Vector3(2, 1.4159671, 3.2933817)
+texture_albedo = ExtResource("4_x1m1d")
+cull_mask = 1047554
+
+[node name="wheel1_model" parent="Body" unique_id=1460260939 instance=ExtResource("5_s3xki")]
+transform = Transform3D(0.43, 0, 0, 0, 0.42883366, 0.031649604, 0, -0.031649604, 0.42883366, 0, 0.87296146, 1.6021411)
+
+[node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14307296, -0.46179438)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="brake_indicator" unique_id=1819731316]
+transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, -0.6411028, 0.55153656, 2.123429)
+mesh = SubResource("BoxMesh_u2fa2")
+surface_material_override/0 = SubResource("StandardMaterial3D_8j6vf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="brake_indicator" unique_id=1867515743]
+transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, 0.6475258, 0.55153656, 2.123429)
+mesh = SubResource("BoxMesh_u2fa2")
+surface_material_override/0 = SubResource("StandardMaterial3D_8j6vf")
