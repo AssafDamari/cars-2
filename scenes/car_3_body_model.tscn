@@ -5,8 +5,9 @@
 
 [node name="car_3_body_model" unique_id=552403952 instance=ExtResource("1_a6ouw")]
 
-[node name="Cube" parent="." index="0" unique_id=2104075760]
+[node name="Cube" parent="." index="0" unique_id=708002846]
+layers = 2
 surface_material_override/0 = ExtResource("2_iynic")
 
-[node name="Cube_001" parent="." index="1" unique_id=205425196]
+[node name="Cube_001" parent="." index="1" unique_id=1096778755]
 surface_material_override/0 = ExtResource("2_iynic")

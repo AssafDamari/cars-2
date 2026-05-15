@@ -9,7 +9,7 @@
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_e8ne1"]
-size = Vector2(400, 400)
+size = Vector2(500, 500)
 
 [sub_resource type="Gradient" id="Gradient_b42pj"]
 colors = PackedColorArray(1, 0.73995394, 0.35585767, 1, 0.9999998, 0.7943865, 0.56632215, 1)
@@ -76,28 +76,37 @@ path_joined = true
 material = SubResource("StandardMaterial3D_udrkq")
 
 [node name="StartPosition" type="Marker3D" parent="." unique_id=1572386782]
-transform = Transform3D(0.88280827, 0, -0.46973354, 0, 1, 0, 0.46973354, 0, 0.88280827, -51.023815, 0, -18)
+transform = Transform3D(0.88280827, 0, -0.46973354, 0, 1, 0, 0.46973354, 0, 0.88280827, 40.788242, 0, 30.852287)
 
 [node name="Bridge" parent="." unique_id=276212995 instance=ExtResource("4_4ngia")]
 transform = Transform3D(15.79154, 0, 12.27303, 0, 20, 0, -12.27303, 0, 15.79154, -20.889498, 0, -2.368978)
 
 [node name="Ramp" parent="." unique_id=77877622 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(-19.998337, 1.4665193e-07, -0.25795522, 1.464824e-07, 19.999998, 1.4089182e-08, 0.25795522, 1.2198713e-08, -19.998337, 21.517174, 1.668014, 176.30588)
+transform = Transform3D(-19.998337, 1.4665193e-07, -0.25795522, 1.464824e-07, 19.999998, 1.4089182e-08, 0.25795522, 1.2198713e-08, -19.998337, 81.512184, -0.33198628, 175.53201)
+
+[node name="Ramp2" parent="." unique_id=1962999864 instance=ExtResource("5_d3gf4")]
+transform = Transform3D(-19.998337, 1.4665193e-07, -0.25795522, 1.464824e-07, 19.999998, 1.4089182e-08, 0.25795522, 1.2198713e-08, -19.998337, -18.4795, -0.33198553, 176.82178)
 
 [node name="Bumper" parent="." unique_id=1677048967 instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, -0.80607295, -0.5918162, 1, -3.5234564e-08, -2.586911e-08, 0, -0.5918162, 0.80607295, 135.37033, 5.917225e-06, -107.99391)
 
 [node name="Bumper2" parent="." unique_id=2120950828 instance=ExtResource("6_f5cs5")]
-transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 97.08193, 4.2435854e-06, -168.02786)
+transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 28.496773, 1.2456329e-06, -175.58278)
+
+[node name="Bumper7" parent="." unique_id=2134974139 instance=ExtResource("6_f5cs5")]
+transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 17.562908, 7.6769845e-07, -176.78719)
+
+[node name="Bumper8" parent="." unique_id=1354800762 instance=ExtResource("6_f5cs5")]
+transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 5.6350546, 2.4631538e-07, -178.10109)
 
 [node name="Bumper3" parent="." unique_id=1300089648 instance=ExtResource("6_f5cs5")]
-transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 76.20819, 3.331165e-06, -170.32718)
+transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 68.25629, 2.9835765e-06, -171.20311)
 
 [node name="Bumper4" parent="." unique_id=299028741 instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 59.3104, 2.5925392e-06, -172.18854)
 
 [node name="Bumper5" parent="." unique_id=1589173075 instance=ExtResource("6_f5cs5")]
-transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 43.406593, 1.8973618e-06, -173.9404)
+transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 49.37052, 2.1580533e-06, -173.28345)
 
 [node name="Bumper6" parent="." unique_id=105678192 instance=ExtResource("6_f5cs5")]
-transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 23.526836, 1.0283901e-06, -176.13023)
+transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 38.436653, 1.6801189e-06, -174.48787)

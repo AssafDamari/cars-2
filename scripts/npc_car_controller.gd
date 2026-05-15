@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var debug_mode: bool = false
+
 @export_group("Path Following")
 ## The Path3D node the NPC will follow.
 ## Effect: Provides the spatial track data that guides the car's general route.
@@ -120,7 +122,7 @@ func _physics_process(delta: float) -> void:
 	var target_point_global = path_transform * offset_pos
 	
 	# Update debug marker position so you can visually track where the car wants to go
-	if marker:
+	if debug_mode:
 		marker.global_position = target_point_global
 
 	# 4. Obstacle Avoidance Decision
