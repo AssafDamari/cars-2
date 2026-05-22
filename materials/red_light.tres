@@ -2,4 +2,4 @@
 
 [resource]
 shading_mode = 0
-albedo_color = Color(0.92514765, 0, 0.22996902, 1)
+albedo_color = Color(0.9882353, 0, 0.20784314, 1)

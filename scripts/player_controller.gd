@@ -39,11 +39,10 @@ func _physics_process(delta: float) -> void:
 
 	
 func _apply_dynamic_drift(steer_input: float, delta: float) -> void:
-	var speed = vehicle.linear_velocity.length()
 	var steer_intensity = abs(steer_input)
 	var target_friction = base_friction
 	
-	if steer_intensity > 0.6 and speed > 5.0:
+	if steer_intensity > 0.6 and vehicle.current_speed > 5.0:
 		target_friction = drift_friction
 	else:
 		target_friction = base_friction
