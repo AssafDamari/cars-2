@@ -16,8 +16,8 @@ seamless = true
 sky_top_color = Color(0.5172591, 0.67082286, 1, 1)
 sky_horizon_color = Color(0.5396571, 0.6681167, 0.8119204, 1)
 sky_cover = SubResource("NoiseTexture2D_un4dl")
-ground_bottom_color = Color(0, 0.27385265, 0.21385846, 1)
-ground_horizon_color = Color(0.50950164, 0.7061123, 0.61549443, 1)
+ground_bottom_color = Color(0.006673473, 0.2879764, 0.42735645, 1)
+ground_horizon_color = Color(0.39510745, 0.7049015, 0.8025111, 1)
 ground_curve = 0.050982494
 sun_angle_max = 15.0
 

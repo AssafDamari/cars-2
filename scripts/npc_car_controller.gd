@@ -99,7 +99,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# 1. Calculate Look-Ahead (further ahead = smoother lines at speed)
-	var look_ahead = min(max_look_ahead, min_look_ahead + vehicle.linear_velocity.length() * speed_factor)
+	var look_ahead = min(max_look_ahead, min_look_ahead + vehicle.current_speed * speed_factor)
 
 	# 2. Get Path Coordinates (finds where the car currently maps onto the 3D curve)
 	var path_transform = path_node.global_transform

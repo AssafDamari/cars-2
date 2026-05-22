@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ctgqaagfieav1" path="res://textures/roadTexture_72.png" id="1_n0wxp"]
 [ext_resource type="Script" uid="uid://bjfabcqelapj5" path="res://scripts/track.gd" id="1_rfo33"]
+[ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="2_nlwo2"]
 [ext_resource type="PackedScene" uid="uid://yxpgkjob2dd1" path="res://scenes/tree_pine.tscn" id="3_5lbf2"]
 [ext_resource type="PackedScene" uid="uid://ed1v6a4oftai" path="res://scenes/fence_1.tscn" id="4_nlwo2"]
 [ext_resource type="PackedScene" uid="uid://cybsilsq56cbl" path="res://scenes/rock_1.tscn" id="5_0jqwv"]
@@ -46,6 +47,8 @@ texture_filter = 0
 
 [node name="Track1" type="Node3D" unique_id=559056600 groups=["TRACK"]]
 script = ExtResource("1_rfo33")
+
+[node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("2_nlwo2")]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1815963593]
 

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://limuefm350ho"]
 
 [ext_resource type="Script" uid="uid://bt2idbrbr2pq8" path="res://scripts/race_manager.gd" id="1_w5r77"]
-[ext_resource type="PackedScene" uid="uid://bvqvwfrwak26k" path="res://scenes/enviroment.tscn" id="2_ctjv4"]
 [ext_resource type="PackedScene" uid="uid://4r8d6pnwkm0d" path="res://scenes/minimap.tscn" id="3_6epbv"]
 [ext_resource type="PackedScene" uid="uid://0vx4obmnl82c" path="res://scenes/track_spawner.tscn" id="4_3kd5h"]
 [ext_resource type="PackedScene" uid="uid://4y4bm6jsr25g" path="res://scenes/cars_spawner.tscn" id="5_l0hv7"]
@@ -22,9 +21,6 @@ size = Vector3(4, 0.5, 19.655)
 
 [node name="Race" type="Node3D" unique_id=10070383]
 script = ExtResource("1_w5r77")
-
-[node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("2_ctjv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
 
 [node name="Minimap" parent="." unique_id=1768555498 instance=ExtResource("3_6epbv")]
 offset_left = -440.0

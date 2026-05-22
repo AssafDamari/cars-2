@@ -12,17 +12,18 @@ extends VehicleBody3D
 @onready var wheel_back_right: VehicleWheel3D = $VehicleWheel3DBackRight
 @onready var wheel_back_left: VehicleWheel3D = $VehicleWheel3DBackLeft
 var engine_force_to_apply: float = 0
-
 # Internal state
 var engine_force_modifier: float = 1.0
+# current speed
+var current_speed: float = 0
 
 func _ready() -> void:
 	apply_color_to_mesh(color)
 
 
 func _physics_process(_delta: float) -> void:
-	var speed_sq = linear_velocity.length_squared()
-	if speed_sq < max_speed * max_speed:
+	current_speed = linear_velocity.length()
+	if current_speed < max_speed:
 		engine_force = engine_force_to_apply * engine_force_modifier
 	else:
 		engine_force = 0.0
