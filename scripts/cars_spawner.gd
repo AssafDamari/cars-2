@@ -1,9 +1,6 @@
 class_name CarsSpawner
 extends Node3D
 
-var npc_car_controller = "res://scenes/npc_car_controller.tscn"
-var skid_marks_3d = "res://scenes/skid_marks_3d.tscn"
-var offroad_modifier = "res://scenes/offroad_modifier.tscn"
 var distance_between_cars: float = 10.0
 
 var colors: Array[Color] = [
@@ -29,10 +26,10 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 	# Pre-load scenes for better performance on mobile
 	var car_scene_path = car_types.get(car_type, car_types[1])
 	var car_scene: PackedScene = load(car_scene_path)
-	var npc_ctrl_scene: PackedScene = load(npc_car_controller)
+	var npc_ctrl_scene: PackedScene = load("res://scenes/npc_car_controller.tscn")
 	var player_ctrl_scene: PackedScene = load("res://scenes/player_controller.tscn")
-	var skid_marks_scene: PackedScene = load(skid_marks_3d)
-	var offroad_mod_scene: PackedScene = load(offroad_modifier)
+	var skid_marks_scene: PackedScene = load("res://scenes/skid_marks_3d.tscn")
+	var offroad_mod_scene: PackedScene = load("res://scenes/offroad_modifier.tscn")
 	var camera_scene: PackedScene = load("res://scenes/camera_3d_follow.tscn")
 	
 	for i in range(number_of_cars):

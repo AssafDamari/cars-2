@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dnc8o3lmkmvr2" path="res://scenes/cars_pos_manager.tscn" id="7_6epbv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ctjv4"]
-size = Vector3(4, 20, 20)
+size = Vector3(4, 10.041016, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6epbv"]
 albedo_texture = ExtResource("6_ctjv4")
@@ -17,7 +17,7 @@ uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_3kd5h"]
 material = SubResource("StandardMaterial3D_6epbv")
-size = Vector3(4, 0.5, 19.655)
+size = Vector3(4, 0.5, 30)
 
 [node name="Race" type="Node3D" unique_id=10070383]
 script = ExtResource("1_w5r77")
@@ -35,9 +35,11 @@ offset_bottom = 440.0
 [node name="Finish" type="Area3D" parent="." unique_id=856769528]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Finish" unique_id=1074815595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.979492, 0)
 shape = SubResource("BoxShape3D_ctjv4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Finish" unique_id=1377906304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 mesh = SubResource("BoxMesh_3kd5h")
 
 [node name="CarsPosManager" parent="." unique_id=13164005 instance=ExtResource("7_6epbv")]

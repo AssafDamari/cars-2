@@ -11,11 +11,11 @@
 friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
-size = Vector3(1.8733947, 0.5675803, 3.1660156)
+size = Vector3(1.751796, 0.5488775, 3.1660156)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3xki"]
-radius = 0.5317383
-height = 2.5067744
+radius = 0.58496094
+height = 3.101677
 
 [sub_resource type="BoxMesh" id="BoxMesh_u2fa2"]
 
@@ -23,15 +23,16 @@ height = 2.5067744
 mass = 1200.0
 physics_material_override = SubResource("PhysicsMaterial_ilqg0")
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.2, -0.2)
+center_of_mass = Vector3(0, -0.1, 0)
 script = ExtResource("1_ifb1p")
+max_speed = 50.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040130615, 0.5232017, -0.024536133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012794733, 0.50027716, -0.024536133)
 shape = SubResource("BoxShape3D_3e54y")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1974930294]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.8892752, 0.004007578)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.8892752, -0.0031142235)
 shape = SubResource("CapsuleShape3D_s3xki")
 
 [node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
@@ -40,7 +41,7 @@ use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.39
-wheel_friction_slip = 5.0
+wheel_friction_slip = 3.0
 suspension_stiffness = 50.0
 
 [node name="Wheel" parent="VehicleWheel3DFrontLeft" unique_id=1097093256 instance=ExtResource("2_s3xki")]
@@ -52,7 +53,7 @@ use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.39
-wheel_friction_slip = 5.0
+wheel_friction_slip = 3.0
 suspension_stiffness = 50.0
 
 [node name="Wheel2" parent="VehicleWheel3DFrontRight" unique_id=1045903003 instance=ExtResource("2_s3xki")]
@@ -63,7 +64,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.87
 use_as_traction = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.39
-wheel_friction_slip = 5.0
+wheel_friction_slip = 3.0
 suspension_stiffness = 50.0
 
 [node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=862881802 instance=ExtResource("2_s3xki")]
@@ -74,7 +75,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8
 use_as_traction = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.39
-wheel_friction_slip = 5.0
+wheel_friction_slip = 3.0
 suspension_stiffness = 50.0
 
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("2_s3xki")]
@@ -86,8 +87,8 @@ transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65756464, 0)
 
 [node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8364627, 0.04532242)
-size = Vector3(2, 1.4159671, 3.2933817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85136735, 0.04532242)
+size = Vector3(2, 1.4457765, 3.2933817)
 texture_albedo = ExtResource("4_x1m1d")
 cull_mask = 1047554
 

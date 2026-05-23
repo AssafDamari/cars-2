@@ -59,7 +59,7 @@ curve = SubResource("Curve3D_uvx6w")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1179472955 groups=["TRACK"]]
 use_collision = true
-polygon = PackedVector2Array(-12, -0.2, -10, 0.2, 10, 0.1, 12, -0.2)
+polygon = PackedVector2Array(-18, -0.5, -13, 0.2, 13, 0.1, 18, -0.5)
 mode = 2
 path_node = NodePath("../Path3D")
 path_interval_type = 0
@@ -85,20 +85,20 @@ transform = Transform3D(-19.998337, 1.4665193e-07, -0.25795522, 1.464824e-07, 19
 [node name="Ramp3" parent="." unique_id=299851745 instance=ExtResource("5_d3gf4")]
 transform = Transform3D(19.998337, 1.4665193e-07, 0.25795698, -1.4648242e-07, 19.999998, -1.4089195e-08, -0.25795698, 1.2198711e-08, 19.998337, -14.47983, -0.33198556, 174.53578)
 
-[node name="Bumper2" parent="." unique_id=2120950828 instance=ExtResource("6_f5cs5")]
+[node name="Bumper2" parent="." unique_id=2120950828 groups=["TRACK"] instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 28.335003, -0.275, -175.65285)
 
-[node name="Bumper7" parent="." unique_id=2134974139 instance=ExtResource("6_f5cs5")]
+[node name="Bumper7" parent="." unique_id=2134974139 groups=["TRACK"] instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 43.419174, -0.275, -173.9308)
 
-[node name="Bumper3" parent="." unique_id=1300089648 instance=ExtResource("6_f5cs5")]
+[node name="Bumper3" parent="." unique_id=1300089648 groups=["TRACK"] instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 68.09451, -0.275, -171.27318)
 
-[node name="Bumper4" parent="." unique_id=299028741 instance=ExtResource("6_f5cs5")]
+[node name="Bumper4" parent="." unique_id=299028741 groups=["TRACK"] instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 59.14863, -0.275, -172.25859)
 
-[node name="Bumper5" parent="." unique_id=1589173075 instance=ExtResource("6_f5cs5")]
+[node name="Bumper5" parent="." unique_id=1589173075 groups=["TRACK"] instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 49.20875, -0.275, -173.3535)
 
-[node name="Bumper6" parent="." unique_id=105678192 instance=ExtResource("6_f5cs5")]
+[node name="Bumper6" parent="." unique_id=105678192 groups=["TRACK"] instance=ExtResource("6_f5cs5")]
 transform = Transform3D(-4.371139e-08, 0.10949144, -0.9939878, 1, 4.786024e-09, -4.3448587e-08, 0, -0.9939878, -0.10949144, 38.274883, -0.275, -174.55794)

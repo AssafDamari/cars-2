@@ -16,7 +16,7 @@ func _handle_off_road_logic(_delta: float) -> void:
 	if track_sensor.is_colliding():
 		var collider = track_sensor.get_collider()
 		# If the raycast hits something NOT in the TRACK group
-		if not collider.is_in_group("TRACK") and not collider.is_in_group("CAR"):
+		if not collider.is_in_group("TRACK"):
 			target_mod = off_road_penalty
 
 	vehicle.engine_force_modifier = target_mod
