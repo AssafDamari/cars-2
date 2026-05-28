@@ -14,6 +14,7 @@ height = 0.1
 
 [node name="SkidMarks3D" type="Node3D" unique_id=2080819160]
 script = ExtResource("1_gnonc")
+drift_threshold = 5.0
 
 [node name="Left" type="Node3D" parent="." unique_id=84014844]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8631748, -0.1390425, 1.3018036)
