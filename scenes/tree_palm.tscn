@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://deoe751ve1e31"]
+
+[ext_resource type="PackedScene" uid="uid://cpddruma8bbpk" path="res://models/tree_palm.blend" id="1_d4owq"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_i0mdi"]
+
+[node name="tree_palm" unique_id=2145118092 instance=ExtResource("1_d4owq")]
+
+[node name="Cube" parent="." index="0" unique_id=1508222100]
+surface_material_override/0 = ExtResource("2_i0mdi")
