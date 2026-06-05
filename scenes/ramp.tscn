@@ -1,28 +1,41 @@
 [gd_scene format=3 uid="uid://di47udnmytubo"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_4ngia"]
-left_to_right = 1.0
-size = Vector3(2, 0.5, 1.65)
+[ext_resource type="PackedScene" uid="uid://bv2ae0ky0spwx" path="res://models/ramp.blend" id="1_0b1uk"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_l6boi"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0bhrx"]
-points = PackedVector3Array(-1, -0.25, -0.825, -1, -0.25, 0.825, 1, 0.25, -0.825, 1, -0.25, -0.825, 1, -0.25, 0.825, 1, 0.25, 0.825)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0b1uk"]
+size = Vector3(31.927586, 1, 30.916748)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iffpq"]
-points = PackedVector3Array(-1, -0.25, -0.825, -1, -0.25, 0.825, 1, 0.25, -0.825, 1, -0.25, -0.825, 1, -0.25, 0.825, 1, 0.25, 0.825)
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6boi"]
+size = Vector3(0.71875, 12.443115, 1)
 
-[node name="Ramp" type="StaticBody3D" unique_id=77877622 groups=["TRACK"]]
-transform = Transform3D(-19.998337, 1.4665193e-07, -0.25795436, 1.464824e-07, 19.999998, 1.40891805e-08, 0.25795436, 1.2198719e-08, -19.998337, 0, 0, 0)
+[node name="ramp" unique_id=250625464 groups=["TRACK"] instance=ExtResource("1_0b1uk")]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1805171406]
-mesh = SubResource("PrismMesh_4ngia")
+[node name="Cube" parent="." index="0" unique_id=963045453]
+surface_material_override/0 = ExtResource("2_l6boi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1249025242]
-shape = SubResource("ConvexPolygonShape3D_0bhrx")
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1039422069]
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1463315565]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -1.7484555e-07)
-mesh = SubResource("PrismMesh_4ngia")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=446115857]
+transform = Transform3D(0.9058721, 0.42355126, 0, -0.42355126, 0.9058721, 0, 0, 0, 1, 14.001676, 5.439192, 0.18671608)
+shape = SubResource("BoxShape3D_0b1uk")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=11469209]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -1.7484555e-07)
-shape = SubResource("ConvexPolygonShape3D_iffpq")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1531626022]
+transform = Transform3D(-0.9055687, -0.42419937, -8.742278e-08, -0.42419937, 0.9055687, 0, 7.916733e-08, 3.7084686e-08, -1, -14.514278, 5.430149, 0.18671608)
+shape = SubResource("BoxShape3D_0b1uk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=890422186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25579643, 6.0377197, 14.998938)
+shape = SubResource("BoxShape3D_l6boi")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3" unique_id=954898880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25579643, 6.0377197, -14.432342)
+shape = SubResource("BoxShape3D_l6boi")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" index="4" unique_id=1892275198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25579643, 6.0377197, -14.432342)
+shape = SubResource("BoxShape3D_l6boi")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" index="5" unique_id=2070264481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25579643, 6.0377197, -14.432342)
+shape = SubResource("BoxShape3D_l6boi")

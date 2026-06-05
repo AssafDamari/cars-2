@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://di47udnmytubo" path="res://scenes/ramp.tscn" id="5_d3gf4"]
 [ext_resource type="PackedScene" uid="uid://deoe751ve1e31" path="res://scenes/tree_palm.tscn" id="6_4mu13"]
 [ext_resource type="PackedScene" uid="uid://c5v3io1f32kel" path="res://scenes/bumper.tscn" id="6_f5cs5"]
+[ext_resource type="PackedScene" uid="uid://0k5segu7moux" path="res://scenes/shimshya.tscn" id="7_4mu13"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
 
@@ -202,8 +203,25 @@ vertical_duration = 2.0
 
 [node name="Ramps" type="Node3D" parent="." unique_id=1906310356]
 
-[node name="Ramp" parent="Ramps" unique_id=77877622 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(-19.999891, 1.458442e-07, -0.06597602, 1.457787e-07, 19.999998, 2.0104014e-08, 0.06597602, 1.9623007e-08, -19.999891, 34.953064, 2.2708945, 175.76291)
+[node name="Ramp" parent="Ramps" unique_id=33024290 instance=ExtResource("5_d3gf4")]
+transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, 34.953, -2.7578106, 175.22607)
 
-[node name="Ramp2" parent="Ramps" unique_id=496515717 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(-19.999891, 1.458442e-07, -0.06597602, 1.457787e-07, 19.999998, 2.0104014e-08, 0.06597602, 1.9623007e-08, -19.999891, -0.24598503, -0.5769427, 175.87283)
+[node name="Ramp2" parent="Ramps" unique_id=250625464 instance=ExtResource("5_d3gf4")]
+transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, 8.045506, -6.760454, 175.22607)
+
+[node name="Props" type="Node3D" parent="." unique_id=842610251]
+
+[node name="shimshya" parent="Props" unique_id=1936105955 instance=ExtResource("7_4mu13")]
+transform = Transform3D(0.40621495, 0.08061694, 0.9102144, -0.19466236, 0.9808703, 0, -0.8928023, -0.17718449, 0.41413727, -56.3593, 0, -219.22409)
+
+[node name="shimshya2" parent="Props" unique_id=1902796793 instance=ExtResource("7_4mu13")]
+transform = Transform3D(-0.93297416, -0.18515696, 0.30866832, -0.19466239, 0.9808704, 0, -0.30276364, -0.060086094, -0.9511697, -40.900433, 0, -220.62602)
+
+[node name="shimshya3" parent="Props" unique_id=1581241252 instance=ExtResource("7_4mu13")]
+transform = Transform3D(0.9310156, 0.18476829, -0.3147546, -0.19466238, 0.98087037, 0, 0.3087334, 0.061270885, 0.949173, -49.663242, 0, -232.11435)
+
+[node name="shimshya4" parent="Props" unique_id=1481890771 instance=ExtResource("7_4mu13")]
+transform = Transform3D(0.8467322, 0.16804148, -0.5047838, -0.19466238, 0.98087037, 0, 0.49512738, 0.09826241, 0.8632457, -35.2889, 0, -236.63689)
+
+[node name="shimshya5" parent="Props" unique_id=1183097025 instance=ExtResource("7_4mu13")]
+transform = Transform3D(-0.8734795, -0.1733497, -0.45495424, -0.19466236, 0.98087037, -7.521865e-09, 0.44625118, 0.08856247, -0.89051473, -23.471687, 0, -230.43999)
