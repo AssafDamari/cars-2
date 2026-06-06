@@ -1,7 +1,6 @@
 class_name RaceManager
 extends Node3D
 
-@onready var minimap: Minimap = $Minimap
 @onready var track_spawner: TrackSpawner = $TrackSpawner
 @onready var cars_spawner: CarsSpawner = $CarsSpawner
 @onready var finish: Node3D = $Finish

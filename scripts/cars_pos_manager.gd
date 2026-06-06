@@ -27,6 +27,48 @@ signal player_finished(position: int, finish_time: float, results: Array)
 signal race_complete()
 
 
+func _ready() -> void:
+	add_to_group("CARS_POS_MANAGER")
+
+
+func _process(_delta: float) -> void:
+	if not track_path or not track_path.curve:
+		return
+		
+	var track_length = track_path.curve.get_baked_length()
+	if track_length == 0.0:
+		return
+		
+	for car in cars:
+		if not is_instance_valid(car) or not car_data.has(car):
+			continue
+		if car_data[car]["finished"]:
+			continue
+			
+		var current_offset = _get_path_offset(car)
+		
+		if not car_data[car].has("last_offset"):
+			car_data[car]["last_offset"] = current_offset
+			# If a car starts near the end of the track (wrap-around), make its initial progress negative
+			if current_offset > track_length * 0.5:
+				car_data[car]["progress"] = current_offset - track_length
+			else:
+				car_data[car]["progress"] = current_offset
+			continue
+			
+		var prev_offset = car_data[car]["last_offset"]
+		var delta_offset = current_offset - prev_offset
+		
+		# Detect wrap-around across the start/finish line of the path
+		if delta_offset > track_length * 0.5:
+			delta_offset -= track_length
+		elif delta_offset < -track_length * 0.5:
+			delta_offset += track_length
+			
+		car_data[car]["progress"] += delta_offset
+		car_data[car]["last_offset"] = current_offset
+
+
 func load_cars(race_cars: Array[Car]) -> void:
 	cars = race_cars
 	car_data.clear()
@@ -145,7 +187,7 @@ func get_results() -> Array:
 		if not car_data[car]["finished"]:
 			active_cars.append(car)
 
-	# Sort active cars: more laps = better; same laps = further along path = better
+	# Sort active cars: more laps = better; same laps = further progress
 	active_cars.sort_custom(_compare_active_cars)
 
 	var pos = finished_cars.size() + 1
@@ -188,13 +230,10 @@ func _compare_active_cars(a: Car, b: Car) -> bool:
 	if a_laps != b_laps:
 		return a_laps > b_laps  # More laps = better position
 
-	# Same lap count — compare distance along the track path
-	if track_path and track_path.curve:
-		var a_offset = _get_path_offset(a)
-		var b_offset = _get_path_offset(b)
-		return a_offset > b_offset  # Further along = better position
-
-	return false
+	# Same lap count — compare continuous progress
+	var a_progress = car_data[a].get("progress", 0.0)
+	var b_progress = car_data[b].get("progress", 0.0)
+	return a_progress > b_progress  # Further progress = better position
 
 
 ## Gets the car's current offset along the track path curve.

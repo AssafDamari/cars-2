@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://limuefm350ho"]
 
 [ext_resource type="Script" uid="uid://bt2idbrbr2pq8" path="res://scripts/race_manager.gd" id="1_w5r77"]
+[ext_resource type="PackedScene" uid="uid://cjbmlab0mq0s2" path="res://scenes/cars_list.tscn" id="3_3kd5h"]
 [ext_resource type="PackedScene" uid="uid://4r8d6pnwkm0d" path="res://scenes/minimap.tscn" id="3_6epbv"]
 [ext_resource type="PackedScene" uid="uid://0vx4obmnl82c" path="res://scenes/track_spawner.tscn" id="4_3kd5h"]
 [ext_resource type="PackedScene" uid="uid://4y4bm6jsr25g" path="res://scenes/cars_spawner.tscn" id="5_l0hv7"]
@@ -27,6 +28,8 @@ offset_left = -440.0
 offset_top = 40.0
 offset_right = -40.0
 offset_bottom = 440.0
+
+[node name="CarsList" parent="." unique_id=1955642655 instance=ExtResource("3_3kd5h")]
 
 [node name="TrackSpawner" parent="." unique_id=1676795107 instance=ExtResource("4_3kd5h")]
 

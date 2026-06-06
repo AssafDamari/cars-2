@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://0k5segu7moux"]
+
+[ext_resource type="PackedScene" uid="uid://cjolemhhmxhgt" path="res://models/shimshya.blend" id="1_wg5o0"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_gtsmw"]
+
+[node name="shimshya" unique_id=1936105955 instance=ExtResource("1_wg5o0")]
+
+[node name="Cube" parent="." index="0" unique_id=1874246505]
+surface_material_override/0 = ExtResource("2_gtsmw")
