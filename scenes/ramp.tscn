@@ -9,12 +9,12 @@ size = Vector3(31.927586, 1, 30.916748)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6boi"]
 size = Vector3(0.71875, 12.443115, 1)
 
-[node name="ramp" unique_id=250625464 groups=["TRACK"] instance=ExtResource("1_0b1uk")]
+[node name="ramp" unique_id=26146698 groups=["TRACK"] instance=ExtResource("1_0b1uk")]
 
-[node name="Cube" parent="." index="0" unique_id=963045453]
+[node name="Cube_001" parent="." index="0" unique_id=1102746323]
 surface_material_override/0 = ExtResource("2_l6boi")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1039422069]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1039422069 groups=["TRACK"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=446115857]
 transform = Transform3D(0.9058721, 0.42355126, 0, -0.42355126, 0.9058721, 0, 0, 0, 1, 14.001676, 5.439192, 0.18671608)

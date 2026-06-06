@@ -203,11 +203,11 @@ vertical_duration = 2.0
 
 [node name="Ramps" type="Node3D" parent="." unique_id=1906310356]
 
-[node name="Ramp" parent="Ramps" unique_id=33024290 instance=ExtResource("5_d3gf4")]
+[node name="Ramp" parent="Ramps" unique_id=250625464 instance=ExtResource("5_d3gf4")]
 transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, 34.953, -2.7578106, 175.22607)
 
-[node name="Ramp2" parent="Ramps" unique_id=250625464 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, 8.045506, -6.760454, 175.22607)
+[node name="Ramp2" parent="Ramps" unique_id=1562022785 instance=ExtResource("5_d3gf4")]
+transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, 1.4537964, -6.760454, 176.44807)
 
 [node name="Props" type="Node3D" parent="." unique_id=842610251]
 
