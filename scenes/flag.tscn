@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://djklk1owfx3t6"]
+
+[ext_resource type="PackedScene" uid="uid://bcje50d26lebx" path="res://models/flag.blend" id="1_32e5v"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_q38m2"]
+
+[node name="flag" unique_id=259824515 instance=ExtResource("1_32e5v")]
+
+[node name="Icosphere" parent="." index="0" unique_id=673883944]
+surface_material_override/0 = ExtResource("2_q38m2")

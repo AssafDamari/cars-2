@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c5v3io1f32kel"]
 
+[ext_resource type="PackedScene" uid="uid://vtwtq66icxfp" path="res://scenes/bumper_1.tscn" id="2_63qnk"]
 [ext_resource type="Script" uid="uid://b06wltwal88un" path="res://scripts/bumper.gd" id="bumper_script"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6an6i"]
@@ -9,7 +10,7 @@ radial_segments = 12
 rings = 4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6an6i"]
-radius = 2.0
+radius = 1.93
 height = 10.0
 
 [node name="Bumper" type="StaticBody3D" unique_id=1677048967 groups=["TRACK"]]
@@ -17,9 +18,13 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 script = ExtResource("bumper_script")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=197188712]
+visible = false
 mesh = SubResource("CapsuleMesh_6an6i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=80159919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.220446e-16, 0.022766113, 0)
 shape = SubResource("CapsuleShape3D_6an6i")
 debug_color = Color(0, 0.6, 0.69803923, 0.61960787)
+
+[node name="bumper1" parent="." unique_id=1392365550 instance=ExtResource("2_63qnk")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
