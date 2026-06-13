@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dd5ijp3dq8xet"]
+
+[ext_resource type="PackedScene" uid="uid://bvobqkb143v20" path="res://models/beach_chair.blend" id="1_s5rb8"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_mqf0c"]
+
+[node name="beach_chair" unique_id=686058040 instance=ExtResource("1_s5rb8")]
+
+[node name="Cube" parent="." index="0" unique_id=21720082]
+surface_material_override/0 = ExtResource("2_mqf0c")
