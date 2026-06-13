@@ -92,7 +92,7 @@ func setup_cars_list() -> void:
 		# 1. Car Color indicator (Requirement 3: small box/line with car color)
 		var color_bar = ColorRect.new()
 		color_bar.color = car.color
-		color_bar.custom_minimum_size = Vector2(10, 30)
+		color_bar.custom_minimum_size = Vector2(20, 40)
 		color_bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		hbox.add_child(color_bar)
 
