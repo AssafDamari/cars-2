@@ -7,7 +7,7 @@ extends Node3D
 @export var steering_limit: float = 0.5
 
 @onready var vehicle: Car = get_parent() as Car
-@onready var joystick: VirtualJoystickPlus = $"Player controllsUI/VirtualJoystickPlus"
+@onready var virtual_joystick: VirtualJoystick = $"Player controllsUI/VirtualJoystick"
 @onready var debug_lable: Label = $"Player controllsUI/DebugLable"
 @onready var gear_slider: GearSlider = $"Player controllsUI/GearSlider"
 
@@ -15,20 +15,18 @@ func _ready() -> void:
 	GlobalSignals.show_debug_text.connect(show_debug_lable)
 	
 func _physics_process(delta: float) -> void:
-	var joystick_input := joystick.get_value()
+	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		
 	# Power Logic
 	vehicle.engine_force_to_apply = get_engine_force() 
 	
 	# Steering Logic
-	var steer_input = -joystick_input.x	
-	if steer_input == 0.0:
-		steer_input = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
+	var steer_input = -input_dir.x
 	
 	vehicle.steering = lerp(vehicle.steering, steer_input * steering_limit, 10 * delta)	
 	
 	# Braking Logic
-	if should_brake(joystick_input):
+	if should_brake():
 		vehicle.brake_car()
 		vehicle.show_brake_indicator()
 	else:
@@ -67,7 +65,7 @@ func get_engine_force() -> float:
 		_:
 			return 0.0
 
-func should_brake(_joystick_input: Vector2) -> bool:
+func should_brake() -> bool:
 	return Input.is_action_pressed("ui_accept")
 		
 func _on_button_pressed() -> void:

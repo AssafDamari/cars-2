@@ -7,10 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://0e6uu2ooyhur" path="res://textures/icon_pedal_brake.png" id="5_iu0n4"]
 [ext_resource type="Texture2D" uid="uid://ct6umjr3y3kaq" path="res://textures/icon_pedal_brake_black.png" id="6_ngi1a"]
 [ext_resource type="Texture2D" uid="uid://16omjqh27c3l" path="res://textures/icon_arrow_rotate.png" id="8_ga2kn"]
-[ext_resource type="Script" uid="uid://le2y1bavsjxc" path="res://addons/virtual_joystick_plus/virtual_joystick_plus.gd" id="9_sdupd"]
 [ext_resource type="Texture2D" uid="uid://01srmdbuabf7" path="res://textures/icon_steering_wheel.png" id="10_34smf"]
-[ext_resource type="Texture2D" uid="uid://dlf0vtvb7xr5u" path="res://addons/virtual_joystick_plus/resources/textures/stick_texture_5.png" id="11_kdses"]
 [ext_resource type="PackedScene" uid="uid://16w2c4issiw" path="res://scenes/gear_slider.tscn" id="11_mfmwq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_joystick"]
+texture = ExtResource("10_34smf")
+modulate_color = Color(1, 1, 1, 0.20784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tip"]
+bg_color = Color(1, 1, 1, 0.13333334)
+corner_radius_top_left = 135
+corner_radius_top_right = 135
+corner_radius_bottom_right = 135
+corner_radius_bottom_left = 135
 
 [sub_resource type="LabelSettings" id="LabelSettings_ba4vk"]
 font_size = 40
@@ -28,28 +37,22 @@ offset_top = 112.5
 offset_right = 131.5
 offset_bottom = 195.5
 
-[node name="VirtualJoystickPlus" type="Control" parent="Player controllsUI" unique_id=1499984360]
-visible = false
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 3
+[node name="VirtualJoystick" type="VirtualJoystick" parent="Player controllsUI" unique_id=1499984360]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -413.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(360, 573.5)
-script = ExtResource("9_sdupd")
+theme_override_styles/normal_joystick = SubResource("StyleBoxTexture_joystick")
+theme_override_styles/normal_tip = SubResource("StyleBoxFlat_tip")
+theme_override_styles/pressed_joystick = SubResource("StyleBoxTexture_joystick")
+theme_override_styles/pressed_tip = SubResource("StyleBoxFlat_tip")
 joystick_mode = 1
-scale_factor = 3.0
-only_mobile = true
-relative_position = Vector2(0.5, 0.85)
-joystick_texture = ExtResource("10_34smf")
-joystick_opacity = 0.146
-stick_use_textures = false
-stick_texture = ExtResource("11_kdses")
-stick_opacity = 0.295
-metadata/_custom_type_script = "uid://le2y1bavsjxc"
+joystick_size = 400.0
+tip_size = 250.0
+initial_offset_ratio = Vector2(0.5, 0.83)
+visibility_mode = 1
 
 [node name="TopToolbar" type="HBoxContainer" parent="Player controllsUI" unique_id=410289884]
 offset_left = 46.0
