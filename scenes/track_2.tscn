@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://0k5segu7moux" path="res://scenes/shimshya.tscn" id="7_4mu13"]
 [ext_resource type="PackedScene" uid="uid://cq3we2d5s73l6" path="res://scenes/pusher.tscn" id="8_5hw7b"]
 [ext_resource type="PackedScene" uid="uid://dd5ijp3dq8xet" path="res://scenes/beach_chair.tscn" id="8_banxg"]
+[ext_resource type="Material" uid="uid://b1nuors7t8wg" path="res://materials/brown.tres" id="9_w7ixh"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w4aej"]
 
@@ -51,6 +52,7 @@ size = Vector3(1, 1, 30)
 script = ExtResource("1_4mu13")
 
 [node name="Enviroment" parent="." unique_id=994865547 instance=ExtResource("2_f5cs5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1815963593]
 
@@ -246,7 +248,7 @@ vertical_offset = 0.55
 transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, 34.953, -2.7578106, 175.22607)
 
 [node name="Ramp2" parent="Ramps" unique_id=2111339663 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, -4.431757, -6.0109015, 176.44807)
+transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, -7.431757, -6.0109015, 176.44807)
 
 [node name="Props" type="Node3D" parent="." unique_id=842610251]
 
@@ -288,40 +290,62 @@ transform = Transform3D(0.59142226, 0, 0.8063621, 0, 1, 0, -0.8063621, 0, 0.5914
 
 [node name="Pushers" type="Node3D" parent="." unique_id=366853232]
 
-[node name="TopPole" type="MeshInstance3D" parent="Pushers" unique_id=1478133195]
-transform = Transform3D(0.86602545, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, 0.86602545, -204.30516, 7, 112.71754)
+[node name="WoodPole" type="MeshInstance3D" parent="Pushers" unique_id=1478133195]
+transform = Transform3D(0.86602545, 0, 0.45000005, 0, 0.5, 0, -0.50000006, 0, 0.7794229, -204.75516, 6.652899, 111.93812)
+material_override = ExtResource("9_w7ixh")
+mesh = SubResource("BoxMesh_5hw7b")
+
+[node name="WoodPole2" type="MeshInstance3D" parent="Pushers" unique_id=367546444]
+transform = Transform3D(0.86602545, 0.1767767, 0.12727922, 0, 0.35355338, -0.25455844, -0.5000001, 0.30618623, 0.22045408, -196.17613, 2.9504054, 126.79745)
+material_override = ExtResource("9_w7ixh")
+mesh = SubResource("BoxMesh_5hw7b")
+
+[node name="WoodPole3" type="MeshInstance3D" parent="Pushers" unique_id=355221345]
+transform = Transform3D(0.8660254, 0.17677669, -0.12727925, -2.9802322e-08, -0.3535534, -0.25455844, -0.50000006, 0.3061862, -0.22045407, -213.37044, 2.98375, 97.01603)
+material_override = ExtResource("9_w7ixh")
+mesh = SubResource("BoxMesh_5hw7b")
+
+[node name="WoodPole4" type="MeshInstance3D" parent="Pushers" unique_id=777574858]
+transform = Transform3D(0.9396927, 0, 0.30781814, 0, 0.5, 0, -0.3420202, 0, 0.84572333, -169.75, 6.652899, 99.575005)
+material_override = ExtResource("9_w7ixh")
+mesh = SubResource("BoxMesh_5hw7b")
+
+[node name="WoodPole5" type="MeshInstance3D" parent="Pushers" unique_id=760352442]
+transform = Transform3D(0.9396926, 0.12092237, 0.08706412, 0, 0.35355338, -0.25455844, -0.3420202, 0.3322315, 0.23920669, -163.8816, 2.9504054, 115.6983)
+material_override = ExtResource("9_w7ixh")
+mesh = SubResource("BoxMesh_5hw7b")
+
+[node name="WoodPole6" type="MeshInstance3D" parent="Pushers" unique_id=1429010003]
+transform = Transform3D(0.93969256, 0.12092237, -0.08706415, -5.909689e-08, -0.35355338, -0.2545584, -0.34202015, 0.33223146, -0.23920666, -175.6432, 2.983749, 83.38358)
+material_override = ExtResource("9_w7ixh")
 mesh = SubResource("BoxMesh_5hw7b")
 
 [node name="Pusher" parent="Pushers" unique_id=346866899 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -209.96138, 6.6150002, 103.162254)
 
-[node name="Pusher5" parent="Pushers" unique_id=1382048661 instance=ExtResource("8_5hw7b")]
+[node name="Pusher5" parent="Pushers" unique_id=1954649734 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -207.1218, 6.615, 107.57777)
 
-[node name="Pusher2" parent="Pushers" unique_id=829525243 instance=ExtResource("8_5hw7b")]
+[node name="Pusher2" parent="Pushers" unique_id=78286948 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9659257, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.9659257, -204.47542, 6.615, 112.04505)
 
-[node name="Pusher3" parent="Pushers" unique_id=1182226975 instance=ExtResource("8_5hw7b")]
+[node name="Pusher3" parent="Pushers" unique_id=1718818458 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -202.2154, 6.615, 116.61586)
 
-[node name="Pusher4" parent="Pushers" unique_id=771686851 instance=ExtResource("8_5hw7b")]
+[node name="Pusher4" parent="Pushers" unique_id=1872341880 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9659257, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.9659257, -199.95537, 6.615, 121.186676)
 
-[node name="TopPole2" type="MeshInstance3D" parent="Pushers" unique_id=268154172]
-transform = Transform3D(0.9396926, 0, 0.3420201, 0, 1, 0, -0.3420201, 0, 0.9396926, -169.39757, 7, 99.77371)
-mesh = SubResource("BoxMesh_5hw7b")
-
-[node name="Pusher6" parent="Pushers" unique_id=280636550 instance=ExtResource("8_5hw7b")]
+[node name="Pusher6" parent="Pushers" unique_id=478864443 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -173.3086, 6.6150002, 89.38141)
 
-[node name="Pusher7" parent="Pushers" unique_id=1287329067 instance=ExtResource("8_5hw7b")]
+[node name="Pusher7" parent="Pushers" unique_id=1248313564 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -171.2789, 6.615, 94.22293)
 
-[node name="Pusher8" parent="Pushers" unique_id=650187078 instance=ExtResource("8_5hw7b")]
+[node name="Pusher8" parent="Pushers" unique_id=2116615057 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9961946, 0, 0.08715573, 0, 1, 0, -0.08715573, 0, 0.9961946, -169.44846, 6.615, 99.08189)
 
-[node name="Pusher9" parent="Pushers" unique_id=872806251 instance=ExtResource("8_5hw7b")]
+[node name="Pusher9" parent="Pushers" unique_id=2106172072 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -168.01648, 6.615, 103.9757)
 
-[node name="Pusher10" parent="Pushers" unique_id=672156086 instance=ExtResource("8_5hw7b")]
+[node name="Pusher10" parent="Pushers" unique_id=745914539 instance=ExtResource("8_5hw7b")]
 transform = Transform3D(0.9961946, 0, 0.08715573, 0, 1, 0, -0.08715573, 0, 0.9961946, -166.5845, 6.615, 108.86952)

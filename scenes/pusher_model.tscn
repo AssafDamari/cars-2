@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bfki5lpogepae"]
+
+[ext_resource type="PackedScene" uid="uid://ciugne4v8kjrd" path="res://models/pusher_model.blend" id="1_tsea5"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_kq6gi"]
+
+[node name="pusher_model" unique_id=50998232 instance=ExtResource("1_tsea5")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1044351306]
+surface_material_override/0 = ExtResource("2_kq6gi")
