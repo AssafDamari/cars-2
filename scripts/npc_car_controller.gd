@@ -75,7 +75,7 @@ func _ready() -> void:
 		collision_sensor.body_exited.connect(_on_collision_sensor_exited)
 
 	_apply_random_variation()
-	_apply_car_color_to_marker()
+	_setup_debug_marker()
 
 
 func _apply_random_variation() -> void:
@@ -169,7 +169,10 @@ func _on_collision_sensor_exited(body: Node3D) -> void:
 		is_blocked = false
 
 
-func _apply_car_color_to_marker() -> void:
+func _setup_debug_marker() -> void:
+	if not debug_mode:
+		return
+	marker.visible = debug_mode
 	## Effect: Purely cosmetic. It colors the little target marker to match the color 
 	## of the car chasing it, making it easy to see which marker belongs to which NPC.
 	if marker and vehicle.get("color"):

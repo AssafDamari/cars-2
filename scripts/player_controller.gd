@@ -4,8 +4,8 @@ extends Node3D
 @export var engine_force_fwd: float = 2000 
 @export var base_friction: float = 6.0
 @export var drift_friction: float = 3.5
-@export var steering_limit: float = 0.5
-
+@export var steering_limit: float = 0.35
+@export var steer_speed_factor: float = 2.5
 @onready var vehicle: Car = get_parent() as Car
 @onready var virtual_joystick: VirtualJoystick = $"Player controllsUI/VirtualJoystick"
 @onready var debug_lable: Label = $"Player controllsUI/DebugLable"
@@ -22,8 +22,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Steering Logic
 	var steer_input = -input_dir.x
-	
-	vehicle.steering = lerp(vehicle.steering, steer_input * steering_limit, 10 * delta)	
+
+	vehicle.steering = lerp(vehicle.steering, steer_input * steering_limit, steer_speed_factor * delta)	
 	
 	# Braking Logic
 	if should_brake():

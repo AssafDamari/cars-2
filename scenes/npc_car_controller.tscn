@@ -21,5 +21,6 @@ shape = SubResource("BoxShape3D_abc12")
 
 [node name="marker" type="MeshInstance3D" parent="." unique_id=1835148634]
 top_level = true
+visible = false
 mesh = SubResource("SphereMesh_85q8k")
 surface_material_override/0 = SubResource("StandardMaterial3D_85q8k")

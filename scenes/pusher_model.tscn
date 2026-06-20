@@ -5,5 +5,5 @@
 
 [node name="pusher_model" unique_id=50998232 instance=ExtResource("1_tsea5")]
 
-[node name="Cylinder" parent="." index="0" unique_id=1044351306]
+[node name="Cylinder" parent="." index="0" unique_id=1368337240]
 surface_material_override/0 = ExtResource("2_kq6gi")

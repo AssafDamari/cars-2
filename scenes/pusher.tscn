@@ -5,19 +5,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgtji"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_tgtji"]
-top_radius = 0.1
-bottom_radius = 0.3
-height = 5.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4j1f4"]
-top_radius = 1.3
-bottom_radius = 1.3
-height = 1.0
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xqhj7"]
-height = 0.95422363
-radius = 1.3
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pmvel"]
+height = 0.9102783
+radius = 1.3461914
 
 [node name="Pusher" type="Node3D" unique_id=346866899]
 
@@ -33,18 +23,8 @@ shape = SubResource("BoxShape3D_tgtji")
 [node name="hammer" type="RigidBody3D" parent="." unique_id=1805791976]
 mass = 500.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="hammer" unique_id=1552448700]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0)
-visible = false
-mesh = SubResource("CylinderMesh_tgtji")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="hammer" unique_id=454540486]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.5, 0)
-visible = false
-mesh = SubResource("CylinderMesh_4j1f4")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hammer" unique_id=1275968405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0053100586, -5.7361407, 0)
-shape = SubResource("CylinderShape3D_xqhj7")
-
 [node name="pusher_model" parent="hammer" unique_id=50998232 instance=ExtResource("1_4j1f4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hammer" unique_id=1186609397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.830106, 0.016908552)
+shape = SubResource("CylinderShape3D_pmvel")

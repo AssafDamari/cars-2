@@ -248,7 +248,7 @@ vertical_offset = 0.55
 transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, 34.953, -2.7578106, 175.22607)
 
 [node name="Ramp2" parent="Ramps" unique_id=2111339663 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, -5.431757, -6.0109015, 176.44807)
+transform = Transform3D(0.9991425, 0, 0.04140483, 0, 1, 0, -0.04140483, 0, 0.9991425, -3.431757, -6.0109015, 176.44807)
 
 [node name="Props" type="Node3D" parent="." unique_id=842610251]
 
@@ -321,31 +321,31 @@ material_override = ExtResource("9_w7ixh")
 mesh = SubResource("BoxMesh_5hw7b")
 
 [node name="Pusher" parent="Pushers" unique_id=346866899 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -209.96138, 6.6150002, 103.162254)
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -209.96138, 6.875, 103.162254)
 
 [node name="Pusher5" parent="Pushers" unique_id=1954649734 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -207.1218, 6.615, 107.57777)
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -207.1218, 6.875, 107.57777)
 
 [node name="Pusher2" parent="Pushers" unique_id=78286948 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9659257, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.9659257, -204.47542, 6.615, 112.04505)
+transform = Transform3D(0.9659257, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.9659257, -204.47542, 6.875, 112.04505)
 
 [node name="Pusher3" parent="Pushers" unique_id=1718818458 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -202.2154, 6.615, 116.61586)
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -202.2154, 6.875, 116.61586)
 
 [node name="Pusher4" parent="Pushers" unique_id=1872341880 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9659257, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.9659257, -199.95537, 6.615, 121.186676)
+transform = Transform3D(0.9659257, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.9659257, -199.95537, 6.875, 121.186676)
 
 [node name="Pusher6" parent="Pushers" unique_id=478864443 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -173.3086, 6.6150002, 89.38141)
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -173.3086, 6.875, 89.38141)
 
 [node name="Pusher7" parent="Pushers" unique_id=1248313564 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -171.2789, 6.615, 94.22293)
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -171.2789, 6.875, 94.22293)
 
 [node name="Pusher8" parent="Pushers" unique_id=2116615057 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9961946, 0, 0.08715573, 0, 1, 0, -0.08715573, 0, 0.9961946, -169.44846, 6.615, 99.08189)
+transform = Transform3D(0.9961946, 0, 0.08715573, 0, 1, 0, -0.08715573, 0, 0.9961946, -169.44846, 6.875, 99.08189)
 
 [node name="Pusher9" parent="Pushers" unique_id=2106172072 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -168.01648, 6.615, 103.9757)
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -168.01648, 6.875, 103.9757)
 
 [node name="Pusher10" parent="Pushers" unique_id=745914539 instance=ExtResource("8_5hw7b")]
-transform = Transform3D(0.9961946, 0, 0.08715573, 0, 1, 0, -0.08715573, 0, 0.9961946, -166.5845, 6.615, 108.86952)
+transform = Transform3D(0.9961946, 0, 0.08715573, 0, 1, 0, -0.08715573, 0, 0.9961946, -166.5845, 6.875, 108.86952)
