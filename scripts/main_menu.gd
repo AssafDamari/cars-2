@@ -23,3 +23,13 @@ func _on_drift_button_2_pressed() -> void:
 		"engine_force_base": 1800,
 		"number_of_laps" : 2
 	})
+
+
+func _on_race_button_pressed() -> void:
+	GlobalSceneManager.load_race({
+		"track_number": 3,
+		"number_of_cars": 10,
+		"car_type": 3,
+		"engine_force_base": 1800,
+		"number_of_laps" : 2
+	})
