@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cupai6rd86d16"]
+
+[ext_resource type="Texture2D" uid="uid://bpm3d0hvxd654" path="res://textures/Asphalt_marks.jpg" id="1_v47ql"]
+
+[resource]
+albedo_color = Color(0.8192276, 0.81922776, 0.8192277, 1)
+albedo_texture = ExtResource("1_v47ql")
+uv1_scale = Vector3(0.7, 8, 1)
+texture_filter = 0

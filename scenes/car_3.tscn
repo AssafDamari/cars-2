@@ -96,7 +96,7 @@ cull_mask = 1047554
 transform = Transform3D(0.43, 0, 0, 0, 0.42091036, 0.08794589, 0, -0.08794589, 0.42091036, 0, 0.9133101, 1.9194926)
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14307296, -0.46179438)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14307296, -0.21232235)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="brake_indicator" unique_id=1819731316]
 transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, -0.6411028, 0.55153656, 2.123429)
