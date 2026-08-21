@@ -26,7 +26,7 @@ func setup_track() -> void:
 func setup_cars() -> void:
 	var num_cars = GlobalSceneManager.scene_parameters.get("number_of_cars", 10)
 	var car_type = GlobalSceneManager.scene_parameters.get("car_type", 2)
-	var engine_force_base = GlobalSceneManager.scene_parameters.get("engine_force_base", 2)
+	var engine_force_base = GlobalSceneManager.scene_parameters.get("engine_force_base", 1500)
 	var _cars = cars_spawner.spawn_cars(num_cars, car_type, track, engine_force_base)
 	cars_pos_manager.set_number_of_laps(number_of_laps)
 	cars_pos_manager.set_track_path(track.get_path_3d())

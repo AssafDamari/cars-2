@@ -81,7 +81,7 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 			var npc_ctrl = npc_ctrl_scene.instantiate()
 			# Setup the NpcCarController
 			npc_ctrl.path_node = path
-			npc_ctrl.engine_force_fwd = engine_force_base * randf_range(0.8, 1.0)
+			npc_ctrl.engine_force_fwd = engine_force_base * randf_range(0.9, 1.1)
 			car.add_child(npc_ctrl)
 		
 		spawned_cars.append(car)

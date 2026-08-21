@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://vtwtq66icxfp"]
-
-[ext_resource type="PackedScene" uid="uid://bi6otyjiwgube" path="res://models/bumper1.blend" id="1_oqwuu"]
-[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_eh80r"]
-
-[node name="bumper1" unique_id=1392365550 instance=ExtResource("1_oqwuu")]
-
-[node name="Icosphere" parent="." index="0" unique_id=923210124]
-surface_material_override/0 = ExtResource("2_eh80r")
