@@ -30,6 +30,6 @@ func _on_race_button_pressed() -> void:
 		"track_number": 3,
 		"number_of_cars": 15,
 		"car_type": 4,
-		"engine_force_base": 3300,
+		"engine_force_base": 3800,
 		"number_of_laps" : 2
 	})

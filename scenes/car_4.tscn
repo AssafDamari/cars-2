@@ -28,7 +28,7 @@ physics_material_override = SubResource("PhysicsMaterial_ilqg0")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.2, -0.2)
 script = ExtResource("1_px4qj")
-max_speed = 55.0
+max_speed = 57.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002259791, 0.3868038, -0.20620728)
