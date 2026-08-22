@@ -27,17 +27,26 @@ signal player_finished(position: int, finish_time: float, results: Array)
 signal race_complete()
 
 
+@export var update_interval: float = 0.1 ## Throttled update interval in seconds (10 Hz)
+var _update_timer: float = 0.1 # Start at update_interval so first frame updates immediately
+var _sample_points: Array[Vector3] = []
+
 func _ready() -> void:
 	add_to_group("CARS_POS_MANAGER")
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if not track_path or not track_path.curve:
 		return
 		
 	var track_length = track_path.curve.get_baked_length()
 	if track_length == 0.0:
 		return
+
+	_update_timer += delta
+	if _update_timer < update_interval:
+		return
+	_update_timer = 0.0
 		
 	for car in cars:
 		if not is_instance_valid(car) or not car_data.has(car):
@@ -45,7 +54,8 @@ func _process(_delta: float) -> void:
 		if car_data[car]["finished"]:
 			continue
 			
-		var current_offset = _get_path_offset(car)
+		var last_known_offset = car_data[car].get("last_offset", -1.0)
+		var current_offset = _get_path_offset(car, last_known_offset)
 		
 		if not car_data[car].has("last_offset"):
 			car_data[car]["last_offset"] = current_offset
@@ -73,6 +83,7 @@ func load_cars(race_cars: Array[Car]) -> void:
 	cars = race_cars
 	car_data.clear()
 	finished_cars.clear()
+	_update_timer = update_interval
 	for car in cars:
 		car_data[car] = {
 			"current_lap": 0,
@@ -236,12 +247,83 @@ func _compare_active_cars(a: Car, b: Car) -> bool:
 	return a_progress > b_progress  # Further progress = better position
 
 
-## Gets the car's current offset along the track path curve.
-func _get_path_offset(car: Car) -> float:
+## Gets the car's current offset along the track path curve using a fast local window search.
+func _get_path_offset(car: Car, last_offset: float = -1.0) -> float:
 	if not track_path or not track_path.curve:
 		return 0.0
+	var curve = track_path.curve
+	var track_length = curve.get_baked_length()
+	if track_length == 0.0:
+		return 0.0
+
 	var local_pos = track_path.global_transform.affine_inverse() * car.global_position
-	return track_path.curve.get_closest_offset(local_pos)
+
+	# If no prior offset known, do a global search once
+	if last_offset < 0.0:
+		return curve.get_closest_offset(local_pos)
+
+	# Local window search around last_offset
+	const SEARCH_BACK: float = 15.0
+	const SEARCH_FWD: float = 35.0
+	const STEP: float = 2.5
+	const FALLBACK_DIST_SQ: float = 900.0 # 30 meters squared
+
+	var start_s = last_offset - SEARCH_BACK
+	var end_s = last_offset + SEARCH_FWD
+	var num_steps = int((end_s - start_s) / STEP) + 1
+
+	if _sample_points.size() != num_steps:
+		_sample_points.resize(num_steps)
+
+	var best_s = start_s
+	var best_dist_sq = INF
+	var best_idx = 0
+
+	for i in range(num_steps):
+		var s = start_s + i * STEP
+		var pt = curve.sample_baked(fposmod(s, track_length))
+		_sample_points[i] = pt
+		var d_sq = pt.distance_squared_to(local_pos)
+		if d_sq < best_dist_sq:
+			best_dist_sq = d_sq
+			best_s = s
+			best_idx = i
+
+	# If car drifted off-track or was teleported, recover via global lookup
+	if best_dist_sq > FALLBACK_DIST_SQ:
+		return curve.get_closest_offset(local_pos)
+
+	# Analytical line-segment projection refinement on adjacent segments
+	var refined_s = best_s
+	var min_refined_dist_sq = best_dist_sq
+
+	if best_idx > 0:
+		var p1 = _sample_points[best_idx - 1]
+		var p2 = _sample_points[best_idx]
+		var seg = p2 - p1
+		var seg_len_sq = seg.length_squared()
+		if seg_len_sq > 0.0001:
+			var t = clampf((local_pos - p1).dot(seg) / seg_len_sq, 0.0, 1.0)
+			var proj = p1 + seg * t
+			var d_sq = proj.distance_squared_to(local_pos)
+			if d_sq < min_refined_dist_sq:
+				min_refined_dist_sq = d_sq
+				refined_s = (start_s + (best_idx - 1) * STEP) + t * STEP
+
+	if best_idx < num_steps - 1:
+		var p1 = _sample_points[best_idx]
+		var p2 = _sample_points[best_idx + 1]
+		var seg = p2 - p1
+		var seg_len_sq = seg.length_squared()
+		if seg_len_sq > 0.0001:
+			var t = clampf((local_pos - p1).dot(seg) / seg_len_sq, 0.0, 1.0)
+			var proj = p1 + seg * t
+			var d_sq = proj.distance_squared_to(local_pos)
+			if d_sq < min_refined_dist_sq:
+				min_refined_dist_sq = d_sq
+				refined_s = (start_s + best_idx * STEP) + t * STEP
+
+	return fposmod(refined_s, track_length)
 
 
 func _exit_tree() -> void:
