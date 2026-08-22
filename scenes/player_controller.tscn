@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ct6umjr3y3kaq" path="res://textures/icon_pedal_brake_black.png" id="6_ngi1a"]
 [ext_resource type="Texture2D" uid="uid://16omjqh27c3l" path="res://textures/icon_arrow_rotate.png" id="8_ga2kn"]
 [ext_resource type="PackedScene" uid="uid://16w2c4issiw" path="res://scenes/gear_slider.tscn" id="11_mfmwq"]
+[ext_resource type="PackedScene" path="res://scenes/lap_label.tscn" id="12_lap_label"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_ba4vk"]
 font_size = 40
@@ -24,6 +26,12 @@ offset_left = -131.5
 offset_top = 112.5
 offset_right = 131.5
 offset_bottom = 195.5
+
+[node name="LapLabel" parent="Player controllsUI" instance=ExtResource("12_lap_label")]
+offset_left = -131.5
+offset_top = 205.0
+offset_right = 131.5
+offset_bottom = 255.0
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="Player controllsUI" unique_id=1499984360]
 anchors_preset = 15
