@@ -1,45 +1,18 @@
 [gd_scene format=3 uid="uid://c8elfxgitkeaa"]
 
-[ext_resource type="Script" uid="uid://yb8ltju0obj2" path="res://addons/trail/GD/trail_renderer.gd" id="1_0c38j"]
 [ext_resource type="Script" uid="uid://bqqbb60id56ti" path="res://scripts/skid_marks_3d.gd" id="1_gnonc"]
-[ext_resource type="Material" uid="uid://dktpviw6pfaxw" path="res://materials/skid_marks.tres" id="3_hr8db"]
-
-[sub_resource type="Curve" id="Curve_hr8db"]
-_data = [Vector2(0, 0.020630479), 0.0, 0.0, 0, 0, Vector2(1, 0.17921948), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="SphereMesh" id="SphereMesh_hr8db"]
-radius = 0.1
-height = 0.1
+[ext_resource type="Material" uid="uid://dktpviw6pfaxw" path="res://materials/skid_marks.tres" id="2_skidmat"]
 
 [node name="SkidMarks3D" type="Node3D" unique_id=2080819160]
 script = ExtResource("1_gnonc")
-drift_threshold = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=980380943]
+top_level = true
+material_override = ExtResource("2_skidmat")
+cast_shadow = 0
 
 [node name="Left" type="Node3D" parent="." unique_id=84014844]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8631748, -0.1390425, 1.3018036)
-script = ExtResource("1_0c38j")
-lifetime = 0.5
-curve = SubResource("Curve_hr8db")
-alignment = 0
-material = ExtResource("3_hr8db")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Left" unique_id=980380943]
-visible = false
-mesh = SubResource("SphereMesh_hr8db")
 
 [node name="Right" type="Node3D" parent="." unique_id=1148860489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8579297, -0.1390425, 1.3018036)
-script = ExtResource("1_0c38j")
-lifetime = 0.5
-curve = SubResource("Curve_hr8db")
-alignment = 0
-material = ExtResource("3_hr8db")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Right" unique_id=1031130608]
-visible = false
-mesh = SubResource("SphereMesh_hr8db")
-
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1752653083]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5234542, 0)
-aabb = AABB(-1, -0.7295233, -1.9919871, 2, 1.4590466, 3.9839742)

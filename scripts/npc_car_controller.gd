@@ -49,8 +49,6 @@ extends Node3D
 # --- Internal state ---
 var curve: Curve3D
 var path_length: float = 0.0
-var current_offset: float = -1.0 # Cached path offset for fast local curve lookups
-var _sample_points: Array[Vector3] = [] # Reused buffer to eliminate allocations
 var last_steer_error: float = 0.0 # Stores previous frame's error for the 'D' part of PD steering.
 var is_blocked: bool = false # Flag that stops the car if another car is detected ahead.
 
@@ -97,25 +95,25 @@ func _physics_process(delta: float) -> void:
 	## Effect: The main brain. Every physics frame it updates the NPC's desired look-ahead, 
 	## figures out where the track is, applies the lateral offset, projects that into 3D world space, 
 	## updates the visual helper marker, and makes the decision to either stop or drive.
-	if not curve or not vehicle or path_length == 0.0:
+	if not curve or not vehicle:
 		return
 
 	# 1. Calculate Look-Ahead (further ahead = smoother lines at speed)
 	var look_ahead = min(max_look_ahead, min_look_ahead + vehicle.current_speed * speed_factor)
 
-	# 2. Get Path Coordinates (finds where the car currently maps onto the 3D curve using fast local search)
+	# 2. Get Path Coordinates (finds where the car currently maps onto the 3D curve)
 	var path_transform = path_node.global_transform
 	var inv_path_transform = path_transform.affine_inverse()
 	var local_pos = inv_path_transform * vehicle.global_transform.origin
-	var offset = _get_closest_offset_local(local_pos)
+	var current_offset = curve.get_closest_offset(local_pos)
 
 	# 3. Calculate Target Point with Lateral Offset
 	# Wrap-around logic for looping tracks
-	var target_path_offset = fposmod(offset + look_ahead, path_length) 
+	var target_path_offset = fmod(current_offset + look_ahead, path_length) 
 	
 	# Sample points to calculate the "Right" vector for perpendicular lane offsetting
 	var raw_pos = curve.sample_baked(target_path_offset)
-	var ahead_pos = curve.sample_baked(fposmod(target_path_offset + 0.5, path_length))
+	var ahead_pos = curve.sample_baked(fmod(target_path_offset + 0.5, path_length))
 	var dir = (ahead_pos - raw_pos).normalized()
 	var side_vec = dir.cross(Vector3.UP).normalized()
 	
@@ -135,77 +133,6 @@ func _physics_process(delta: float) -> void:
 		vehicle.brake = 0.0
 		vehicle.hide_brake_indicator()
 		_drive_towards(vehicle.to_local(target_point_global), delta)
-
-
-## Finds the closest offset on the curve using a fast local search window around the cached offset.
-func _get_closest_offset_local(local_pos: Vector3) -> float:
-	if current_offset < 0.0:
-		current_offset = curve.get_closest_offset(local_pos)
-		return current_offset
-
-	const SEARCH_BACK: float = 10.0
-	const SEARCH_FWD: float = 25.0
-	const STEP: float = 2.5
-	const FALLBACK_DIST_SQ: float = 900.0 # 30 meters squared
-
-	var start_s = current_offset - SEARCH_BACK
-	var end_s = current_offset + SEARCH_FWD
-	var num_steps = int((end_s - start_s) / STEP) + 1
-
-	if _sample_points.size() != num_steps:
-		_sample_points.resize(num_steps)
-
-	var best_s = start_s
-	var best_dist_sq = INF
-	var best_idx = 0
-
-	for i in range(num_steps):
-		var s = start_s + i * STEP
-		var pt = curve.sample_baked(fposmod(s, path_length))
-		_sample_points[i] = pt
-		var d_sq = pt.distance_squared_to(local_pos)
-		if d_sq < best_dist_sq:
-			best_dist_sq = d_sq
-			best_s = s
-			best_idx = i
-
-	# If car drifted off-track or was teleported, recover via global lookup
-	if best_dist_sq > FALLBACK_DIST_SQ:
-		current_offset = curve.get_closest_offset(local_pos)
-		return current_offset
-
-	# Analytical line-segment projection refinement on adjacent segments
-	var refined_s = best_s
-	var min_refined_dist_sq = best_dist_sq
-
-	if best_idx > 0:
-		var p1 = _sample_points[best_idx - 1]
-		var p2 = _sample_points[best_idx]
-		var seg = p2 - p1
-		var seg_len_sq = seg.length_squared()
-		if seg_len_sq > 0.0001:
-			var t = clampf((local_pos - p1).dot(seg) / seg_len_sq, 0.0, 1.0)
-			var proj = p1 + seg * t
-			var d_sq = proj.distance_squared_to(local_pos)
-			if d_sq < min_refined_dist_sq:
-				min_refined_dist_sq = d_sq
-				refined_s = (start_s + (best_idx - 1) * STEP) + t * STEP
-
-	if best_idx < num_steps - 1:
-		var p1 = _sample_points[best_idx]
-		var p2 = _sample_points[best_idx + 1]
-		var seg = p2 - p1
-		var seg_len_sq = seg.length_squared()
-		if seg_len_sq > 0.0001:
-			var t = clampf((local_pos - p1).dot(seg) / seg_len_sq, 0.0, 1.0)
-			var proj = p1 + seg * t
-			var d_sq = proj.distance_squared_to(local_pos)
-			if d_sq < min_refined_dist_sq:
-				min_refined_dist_sq = d_sq
-				refined_s = (start_s + best_idx * STEP) + t * STEP
-
-	current_offset = fposmod(refined_s, path_length)
-	return current_offset
 
 func _drive_towards(local_target: Vector3, delta: float) -> void:
 	## Effect: Applies the mechanical control inputs to the VehicleBody3D based on where 
