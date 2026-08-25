@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" format=3]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cd7tcpfy7werc"]
 
-[ext_resource type="Shader" path="res://shaders/car_body.gdshader" id="1_shader"]
+[ext_resource type="Shader" uid="uid://byrsoemcnoxq2" path="res://shaders/car_body.gdshader" id="1_shader"]
 
 [resource]
+render_priority = 0
 shader = ExtResource("1_shader")
-
