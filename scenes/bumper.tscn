@@ -10,8 +10,9 @@ height = 4.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_xx0jo"]
 radius = 2.0049908
 
-[node name="Bumper" type="StaticBody3D" unique_id=1677048967 groups=["TRACK"]]
+[node name="Bumper" type="AnimatableBody3D" unique_id=1677048967 groups=["TRACK"]]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+sync_to_physics = true
 script = ExtResource("bumper_script")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=197188712]
