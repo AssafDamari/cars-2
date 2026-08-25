@@ -5,5 +5,5 @@
 
 [node name="tree_palm" unique_id=2145118092 instance=ExtResource("1_d4owq")]
 
-[node name="Cube" parent="." index="0" unique_id=1508222100]
+[node name="Cube" parent="." index="0" unique_id=233283617]
 surface_material_override/0 = ExtResource("2_i0mdi")

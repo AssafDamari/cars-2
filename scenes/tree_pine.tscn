@@ -3,10 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c2uuojsl2qrkv" path="res://models/tree_pine.blend" id="1_h0rmh"]
 [ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_of5mq"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_h0rmh"]
-height = 2.6392822
-radius = 0.8535156
-
 [node name="tree_pine" unique_id=1148357556 instance=ExtResource("1_h0rmh")]
 
 [node name="Cylinder" parent="." index="0" unique_id=1465756161]
@@ -16,9 +12,3 @@ surface_material_override/0 = ExtResource("2_of5mq")
 [node name="Cylinder_001" parent="." index="1" unique_id=699894744]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.9984601, 0)
 surface_material_override/0 = ExtResource("2_of5mq")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=156812792]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=161905392]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3118286, 0)
-shape = SubResource("CylinderShape3D_h0rmh")
