@@ -1,6 +1,8 @@
 class_name Car
 extends VehicleBody3D
 
+const CAR_BODY_MATERIAL: ShaderMaterial = preload("res://materials/car_body.tres")
+
 @export var color: Color = Color.WHITE
 @export var max_speed: float = 40
 @export var max_brake_force: float = 20.0
@@ -31,13 +33,14 @@ func _physics_process(_delta: float) -> void:
 
 func apply_color_to_mesh(_color: Color) -> void:
 	var body_mesh := get_first_mesh_instance(body)
-	var material := body_mesh.get_active_material(0).duplicate(true)
-	material.albedo_color = _color
-	body_mesh.set_surface_override_material(0, material)
+	# Assign the shared material (same instance for all cars) and set per-instance color.
+	# This avoids duplicating the material and allows GPU batching.
+	body_mesh.set_surface_override_material(0, CAR_BODY_MATERIAL)
+	body_mesh.set_instance_shader_parameter("car_color", _color)
 	for child_mesh in body_mesh.get_children():
 		if child_mesh is MeshInstance3D:
-			child_mesh.set_surface_override_material(0, material)
-
+			child_mesh.set_surface_override_material(0, CAR_BODY_MATERIAL)
+			child_mesh.set_instance_shader_parameter("car_color", _color)
 
 func brake_car():
 	engine_force = 0
