@@ -20,6 +20,11 @@ func _ready():
 	GlobalSignals.cars_setup_done.connect(setup_car_indicators)
 
 
+func _exit_tree():
+	GlobalSignals.track_setup_done.disconnect(setup_track)
+	GlobalSignals.cars_setup_done.disconnect(setup_car_indicators)
+
+
 func _process(delta):
 	timer += delta
 	if timer >= update_interval:

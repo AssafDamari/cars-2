@@ -13,6 +13,9 @@ extends Node3D
 
 func _ready() -> void:
 	GlobalSignals.show_debug_text.connect(show_debug_lable)
+
+func _exit_tree() -> void:
+	GlobalSignals.show_debug_text.disconnect(show_debug_lable)
 	
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

@@ -19,6 +19,10 @@ func _ready() -> void:
 	GlobalSignals.cars_setup_done.connect(setup_cars_list)
 
 
+func _exit_tree() -> void:
+	GlobalSignals.cars_setup_done.disconnect(setup_cars_list)
+
+
 func _process(delta: float) -> void:
 	if not pos_manager or not is_instance_valid(pos_manager):
 		return
