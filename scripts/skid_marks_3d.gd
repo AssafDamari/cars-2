@@ -40,6 +40,12 @@ var min_speed_sq: float
 var min_dist_sq: float
 var max_distance_sq: float
 
+# Mesh rebuild throttle: rebuild only when geometry changed, capped to a max rate
+const _MIN_REBUILD_INTERVAL: float = 0.05
+const _MAX_REBUILD_INTERVAL: float = 0.1
+var _rebuild_dirty: bool = true
+var _last_rebuild_time: float = 0.0
+
 # Pre-allocated arrays for mesh generation
 var varray: PackedVector3Array
 var carray: PackedColorArray
@@ -96,7 +102,12 @@ func _process(_delta: float) -> void:
 	_expire_points(now)
 	
 	if left_count > 1 or right_count > 1:
-		_update_mesh(now)
+		var time_since_rebuild: float = now - _last_rebuild_time
+		if _rebuild_dirty and time_since_rebuild >= _MIN_REBUILD_INTERVAL \
+				or time_since_rebuild >= _MAX_REBUILD_INTERVAL:
+			_update_mesh(now)
+			_rebuild_dirty = false
+			_last_rebuild_time = now
 	elif array_mesh.get_surface_count() > 0:
 		array_mesh.clear_surfaces()
 
@@ -130,6 +141,7 @@ func _add_point_left(pos: Vector3, now: float) -> void:
 		left_count += 1
 	else:
 		left_head = (left_head + 1) % MAX_POINTS
+	_rebuild_dirty = true
 
 func _add_point_right(pos: Vector3, now: float) -> void:
 	if right_count > 0 and pos.distance_squared_to(right_last_pos) < min_dist_sq:
@@ -143,15 +155,21 @@ func _add_point_right(pos: Vector3, now: float) -> void:
 		right_count += 1
 	else:
 		right_head = (right_head + 1) % MAX_POINTS
+	_rebuild_dirty = true
 
 func _expire_points(now: float) -> void:
+	var expired: bool = false
 	while left_count > 0 and (now - left_times[left_head]) > lifetime:
 		left_head = (left_head + 1) % MAX_POINTS
 		left_count -= 1
+		expired = true
 		
 	while right_count > 0 and (now - right_times[right_head]) > lifetime:
 		right_head = (right_head + 1) % MAX_POINTS
 		right_count -= 1
+		expired = true
+	if expired:
+		_rebuild_dirty = true
 
 func _update_mesh(now: float) -> void:
 	var half_width: float = trail_width * 0.5
