@@ -26,6 +26,11 @@ var results_panel: Node = null
 const _UPDATE_INTERVAL: float = 0.1
 var _update_timer: float = 0.0
 
+# Cache for get_results() / _calculate_live_positions(), rebuilt only when data changes
+var _cached_results: Array = []
+var _cached_live_positions: Dictionary = {}
+var _results_dirty: bool = true
+
 signal car_finished(car: Car, position: int, finish_time: float)
 signal player_finished(position: int, finish_time: float, results: Array)
 signal race_complete()
@@ -76,6 +81,12 @@ func _process(delta: float) -> void:
 		car_data[car]["progress"] += delta_offset
 		car_data[car]["last_offset"] = current_offset
 
+	_results_dirty = true
+
+
+func _invalidate_results() -> void:
+	_results_dirty = true
+
 
 func load_cars(race_cars: Array[Car]) -> void:
 	cars = race_cars
@@ -89,6 +100,7 @@ func load_cars(race_cars: Array[Car]) -> void:
 			"position": 0,
 		}
 	race_start_time = Time.get_ticks_msec() / 1000.0
+	_invalidate_results()
 
 
 func set_track_path(path: Path3D) -> void:
@@ -116,6 +128,7 @@ func car_crossed_finish(car: Car) -> void:
 	# Check if the car has completed all laps
 	if data["current_lap"] >= number_of_laps:
 		data["finished"] = true
+		_invalidate_results()
 		data["finish_time"] = Time.get_ticks_msec() / 1000.0 - race_start_time
 		finished_cars.append(car)
 		data["position"] = finished_cars.size()  # 1-indexed position
@@ -174,7 +187,17 @@ func get_car_finish_time(car: Car) -> float:
 
 
 ## Returns an ordered array of result dictionaries for all cars (finished first, then active).
+## Results are cached and rebuilt only when car progress or finish data changes.
 func get_results() -> Array:
+	if _results_dirty:
+		_rebuild_cached()
+	return _cached_results
+
+
+## Rebuilds both cached results and live positions in a single pass.
+func _rebuild_cached() -> void:
+	_results_dirty = false
+
 	var results: Array = []
 
 	# Add finished cars in their finishing order
@@ -199,6 +222,7 @@ func get_results() -> Array:
 	active_cars.sort_custom(_compare_active_cars)
 
 	var pos = finished_cars.size() + 1
+	var live_positions: Dictionary = {}
 	for car in active_cars:
 		results.append({
 			"car": car,
@@ -208,26 +232,19 @@ func get_results() -> Array:
 			"is_player": car.is_in_group("PLAYER"),
 			"finished": false,
 		})
+		live_positions[car] = pos
 		pos += 1
 
-	return results
+	_cached_results = results
+	_cached_live_positions = live_positions
 
 
 ## Calculates live positions for all non-finished cars.
+## Cached alongside results; rebuilt only when data changes.
 func _calculate_live_positions() -> Dictionary:
-	var active_cars: Array[Car] = []
-	for car in cars:
-		if not car_data[car]["finished"]:
-			active_cars.append(car)
-
-	active_cars.sort_custom(_compare_active_cars)
-
-	var positions: Dictionary = {}
-	var pos = finished_cars.size() + 1
-	for car in active_cars:
-		positions[car] = pos
-		pos += 1
-	return positions
+	if _results_dirty:
+		_rebuild_cached()
+	return _cached_live_positions
 
 
 ## Comparison function: cars with more laps are ahead; ties broken by path progress.
