@@ -22,6 +22,10 @@ var track_path: Path3D
 var ResultsPanel = preload("res://scripts/race_results_panel.gd")
 var results_panel: Node = null
 
+# Throttle: only sample curve offsets at a fixed interval (10 Hz)
+const _UPDATE_INTERVAL: float = 0.1
+var _update_timer: float = 0.0
+
 signal car_finished(car: Car, position: int, finish_time: float)
 signal player_finished(position: int, finish_time: float, results: Array)
 signal race_complete()
@@ -31,7 +35,11 @@ func _ready() -> void:
 	add_to_group("CARS_POS_MANAGER")
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	_update_timer += delta
+	if _update_timer < _UPDATE_INTERVAL:
+		return
+	_update_timer -= _UPDATE_INTERVAL
 	if not track_path or not track_path.curve:
 		return
 		
