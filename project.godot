@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalSignals="*uid://c1sem0g1y0xtm"
 GlobalSceneManager="*uid://bnnk8pdbwsngv"
+PlayerSettings="*res://scripts/player_settings.gd"
 
 [display]
 

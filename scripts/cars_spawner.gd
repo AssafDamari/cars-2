@@ -62,7 +62,7 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 		# The first car is the Player car, others are NPC cars
 		if i == 0:
 			car.name = "PlayerCar"
-			car.color = Color.from_rgba8(249, 0, 0)
+			car.color = PlayerSettings.get_car_color(car_type)
 			car.add_to_group("PLAYER")
 			car.apply_color_to_mesh(car.color)
 			
