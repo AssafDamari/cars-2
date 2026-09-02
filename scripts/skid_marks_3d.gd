@@ -127,6 +127,7 @@ func is_drifting() -> bool:
 		return false
 	
 	var lateral_velocity: float = vel.dot(vehicle.global_transform.basis.x)
+	
 	return abs(lateral_velocity) > drift_threshold
 
 func _add_point_left(pos: Vector3, now: float) -> void:

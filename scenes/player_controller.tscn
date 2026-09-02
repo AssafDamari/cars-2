@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://16w2c4issiw" path="res://scenes/gear_slider.tscn" id="11_mfmwq"]
 [ext_resource type="PackedScene" path="res://scenes/lap_label.tscn" id="12_lap_label"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_ba4vk"]
 font_size = 40
 outline_size = 10
@@ -27,7 +26,7 @@ offset_top = 112.5
 offset_right = 131.5
 offset_bottom = 195.5
 
-[node name="LapLabel" parent="Player controllsUI" instance=ExtResource("12_lap_label")]
+[node name="LapLabel" parent="Player controllsUI" unique_id=374643100 instance=ExtResource("12_lap_label")]
 offset_left = -131.5
 offset_top = 205.0
 offset_right = 131.5

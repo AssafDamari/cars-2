@@ -36,7 +36,8 @@ func _physics_process(delta: float) -> void:
 		vehicle.brake = 0.0
 		vehicle.hide_brake_indicator()
 	
-	_apply_dynamic_drift(steer_input, delta)
+	# temp disable drift logic for now I want to check if we can get behavior viw vhicle and wheels configuration
+	#_apply_dynamic_drift(steer_input, delta)
 
 	
 func _apply_dynamic_drift(steer_input: float, delta: float) -> void:

@@ -32,6 +32,9 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 	var skid_marks_scene: PackedScene = load("res://scenes/skid_marks_3d.tscn")
 	var offroad_mod_scene: PackedScene = load("res://scenes/offroad_modifier.tscn")
 	var camera_scene: PackedScene = load("res://scenes/camera_3d_follow.tscn")
+	var modifiers: Array[float] = get_engine_force_modifiers(car_type)
+	var engine_force_modifier_min: float = modifiers[0]
+	var engine_force_modifier_max: float = modifiers[1]
 	
 	for i in range(number_of_cars):
 		# Instance the car according to car_type
@@ -81,9 +84,23 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 			var npc_ctrl = npc_ctrl_scene.instantiate()
 			# Setup the NpcCarController
 			npc_ctrl.path_node = path
-			npc_ctrl.engine_force_fwd = engine_force_base * randf_range(0.9, 1.05)
+			npc_ctrl.engine_force_fwd = engine_force_base * randf_range(engine_force_modifier_min, engine_force_modifier_max)
 			car.add_child(npc_ctrl)
 		
 		spawned_cars.append(car)
 		
 	return spawned_cars
+	
+# For each car type we have different min and max engine force modifiers
+func get_engine_force_modifiers(car_type: int) -> Array[float]:
+	match car_type:
+		1:
+			return [0.9, 1.05]
+		2:
+			return [0.7, 0.9]
+		3:
+			return [0.9, 1.05]
+		4:
+			return [0.9, 1.05]
+		_:
+			return [0.9, 1.05]
