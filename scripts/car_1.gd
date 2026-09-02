@@ -19,9 +19,6 @@ var engine_force_modifier: float = 1.0
 # current speed
 var current_speed: float = 0
 
-func _ready() -> void:
-	apply_color_to_mesh(color)
-
 
 func _physics_process(_delta: float) -> void:
 	current_speed = linear_velocity.length()
