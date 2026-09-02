@@ -3,7 +3,7 @@ extends Node
 
 const SAVE_PATH := "user://player_settings.cfg"
 
-const DEFAULT_CAR_COLOR := Color.BLUE  # Default color if not set
+var DEFAULT_CAR_COLOR := Color.from_rgba8(249, 0, 0)  # Default color if not set
 
 # Settings are stored per car type so future stats (body model, etc.) can be
 # added per type without changing the structure. Keyed by car_type as int.
