@@ -9,7 +9,10 @@
 friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e54y"]
-size = Vector3(1.8659668, 0.4022705, 4)
+size = Vector3(1.8659668, 0.5541199, 4)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_50543"]
+height = 2.2495117
 
 [sub_resource type="BoxMesh" id="BoxMesh_u2fa2"]
 
@@ -24,8 +27,12 @@ center_of_mass_mode = 1
 script = ExtResource("1_ny206")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020751953, 0.45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020751953, 0.5259247, 0)
 shape = SubResource("BoxShape3D_3e54y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1930419937]
+transform = Transform3D(1, 0, 0, 0, -0.010938246, 0.9999401, 0, -0.9999401, -0.010938246, 0, 0.7280977, 0.12474839)
+shape = SubResource("CapsuleShape3D_50543")
 
 [node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.9, 0.2, -1.362)
