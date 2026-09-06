@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bp6tyjwwceb6c"]
+
+[ext_resource type="PackedScene" uid="uid://crguvonmwfg4p" path="res://models/car_muscle_2_body_model.blend" id="1_60c6f"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_7k8fh"]
+
+[node name="car_muscle_2_body_model" unique_id=130362429 instance=ExtResource("1_60c6f")]
+
+[node name="Cube_001" parent="." index="0" unique_id=1492052466]
+layers = 2
+surface_material_override/0 = ExtResource("2_7k8fh")
+
+[node name="Cube_002" parent="." index="1" unique_id=535311604]
+surface_material_override/0 = ExtResource("2_7k8fh")

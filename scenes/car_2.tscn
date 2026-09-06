@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_04eve"]
 [ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="4_e85k8"]
 [ext_resource type="PackedScene" uid="uid://ct0fpmv7ay8b1" path="res://scenes/car_2_body_model.tscn" id="4_ilqg0"]
+[ext_resource type="PackedScene" uid="uid://bp6tyjwwceb6c" path="res://scenes/car_muscle_2_body_model.tscn" id="5_e85k8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ilqg0"]
 friction = 0.0
@@ -77,13 +78,16 @@ suspension_stiffness = 20.0
 [node name="Body" type="Node3D" parent="." unique_id=712893536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18357468, 0.007267952)
 
-[node name="car_2_body_model" parent="Body" unique_id=600277083 instance=ExtResource("4_ilqg0")]
-
 [node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68282545, 0.08749223)
 size = Vector3(2, 1.1086926, 4.1572404)
 texture_albedo = ExtResource("4_e85k8")
 cull_mask = 1047554
+
+[node name="car_muscle_2_body_model" parent="Body" unique_id=130362429 instance=ExtResource("5_e85k8")]
+
+[node name="car_2_body_model" parent="Body" unique_id=600277083 instance=ExtResource("4_ilqg0")]
+visible = false
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
 
