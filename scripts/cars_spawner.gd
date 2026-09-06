@@ -15,18 +15,43 @@ var colors: Array[Color] = [
 	]
 	
 var car_types = {
-	1: "res://scenes/car_1.tscn",
-	2: "res://scenes/car_2.tscn",
-	3: "res://scenes/car_3.tscn",
-	4: "res://scenes/car_4.tscn"
+	1: { 
+		"car_scene_path": "res://scenes/car_1.tscn",
+		"car_body_scene_path": [
+			"res://scenes/car_3_body_model.tscn"
+		]
+		},
+	2: { 
+		"car_scene_path":"res://scenes/car_2.tscn" ,
+		"car_body_scene_path": [
+			"res://scenes/car_2_body_model.tscn",
+			"res://scenes/car_muscle_2_body_model.tscn"
+		]
+		},
+	3: { 
+		"car_scene_path":"res://scenes/car_3.tscn" ,
+		"car_body_scene_path": [
+			"res://scenes/car_3_body_model.tscn"
+		]
+		},
+	4: { 
+		"car_scene_path":"res://scenes/car_4.tscn" ,
+		"car_body_scene_path": [
+			"res://scenes/race_car_body_5.tscn"
+		]
+		}
 }
 
 func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_base: int) -> Array[Car]:
 	var spawned_cars: Array[Car] = []
 	
 	# Pre-load scenes for better performance on mobile
-	var car_scene_path = car_types.get(car_type, car_types[1])
-	var car_scene: PackedScene = load(car_scene_path)
+	var car_info: Dictionary = car_types.get(car_type, car_types[1])
+	var car_scene: PackedScene = load(car_info["car_scene_path"])
+	var car_body_paths: Array = car_info["car_body_scene_path"]
+	var body_scenes: Array[PackedScene] = []
+	for body_path in car_body_paths:
+		body_scenes.append(load(body_path))
 	var npc_ctrl_scene: PackedScene = load("res://scenes/npc_car_controller.tscn")
 	var player_ctrl_scene: PackedScene = load("res://scenes/player_controller.tscn")
 	var skid_marks_scene: PackedScene = load("res://scenes/skid_marks_3d.tscn")
@@ -67,6 +92,7 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 			car.name = "PlayerCar"
 			car.color = PlayerSettings.get_car_color(car_type)
 			car.add_to_group("PLAYER")
+			add_car_body(car, body_scenes[0])
 			car.apply_color_to_mesh(car.color)
 			
 			var player_ctrl = player_ctrl_scene.instantiate()
@@ -79,6 +105,7 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 			car.name = "NpcCar" + str(i)
 			# Set color from colors array cyclically for NPCs
 			car.color = colors[(i - 1) % colors.size()]
+			add_car_body(car, body_scenes.pick_random())
 			car.apply_color_to_mesh(car.color)
 			
 			var npc_ctrl = npc_ctrl_scene.instantiate()
@@ -91,6 +118,13 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 		
 	return spawned_cars
 	
+func add_car_body(car: Car, body_scene: PackedScene) -> void:
+	var body_instance = body_scene.instantiate()
+	if car.body:
+		car.body.add_child(body_instance)
+	else:
+		car.add_child(body_instance)
+
 # For each car type we have different min and max engine force modifiers
 func get_engine_force_modifiers(car_type: int) -> Array[float]:
 	match car_type:

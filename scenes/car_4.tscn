@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://djlvejcullers" path="res://scripts/car_1.gd" id="1_px4qj"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_yhgjq"]
-[ext_resource type="PackedScene" uid="uid://bjwaj2oelp57t" path="res://scenes/race_car_body_5.tscn" id="4_px4qj"]
 [ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="4_s2ehm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ilqg0"]
@@ -86,8 +85,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40543905, -0.14962816)
 size = Vector3(2, 0.92276627, 4.581423)
 texture_albedo = ExtResource("4_s2ehm")
 cull_mask = 1047554
-
-[node name="race_car_body_5" parent="Body" unique_id=1928323152 instance=ExtResource("4_px4qj")]
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
 

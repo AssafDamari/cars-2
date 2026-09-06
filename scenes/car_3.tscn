@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djlvejcullers" path="res://scripts/car_1.gd" id="1_ifb1p"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_s3xki"]
-[ext_resource type="PackedScene" uid="uid://cx68xx14v7n55" path="res://scenes/car_3_body_model.tscn" id="3_ifb1p"]
 [ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="4_x1m1d"]
-[ext_resource type="PackedScene" uid="uid://b3af4b0v1gfj5" path="res://scenes/wheel_1_model.tscn" id="5_s3xki"]
 [ext_resource type="Material" uid="uid://b61e2vikqmcwc" path="res://materials/red_light.tres" id="6_l7ey8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ilqg0"]
@@ -83,17 +81,11 @@ transform = Transform3D(1.385, 0, 0, 0, 1.181, 0, 0, 0, 1.181, 0, 0, 0)
 
 [node name="Body" type="Node3D" parent="." unique_id=712893536]
 
-[node name="car_3_body_model" parent="Body" unique_id=566866078 instance=ExtResource("3_ifb1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1698394, 0, 0.65756464, 0)
-
 [node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85136735, 0.04532242)
 size = Vector3(2, 1.4457765, 3.2933817)
 texture_albedo = ExtResource("4_x1m1d")
 cull_mask = 1047554
-
-[node name="wheel1_model" parent="Body" unique_id=1460260939 instance=ExtResource("5_s3xki")]
-transform = Transform3D(0.43, 0, 0, 0, 0.42091036, 0.08794589, 0, -0.08794589, 0.42091036, 0, 0.9133101, 1.9194926)
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14307296, -0.21232235)

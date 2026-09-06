@@ -9,11 +9,6 @@ size = Vector3(1.5, 0.5, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2fa2"]
 size = Vector3(2, 0.35, 0.05)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3e54y"]
-size = Vector3(1.5, 0.5, 4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2fa2"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_u2fa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j6vf"]
@@ -86,11 +81,6 @@ suspension_stiffness = 35.0
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("1_ydp05")]
 
 [node name="Body" type="Node3D" parent="." unique_id=712893536]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=847695400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28047597, 0)
-mesh = SubResource("BoxMesh_3e54y")
-surface_material_override/0 = SubResource("StandardMaterial3D_u2fa2")
 
 [node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
 
