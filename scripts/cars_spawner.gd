@@ -37,7 +37,8 @@ var car_types = {
 	4: { 
 		"car_scene_path":"res://scenes/car_4.tscn" ,
 		"car_body_scene_path": [
-			"res://scenes/race_car_body_5.tscn"
+			"res://scenes/race_car_body_5.tscn",
+			"res://scenes/race_car_body_6.tscn"
 		]
 		}
 }
