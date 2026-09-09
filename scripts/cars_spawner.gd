@@ -15,12 +15,14 @@ var colors: Array[Color] = [
 	]
 	
 var car_types = {
+	# pickup
 	1: { 
 		"car_scene_path": "res://scenes/car_1.tscn",
 		"car_body_scene_path": [
 			"res://scenes/car_3_body_model.tscn"
 		]
 		},
+	# drift car
 	2: { 
 		"car_scene_path":"res://scenes/car_2.tscn" ,
 		"car_body_scene_path": [
@@ -28,12 +30,14 @@ var car_types = {
 			"res://scenes/car_muscle_2_body_model.tscn"
 		]
 		},
+	# terrain car
 	3: { 
 		"car_scene_path":"res://scenes/car_3.tscn" ,
 		"car_body_scene_path": [
 			"res://scenes/car_3_body_model.tscn"
 		]
 		},
+	# Race car
 	4: { 
 		"car_scene_path":"res://scenes/car_4.tscn" ,
 		"car_body_scene_path": [
