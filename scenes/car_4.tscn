@@ -81,8 +81,8 @@ transform = Transform3D(2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.090800226, 0.007267952)
 
 [node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40543905, -0.14962816)
-size = Vector3(2, 0.92276627, 4.581423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51758194, -0.14962816)
+size = Vector3(2, 1.147052, 4.581423)
 texture_albedo = ExtResource("4_s2ehm")
 cull_mask = 1047554
 

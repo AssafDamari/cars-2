@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d3ftpoxge8qa0"]
+
+[ext_resource type="PackedScene" uid="uid://c4gx63lfd3bj5" path="res://models/lamborgini_body.blend" id="1_6ptua"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_665ya"]
+
+[node name="lamborgini_body" unique_id=150200449 instance=ExtResource("1_6ptua")]
+
+[node name="Body_001" parent="." index="0" unique_id=1422350416]
+layers = 2
+surface_material_override/0 = ExtResource("2_665ya")
+
+[node name="Body_002" parent="." index="1" unique_id=1730163216]
+surface_material_override/0 = ExtResource("2_665ya")

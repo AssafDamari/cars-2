@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d4f7eng8586xg"]
+
+[ext_resource type="PackedScene" uid="uid://ds25hr8jt4n3f" path="res://models/race_car_body_7.blend" id="1_80umb"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_c3xvs"]
+
+[node name="race_car_body_7" unique_id=845657373 instance=ExtResource("1_80umb")]
+
+[node name="Cube" parent="." index="0" unique_id=2060533978]
+layers = 2
+surface_material_override/0 = ExtResource("2_c3xvs")
+
+[node name="Cube_001" parent="." index="1" unique_id=788254019]
+surface_material_override/0 = ExtResource("2_c3xvs")

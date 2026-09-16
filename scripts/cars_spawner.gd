@@ -26,8 +26,10 @@ var car_types = {
 	2: { 
 		"car_scene_path":"res://scenes/car_2.tscn" ,
 		"car_body_scene_path": [
+			"res://scenes/lamborgini_body.tscn",
 			"res://scenes/car_2_body_model.tscn",
-			"res://scenes/car_muscle_2_body_model.tscn"
+			"res://scenes/car_muscle_2_body_model.tscn",
+			"res://scenes/car_1_body_model.tscn"
 		]
 		},
 	# terrain car
@@ -42,7 +44,8 @@ var car_types = {
 		"car_scene_path":"res://scenes/car_4.tscn" ,
 		"car_body_scene_path": [
 			"res://scenes/race_car_body_5.tscn",
-			"res://scenes/race_car_body_6.tscn"
+			"res://scenes/race_car_body_6.tscn",
+			"res://scenes/race_car_body_7.tscn"
 		]
 		}
 }
