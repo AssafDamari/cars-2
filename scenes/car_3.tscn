@@ -39,8 +39,8 @@ use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.42
-wheel_friction_slip = 2.75
-suspension_stiffness = 55.0
+wheel_friction_slip = 5.0
+suspension_stiffness = 60.0
 
 [node name="Wheel" parent="VehicleWheel3DFrontLeft" unique_id=1097093256 instance=ExtResource("2_s3xki")]
 transform = Transform3D(1.385, 0, 0, 0, 1.181, 0, 0, 0, 1.181, 0, 0, 0)
@@ -51,8 +51,8 @@ use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.42
-wheel_friction_slip = 2.75
-suspension_stiffness = 55.0
+wheel_friction_slip = 5.0
+suspension_stiffness = 60.0
 
 [node name="Wheel2" parent="VehicleWheel3DFrontRight" unique_id=1045903003 instance=ExtResource("2_s3xki")]
 transform = Transform3D(1.385, 0, 0, 0, 1.181, 0, 0, 0, 1.181, 0, 0, 0)
@@ -62,8 +62,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.87
 use_as_traction = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.42
-wheel_friction_slip = 2.75
-suspension_stiffness = 55.0
+wheel_friction_slip = 5.0
+suspension_stiffness = 60.0
 
 [node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=862881802 instance=ExtResource("2_s3xki")]
 transform = Transform3D(1.385, 0, 0, 0, 1.181, 0, 0, 0, 1.181, 0, 0, 0)
@@ -73,8 +73,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8
 use_as_traction = true
 wheel_roll_influence = 1.0
 wheel_radius = 0.42
-wheel_friction_slip = 2.75
-suspension_stiffness = 55.0
+wheel_friction_slip = 5.0
+suspension_stiffness = 60.0
 
 [node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("2_s3xki")]
 transform = Transform3D(1.385, 0, 0, 0, 1.181, 0, 0, 0, 1.181, 0, 0, 0)

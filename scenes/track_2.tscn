@@ -266,10 +266,10 @@ vertical_offset = 0.55
 [node name="Ramps" type="Node3D" parent="." unique_id=1906310356]
 
 [node name="Ramp" parent="Ramps" unique_id=26146698 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.12433, -4.2012024, 240.59264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.12433, -6.090866, 240.59264)
 
 [node name="Ramp2" parent="Ramps" unique_id=2111339663 instance=ExtResource("5_d3gf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.422974, -4.2012024, 240.61536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.422974, -6.090866, 240.61536)
 
 [node name="Pushers" type="Node3D" parent="." unique_id=366853232]
 

@@ -5,9 +5,9 @@
 
 [node name="lamborgini_body" unique_id=150200449 instance=ExtResource("1_6ptua")]
 
-[node name="Body_001" parent="." index="0" unique_id=1422350416]
+[node name="Body_001" parent="." index="0" unique_id=1499225]
 layers = 2
 surface_material_override/0 = ExtResource("2_665ya")
 
-[node name="Body_002" parent="." index="1" unique_id=1730163216]
+[node name="Body_003" parent="." index="1" unique_id=319149461]
 surface_material_override/0 = ExtResource("2_665ya")
