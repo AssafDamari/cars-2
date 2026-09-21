@@ -141,7 +141,7 @@ func get_engine_force_modifiers(car_type: int) -> Array[float]:
 		2:
 			return [0.7, 0.9]
 		3:
-			return [0.9, 1.05]
+			return [0.75, 0.9]
 		4:
 			return [0.9, 1.05]
 		_:

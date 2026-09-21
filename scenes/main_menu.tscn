@@ -28,7 +28,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = " Drift "
 
-[node name="DriftButton2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1247854332]
+[node name="TerrainButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1247854332]
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = "Terrain"
@@ -44,6 +44,6 @@ theme_override_font_sizes/font_size = 200
 text = " Cargo "
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/DriftButton" to="." method="_on_drift_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/DriftButton2" to="." method="_on_drift_button_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/TerrainButton" to="." method="_on_terrain_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RaceButton" to="." method="_on_race_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CargoButton" to="." method="_on_cargo_button_pressed"]

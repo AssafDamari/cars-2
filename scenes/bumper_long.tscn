@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c2ndvnhkmqos6"]
+
+[ext_resource type="Material" uid="uid://bftr5rtq1pas2" path="res://materials/gray.tres" id="1_x1ah5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_78hkr"]
+radius = 3.0
+height = 30.0
+radial_segments = 16
+rings = 3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcalp"]
+radius = 3.0
+height = 30.0
+
+[node name="BumperLong" type="StaticBody3D" unique_id=688595859]
+transform = Transform3D(0.99276793, -0.120049134, 0, -5.2475144e-09, -4.3395264e-08, -1, 0.120049134, 0.99276793, -4.371139e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=944089826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_78hkr")
+surface_material_override/0 = ExtResource("1_x1ah5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=352180044]
+shape = SubResource("CapsuleShape3D_pcalp")
