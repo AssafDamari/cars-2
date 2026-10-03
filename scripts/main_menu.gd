@@ -33,3 +33,13 @@ func _on_terrain_button_pressed() -> void:
 		"engine_force_base": 1400,
 		"number_of_laps" : 3
 	})
+
+
+func _on_downhill_pressed() -> void:
+	GlobalSceneManager.load_race({
+		"track_number": 4,
+		"number_of_cars": 2,
+		"car_type": 3,
+		"engine_force_base": 0,
+		"number_of_laps" : 1
+	})

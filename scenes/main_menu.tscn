@@ -38,6 +38,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = "Race"
 
+[node name="Downhill" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1587076576]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "Downhill"
+
 [node name="CargoButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1085543078]
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
@@ -46,4 +51,5 @@ text = " Cargo "
 [connection signal="pressed" from="CenterContainer/VBoxContainer/DriftButton" to="." method="_on_drift_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/TerrainButton" to="." method="_on_terrain_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RaceButton" to="." method="_on_race_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Downhill" to="." method="_on_downhill_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CargoButton" to="." method="_on_cargo_button_pressed"]

@@ -5,7 +5,8 @@ extends Node3D
 var tracks = {
 	1: "res://scenes/track_1.tscn",
 	2: "res://scenes/track_2.tscn",
-	3: "res://scenes/track_3.tscn"
+	3: "res://scenes/track_3.tscn",
+	4: "res://scenes/track_4_downhill.tscn"
 }
 
 func spawn_track(track_number: int)->Track:
