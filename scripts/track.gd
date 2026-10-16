@@ -9,3 +9,8 @@ func get_path_3d() -> Path3D:
 
 func get_start_position() -> Marker3D:
 	return start_position
+
+
+func _on_finish_body_entered(body: Node3D) -> void:
+	if body.is_in_group("CAR"):
+		GlobalSignals.finish_body_entered_signal.emit(body)

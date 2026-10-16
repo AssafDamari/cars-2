@@ -39,7 +39,7 @@ func _on_downhill_pressed() -> void:
 	GlobalSceneManager.load_race({
 		"track_number": 4,
 		"number_of_cars": 2,
-		"car_type": 3,
+		"car_type": 5,
 		"engine_force_base": 0,
 		"number_of_laps" : 1
 	})

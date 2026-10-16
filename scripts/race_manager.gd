@@ -12,6 +12,7 @@ var number_of_laps: int
 
 func _ready() -> void:
 	number_of_laps = GlobalSceneManager.scene_parameters.get("number_of_laps", 1)
+	GlobalSignals.finish_body_entered_signal.connect(_on_finish_body_entered)
 	setup_track()
 	setup_cars()
 

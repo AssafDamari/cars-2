@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://gxgcbfjoucga"]
+
+[ext_resource type="Script" uid="uid://djlvejcullers" path="res://scripts/car_1.gd" id="1_2mmdb"]
+[ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_x6bul"]
+[ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="3_0v11v"]
+[ext_resource type="Material" uid="uid://b61e2vikqmcwc" path="res://materials/red_light.tres" id="4_a5306"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t1egs"]
+friction = 0.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_50543"]
+radius = 0.6
+height = 3.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2fa2"]
+
+[node name="Car3" type="VehicleBody3D" unique_id=1835131583 groups=["CAR"]]
+mass = 500.0
+physics_material_override = SubResource("PhysicsMaterial_t1egs")
+center_of_mass_mode = 1
+script = ExtResource("1_2mmdb")
+max_speed = 32.0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=110849826]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_50543")
+
+[node name="VehicleWheel3DFrontLeft" type="VehicleWheel3D" parent="." unique_id=1468056962]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8702913, 0.42, -1.3047522)
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+suspension_stiffness = 50.0
+
+[node name="Wheel" parent="VehicleWheel3DFrontLeft" unique_id=1097093256 instance=ExtResource("2_x6bul")]
+transform = Transform3D(0.577, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0, 0, 0)
+
+[node name="VehicleWheel3DFrontRight" type="VehicleWheel3D" parent="." unique_id=2038555314]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.87, 0.42, -1.3047522)
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+suspension_stiffness = 50.0
+
+[node name="Wheel2" parent="VehicleWheel3DFrontRight" unique_id=1045903003 instance=ExtResource("2_x6bul")]
+transform = Transform3D(0.577, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0, 0, 0)
+
+[node name="VehicleWheel3DBackRight" type="VehicleWheel3D" parent="." unique_id=2036089284]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.87, 0.42, 1.2430266)
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+suspension_stiffness = 50.0
+
+[node name="Wheel3" parent="VehicleWheel3DBackRight" unique_id=862881802 instance=ExtResource("2_x6bul")]
+transform = Transform3D(0.577, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0, 0, 0)
+
+[node name="VehicleWheel3DBackLeft" type="VehicleWheel3D" parent="." unique_id=389764362]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8702913, 0.42, 1.2430266)
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+suspension_stiffness = 50.0
+
+[node name="Wheel4" parent="VehicleWheel3DBackLeft" unique_id=1866114729 instance=ExtResource("2_x6bul")]
+transform = Transform3D(0.577, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0, 0, 0)
+
+[node name="Body" type="Node3D" parent="." unique_id=712893536]
+
+[node name="Decal" type="Decal" parent="Body" unique_id=2028856595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.959318, -0.0034024715)
+size = Vector3(2, 1.6258682, 3.3908315)
+texture_albedo = ExtResource("3_0v11v")
+cull_mask = 1047554
+
+[node name="brake_indicator" type="Node3D" parent="." unique_id=1036628133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14307296, -0.21232235)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="brake_indicator" unique_id=1819731316]
+transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, -0.6411028, 0.55153656, 2.123429)
+mesh = SubResource("BoxMesh_u2fa2")
+surface_material_override/0 = ExtResource("4_a5306")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="brake_indicator" unique_id=1867515743]
+transform = Transform3D(0.303, 0, 0, 0, 0.176, 0, 0, 0, 0.018, 0.6475258, 0.55153656, 2.123429)
+mesh = SubResource("BoxMesh_u2fa2")
+surface_material_override/0 = ExtResource("4_a5306")

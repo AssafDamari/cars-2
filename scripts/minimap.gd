@@ -76,21 +76,31 @@ func bake_track_to_2d():
 	# Transform points to fit inside the UI Rect
 	var final_points = PackedVector2Array()
 	var ui_size = size # The size of this Control node
+	var diff = max_bound - min_bound
+	var diff_x = diff.x if not is_zero_approx(diff.x) else 1.0
+	var diff_y = diff.y if not is_zero_approx(diff.y) else 1.0
 	
 	for p in points_2d:
-		var normalized = (p - min_bound) / (max_bound - min_bound)
-		final_points.append(normalized * ui_size)
+		var norm_x = (p.x - min_bound.x) / diff_x if not is_zero_approx(diff.x) else 0.5
+		var norm_y = (p.y - min_bound.y) / diff_y if not is_zero_approx(diff.y) else 0.5
+		final_points.append(Vector2(norm_x, norm_y) * ui_size)
 		
 	track_line.points = final_points
 
 
 func update_positions():
 	var ui_size = size
+	var diff = max_bound - min_bound
+	var diff_x = diff.x if not is_zero_approx(diff.x) else 1.0
+	var diff_y = diff.y if not is_zero_approx(diff.y) else 1.0
+
 	for car in car_dots.keys():
 		var dot = car_dots[car]
 		var pos_3d = car.global_position
 		var pos_2d = Vector2(pos_3d.x, pos_3d.z)
 		
 		# Normalize based on the baked track bounds
-		var normalized = (pos_2d - min_bound) / (max_bound - min_bound)
+		var norm_x = (pos_2d.x - min_bound.x) / diff_x if not is_zero_approx(diff.x) else 0.5
+		var norm_y = (pos_2d.y - min_bound.y) / diff_y if not is_zero_approx(diff.y) else 0.5
+		var normalized = Vector2(norm_x, norm_y)
 		dot.position = (normalized * ui_size) - (dot.size / 2)
