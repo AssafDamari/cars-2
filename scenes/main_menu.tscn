@@ -25,28 +25,28 @@ theme_override_constants/separation = 33
 
 [node name="DriftButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1316545394]
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
-text = " Drift "
+theme_override_font_sizes/font_size = 100
+text = "Drift"
 
 [node name="TerrainButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1247854332]
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 100
 text = "Terrain"
 
 [node name="RaceButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=745189759]
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 100
 text = "Race"
 
 [node name="Downhill" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1587076576]
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 100
 text = "Downhill"
 
 [node name="CargoButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1085543078]
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
-text = " Cargo "
+theme_override_font_sizes/font_size = 100
+text = "Cargo"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/DriftButton" to="." method="_on_drift_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/TerrainButton" to="." method="_on_terrain_button_pressed"]

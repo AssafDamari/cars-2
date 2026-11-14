@@ -40,7 +40,11 @@ var min_speed_sq: float
 var min_dist_sq: float
 var max_distance_sq: float
 
-# Mesh rebuild throttle: rebuild only when geometry changed, capped to a max rate
+# Mesh rebuild throttle.
+# _MIN: geometry changes (new/expired points) are pushed to the GPU at most 20x/s.
+# _MAX: the vertex colours bake the fade alpha from `now`, so a trail that is
+#       coasting without new points still needs an occasional refresh or its
+#       alpha would freeze until the next point expires.
 const _MIN_REBUILD_INTERVAL: float = 0.05
 const _MAX_REBUILD_INTERVAL: float = 0.1
 var _rebuild_dirty: bool = true
@@ -78,6 +82,14 @@ func _ready() -> void:
 	mesh_instance.global_transform = Transform3D.IDENTITY
 
 func _process(_delta: float) -> void:
+	# Fast path: nothing drawn and the car is too slow to start a trail.
+	# This skips the wheel-contact checks and camera lookup entirely for every
+	# idle/parked car, which is the common case for most of a race.
+	if left_count == 0 and right_count == 0 and array_mesh.get_surface_count() == 0:
+		if not vehicle or vehicle.linear_velocity.length_squared() < min_speed_sq:
+			was_drifting = false
+			return
+
 	var now: float = Time.get_ticks_msec() / 1000.0
 	
 	if not active_camera:
@@ -103,7 +115,12 @@ func _process(_delta: float) -> void:
 	
 	if left_count > 1 or right_count > 1:
 		var time_since_rebuild: float = now - _last_rebuild_time
-		if _rebuild_dirty and time_since_rebuild >= _MIN_REBUILD_INTERVAL \
+		# The parentheses are deliberate. `and` binds tighter than `or`, so the
+		# original unparenthesised expression already meant
+		#   (dirty and >= MIN) or (>= MAX)
+		# Both branches are wanted: MIN pushes geometry changes at 20x/s, MAX
+		# keeps the baked fade alpha moving while the trail coasts.
+		if (_rebuild_dirty and time_since_rebuild >= _MIN_REBUILD_INTERVAL) \
 				or time_since_rebuild >= _MAX_REBUILD_INTERVAL:
 			_update_mesh(now)
 			_rebuild_dirty = false

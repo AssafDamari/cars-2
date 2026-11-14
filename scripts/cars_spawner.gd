@@ -3,6 +3,12 @@ extends Node3D
 
 var distance_between_cars: float = 10.0
 
+## Skid marks rebuild and re-upload a mesh a few times per second per car, which
+## makes them the most expensive per-car effect. NPC trails are almost never on
+## screen, so only the player gets one by default. Enable to restore the old
+## behaviour of every car leaving marks.
+@export var npc_skid_marks: bool = false
+
 var colors: Array[Color] = [
 		Color.from_rgba8(141, 6, 6),
 		Color.from_rgba8(255, 126, 0),
@@ -51,7 +57,7 @@ var car_types = {
 	5: { 
 		"car_scene_path":"res://scenes/car_5_cart.tscn" ,
 		"car_body_scene_path": [
-			"res://scenes/cart_1_body.tscn",
+			"res://scenes/cart_1_body.tscn"
 		]
 		}
 }
@@ -98,7 +104,8 @@ func spawn_cars(number_of_cars: int, car_type: int, track: Track, engine_force_b
 			car.look_at_from_position(car.global_position, global_next_pos, Vector3.UP)
 		
 		# Add components as child nodes
-		car.add_child(skid_marks_scene.instantiate())
+		if i == 0 or npc_skid_marks:
+			car.add_child(skid_marks_scene.instantiate())
 		car.add_child(offroad_mod_scene.instantiate())
 		
 		# The first car is the Player car, others are NPC cars

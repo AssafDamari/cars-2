@@ -66,10 +66,10 @@ func setup_cars_list() -> void:
 		style_box.corner_radius_bottom_left = 6
 		style_box.corner_radius_bottom_right = 6
 		# Larger margins for vertical mobile screens
-		style_box.content_margin_left = 34
-		style_box.content_margin_right = 14
-		style_box.content_margin_top = 12
-		style_box.content_margin_bottom = 12
+		style_box.content_margin_left = 4
+		style_box.content_margin_right = 4
+		style_box.content_margin_top = 4
+		style_box.content_margin_bottom = 4
 
 		if car.is_in_group("PLAYER"):
 			style_box.bg_color = Color(0.05, 0.15, 0.25, 0.75) # Slightly blue glassmorphism
@@ -84,19 +84,19 @@ func setup_cars_list() -> void:
 			style_box.border_width_top = 1
 			style_box.border_width_right = 1
 			style_box.border_width_bottom = 1
-			style_box.border_color = Color(0.3, 0.3, 0.3, 0.4) # Subtle gray border
+			style_box.border_color = Color(0.3, 0.3, 0.3, 0.3) # Subtle gray border
 
 		item.add_theme_stylebox_override("panel", style_box)
 
 		# Horizontal layout for the row contents
 		var hbox = HBoxContainer.new()
-		hbox.add_theme_constant_override("separation", 12)
+		hbox.add_theme_constant_override("separation", 0)
 		item.add_child(hbox)
 
 		# 1. Car Color indicator (Requirement 3: small box/line with car color)
 		var color_bar = ColorRect.new()
 		color_bar.color = car.color
-		color_bar.custom_minimum_size = Vector2(20, 40)
+		color_bar.custom_minimum_size = Vector2(10, 20)
 		color_bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		hbox.add_child(color_bar)
 

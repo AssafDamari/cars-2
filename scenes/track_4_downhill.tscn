@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://55ewoaxaug3v" path="res://textures/sand_road.png" id="4_ewhp1"]
 [ext_resource type="PackedScene" uid="uid://dwrwpw5mtg6gr" path="res://scenes/finish.tscn" id="4_fj4wf"]
 
-[sub_resource type="Curve3D" id="Curve3D_v47ql"]
+[sub_resource type="Curve3D" id="Curve3D_ewhp1"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.21631193, 1.7459711, 0, -24.364677, 22.370667, -1.5992432, 24.364677, -22.370667, 1.5992432, 118.07, -48, 0, -12.158829, 50.830452, -53.143322, 12.158829, -50.830452, 53.143322, 232.75197, -110.86179, 62.81585, -35.14264, 39.45288, -16.523407, 35.14264, -39.45288, 16.523407, 471.20087, -232.29199, 279.20477, -71.40448, 53.04825, -3.8954773, 71.40448, -53.04825, 3.8954773, 578.1214, -296.09195, 290.7186, 31.38971, 64.03851, -19.09082, -31.38971, -64.03851, 19.09082, 579.9904, -413.91162, 496.33203, 76.71881, 42.283203, 24.197083, -76.71881, -42.283203, -24.197083, 61.902832, -683.0055, 819.9892, 55.735107, 53.29309, 4.7302856, -55.735107, -53.29309, -4.7302856, -244.24915, -912.1803, 967.3098, 0, 0, 0, 0, 0, 0, -641.4481, -1179.465, 734.0455),
-"tilts": PackedFloat32Array(0, 0.165, 0.2, 0.43, 0.585, 0.9, 1.01, 1.47, 1.87)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -20, 66.66667, -53.33333, 20, -66.66667, 53.33333, 150, -180, 160, 25, 73.33333, -43.33333, -25, -73.33333, 43.33333, 120, -400, 320, 45, 75, -33.33333, -45, -75, 33.33333, 0, -620, 420, 58.33333, 68.33333, -38.33333, -58.33333, -68.33333, 38.33333, -150, -850, 520, 78.26288, 52.49403, -38.40272, -78.26288, -52.49403, 38.40272, -350, -1030, 650, 89.8591, 44.98807, -33.4721, 0, 0, 0, -619.5773, -1164.964, 750.4163),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 9
+point_count = 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqc7i"]
 albedo_texture = ExtResource("4_ewhp1")
@@ -25,16 +25,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 [node name="StartPosition" type="Marker3D" parent="." unique_id=1572386782]
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1572843664 groups=["TRACK"]]
-curve = SubResource("Curve3D_v47ql")
+curve = SubResource("Curve3D_ewhp1")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1404436444 groups=["TRACK"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28271484, -0.62838745, -0.5975342)
 use_collision = true
-polygon = PackedVector2Array(-12.683733, 0.08243817, 12.767769, 0.047999665, 28.818174, 7.5201793, 46.822655, 28.159462, 48.024048, -5.3272095, -45.066063, -5.65383, -42.541084, 27.72032, -29.417282, 7.093709)
+polygon = PackedVector2Array(-14.546295, 0.7135916, 12.767769, 0.047999665, 29.586605, 0.93315804, 46.7128, 1.372291, 48.024048, -5.3272095, -45.066063, -5.65383, -45.175835, 1.262509, -31.123573, 1.1527245)
 mode = 2
 path_node = NodePath("../Path3D")
 path_interval_type = 0
 path_interval = 1.0
-path_simplify_angle = 6.0
+path_simplify_angle = 6.8
 path_rotation = 2
 path_rotation_accurate = true
 path_local = false

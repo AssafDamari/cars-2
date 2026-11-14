@@ -14,6 +14,13 @@ extends Node3D
 func _ready() -> void:
 	GlobalSignals.show_debug_text.connect(show_debug_lable)
 
+	# The FPS counter is a debug tool only. Drop it (and its per-frame Label
+	# update) from exported release builds and keep it in editor/debug runs.
+	if not OS.is_debug_build():
+		var fps_label := get_node_or_null("Player controllsUI/TopToolbar/FpsLabel")
+		if fps_label:
+			fps_label.queue_free()
+
 func _exit_tree() -> void:
 	GlobalSignals.show_debug_text.disconnect(show_debug_lable)
 	

@@ -12,12 +12,15 @@
 script = ExtResource("1_w5r77")
 
 [node name="Minimap" parent="." unique_id=1768555498 instance=ExtResource("3_6epbv")]
-offset_left = -440.0
-offset_top = 40.0
-offset_right = -40.0
-offset_bottom = 440.0
+custom_minimum_size = Vector2(200, 200)
+offset_left = -221.0
+offset_top = 21.0
+offset_right = -21.0
+offset_bottom = 221.0
 
 [node name="CarsList" parent="." unique_id=1955642655 instance=ExtResource("3_3kd5h")]
+offset_top = 70.0
+offset_bottom = 35.0
 
 [node name="TrackSpawner" parent="." unique_id=1676795107 instance=ExtResource("4_3kd5h")]
 

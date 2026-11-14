@@ -46,7 +46,7 @@ func setup_car_indicators():
 	for car in cars:
 		var dot = ColorRect.new()
 		dot.color = car.color
-		dot.size = Vector2(15, 15)
+		dot.size = Vector2(10, 10)
 		# Distinguish player from AI
 		if car.is_in_group("PLAYER"):
 			dot.size = 1.5 * dot.size

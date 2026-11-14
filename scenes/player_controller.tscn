@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dq5vm2aqyrech"]
 
 [ext_resource type="Script" uid="uid://bqv5dx5kqebu2" path="res://scripts/player_controller.gd" id="1_d4y06"]
-[ext_resource type="Texture2D" uid="uid://dvurkhjpnyk33" path="res://textures/icon_menu.png" id="2_1kmjt"]
 [ext_resource type="PackedScene" uid="uid://f64whos56byr" path="res://scenes/speedometer.tscn" id="2_mfmwq"]
 [ext_resource type="PackedScene" uid="uid://c1y6yhe347n7s" path="res://scenes/fps_label.tscn" id="3_lwvb4"]
+[ext_resource type="Texture2D" uid="uid://3a4kadrp6pva" path="res://textures/barsHorizontal.png" id="4_ga2kn"]
 [ext_resource type="Texture2D" uid="uid://0e6uu2ooyhur" path="res://textures/icon_pedal_brake.png" id="5_iu0n4"]
+[ext_resource type="Texture2D" uid="uid://b4btdqq5ngbwh" path="res://textures/return.png" id="5_lwvb4"]
 [ext_resource type="Texture2D" uid="uid://ct6umjr3y3kaq" path="res://textures/icon_pedal_brake_black.png" id="6_ngi1a"]
-[ext_resource type="Texture2D" uid="uid://16omjqh27c3l" path="res://textures/icon_arrow_rotate.png" id="8_ga2kn"]
 [ext_resource type="PackedScene" uid="uid://16w2c4issiw" path="res://scenes/gear_slider.tscn" id="11_mfmwq"]
 [ext_resource type="PackedScene" path="res://scenes/lap_label.tscn" id="12_lap_label"]
 
@@ -32,11 +32,24 @@ offset_top = 205.0
 offset_right = 131.5
 offset_bottom = 255.0
 
+[node name="DebugLable" type="Label" parent="Player controllsUI" unique_id=1099488465]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.5
+offset_right = 20.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_ba4vk")
+
 [node name="VirtualJoystick" type="VirtualJoystick" parent="Player controllsUI" unique_id=1499984360]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -413.0
 grow_horizontal = 2
 grow_vertical = 2
 joystick_mode = 2
@@ -45,19 +58,30 @@ initial_offset_ratio = Vector2(0.5, 0.83)
 visibility_mode = 1
 
 [node name="TopToolbar" type="HBoxContainer" parent="Player controllsUI" unique_id=410289884]
-offset_left = 46.0
-offset_top = 35.0
-offset_right = 488.0
-offset_bottom = 167.0
-theme_override_constants/separation = 15
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
 
-[node name="Menu" type="Button" parent="Player controllsUI/TopToolbar" unique_id=1739595216]
+[node name="Menu" type="TextureButton" parent="Player controllsUI/TopToolbar" unique_id=1739595216]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-icon = ExtResource("2_1kmjt")
+size_flags_vertical = 4
+texture_normal = ExtResource("4_ga2kn")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Reload" type="Button" parent="Player controllsUI/TopToolbar" unique_id=749655137]
+[node name="Reload" type="TextureButton" parent="Player controllsUI/TopToolbar" unique_id=749655137]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-icon = ExtResource("8_ga2kn")
+size_flags_vertical = 4
+texture_normal = ExtResource("5_lwvb4")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="FpsLabel" parent="Player controllsUI/TopToolbar" unique_id=706279772 instance=ExtResource("3_lwvb4")]
 layout_mode = 2
@@ -75,34 +99,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="TouchScreenButtonBrake" type="TouchScreenButton" parent="Player controllsUI/Brake" unique_id=1117390335]
-position = Vector2(-143, -357)
-scale = Vector2(3, 3)
+position = Vector2(-48, -120)
 texture_normal = ExtResource("5_iu0n4")
 texture_pressed = ExtResource("6_ngi1a")
 action = "ui_accept"
-
-[node name="DebugLable" type="Label" parent="Player controllsUI" unique_id=1099488465]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_ba4vk")
 
 [node name="GearSlider" parent="Player controllsUI" unique_id=612517197 instance=ExtResource("11_mfmwq")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
-offset_left = -332.0
-offset_top = -439.0
-offset_right = -54.0
-offset_bottom = -99.0
+offset_left = -100.0
+offset_top = -300.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
 

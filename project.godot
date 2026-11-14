@@ -23,8 +23,9 @@ PlayerSettings="*res://scripts/player_settings.gd"
 
 [display]
 
-window/size/viewport_width=720
-window/size/viewport_height=1560
+window/size/viewport_width=648
+window/size/viewport_height=1152
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 

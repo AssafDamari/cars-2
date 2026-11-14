@@ -41,6 +41,15 @@ extends Node3D
 ## Effect: Higher values create wider spacing between cars, effectively creating multi-lane behavior.
 @export var max_lane_offset: float = 5 
 
+## How often (in seconds) the car's position on the curve is measured.
+## The curve search is the expensive part of this script, so it runs a few times
+## per second and the offset is projected forward from the car's speed in between.
+@export var path_search_interval: float = 0.1
+
+## How far along the track (in meters) the cheap local search looks around the
+## last known point before falling back to a full curve scan.
+@export var local_search_radius: float = 30.0
+
 
 @onready var vehicle: VehicleBody3D = get_parent() as VehicleBody3D
 @onready var collision_sensor: Area3D = $CollisionSensor
@@ -51,6 +60,20 @@ var curve: Curve3D
 var path_length: float = 0.0
 var last_steer_error: float = 0.0 # Stores previous frame's error for the 'D' part of PD steering.
 var is_blocked: bool = false # Flag that stops the car if another car is detected ahead.
+
+# --- Path progress ---
+const _OFFSETS_META: StringName = &"npc_baked_offsets"
+
+var path_transform: Transform3D = Transform3D.IDENTITY
+var inv_path_transform: Transform3D = Transform3D.IDENTITY
+var current_offset: float = 0.0
+var _baked_points: PackedVector3Array
+var _baked_offsets: PackedFloat32Array
+var _point_count: int = 0
+var _avg_point_spacing: float = 0.5
+var _closed: bool = false
+var _offset_index: int = 0
+var _search_timer: float = 0.0
 
 # --- Individual Variation ---
 var individual_lane_offset: float = 0.0 # This specific NPC's chosen distance from the path center.
@@ -67,6 +90,18 @@ func _ready() -> void:
 	if path_node:
 		curve = path_node.curve
 		path_length = curve.get_baked_length()
+		# The path never moves, so cache its transforms instead of inverting the
+		# matrix for every NPC on every physics frame.
+		path_transform = path_node.global_transform
+		inv_path_transform = path_transform.affine_inverse()
+		_closed = curve.closed
+		_baked_points = curve.get_baked_points()
+		_point_count = _baked_points.size()
+		# Curve3D bakes points at *almost* even length, so baked point N is NOT at
+		# offset N * bake_interval. Offsets are true cumulative arc length; build
+		# that table once per track and share it between all NPCs.
+		_baked_offsets = _get_baked_offsets(path_node, _baked_points)
+		_avg_point_spacing = path_length / maxf(1.0, float(_point_count - 1))
 	else:
 		push_error("NPC Controller path_node is not set.")
 
@@ -95,17 +130,21 @@ func _physics_process(delta: float) -> void:
 	## Effect: The main brain. Every physics frame it updates the NPC's desired look-ahead, 
 	## figures out where the track is, applies the lateral offset, projects that into 3D world space, 
 	## updates the visual helper marker, and makes the decision to either stop or drive.
-	if not curve or not vehicle:
+	if not curve or not vehicle or _point_count == 0 or path_length <= 0.0:
 		return
 
-	# 1. Calculate Look-Ahead (further ahead = smoother lines at speed)
-	var look_ahead = min(max_look_ahead, min_look_ahead + vehicle.current_speed * speed_factor)
+	# 1. Track progress. get_closest_offset() walks every baked point (~9,000 of
+	# them on track 3), so it only runs at path_search_interval. Between searches
+	# the offset is advanced from the car's speed; the next search corrects it.
+	_search_timer -= delta
+	if _search_timer <= 0.0:
+		_search_timer = path_search_interval
+		_refresh_offset()
+	else:
+		current_offset = fposmod(current_offset + vehicle.current_speed * delta, path_length)
 
-	# 2. Get Path Coordinates (finds where the car currently maps onto the 3D curve)
-	var path_transform = path_node.global_transform
-	var inv_path_transform = path_transform.affine_inverse()
-	var local_pos = inv_path_transform * vehicle.global_transform.origin
-	var current_offset = curve.get_closest_offset(local_pos)
+	# 2. Calculate Look-Ahead (further ahead = smoother lines at speed)
+	var look_ahead = min(max_look_ahead, min_look_ahead + vehicle.current_speed * speed_factor)
 
 	# 3. Calculate Target Point with Lateral Offset
 	# Wrap-around logic for looping tracks
@@ -133,6 +172,60 @@ func _physics_process(delta: float) -> void:
 		vehicle.brake = 0.0
 		vehicle.hide_brake_indicator()
 		_drive_towards(vehicle.to_local(target_point_global), delta)
+
+
+## Effect: Re-measures where the car sits on the curve. Only a small window of
+## baked points around the last known position is scanned; the full curve search
+## is used only when the car jumped further than local_search_radius (respawn,
+## reset, or a long frame hitch), where the local window would be unreliable.
+func _refresh_offset() -> void:
+	var local_pos: Vector3 = inv_path_transform * vehicle.global_transform.origin
+	var window: int = maxi(1, int(ceil(local_search_radius / maxf(_avg_point_spacing, 0.01))))
+	var best_idx: int = _offset_index
+	var best_dist: float = INF
+
+	for i in range(_offset_index - window, _offset_index + window + 1):
+		var idx: int = i
+		if _closed:
+			idx = posmod(i, _point_count)
+		elif idx < 0 or idx >= _point_count:
+			continue
+		var p: Vector3 = _baked_points[idx]
+		var d: float = (p - local_pos).length_squared()
+		if d < best_dist:
+			best_dist = d
+			best_idx = idx
+
+	if best_dist > local_search_radius * local_search_radius:
+		current_offset = curve.get_closest_offset(local_pos)
+		_offset_index = _index_for_offset(current_offset)
+	else:
+		_offset_index = best_idx
+		current_offset = _baked_offsets[best_idx]
+
+
+## Effect: Maps an arc-length offset back to the nearest baked point index.
+func _index_for_offset(p_offset: float) -> int:
+	return clampi(_baked_offsets.bsearch(p_offset), 0, _point_count - 1)
+
+
+## Effect: Builds (once per track) the cumulative arc length for each baked
+## point, matching Curve3D's internal baked_dist_cache. Stored on the Path3D so
+## every NPC on the track shares one copy and it dies with the scene.
+static func _get_baked_offsets(p_path: Path3D, p_points: PackedVector3Array) -> PackedFloat32Array:
+	if p_path.has_meta(_OFFSETS_META):
+		var cached: PackedFloat32Array = p_path.get_meta(_OFFSETS_META)
+		return cached
+
+	var offsets := PackedFloat32Array()
+	offsets.resize(p_points.size())
+	var total: float = 0.0
+	for i in range(1, p_points.size()):
+		total += p_points[i - 1].distance_to(p_points[i])
+		offsets[i] = total
+
+	p_path.set_meta(_OFFSETS_META, offsets)
+	return offsets
 
 func _drive_towards(local_target: Vector3, delta: float) -> void:
 	## Effect: Applies the mechanical control inputs to the VehicleBody3D based on where 

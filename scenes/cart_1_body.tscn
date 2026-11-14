@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://dv2mrwg84y6a0"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ue3ob"]
-radius = 0.6
-height = 3.8
+[ext_resource type="PackedScene" uid="uid://bq3m7k9x2v4nc" path="res://models/cart_1_body.blend" id="1_ctbdy"]
+[ext_resource type="Material" uid="uid://yrfkyjoaqh37" path="res://materials/standard_material_3d.tres" id="2_ctmat"]
 
-[node name="Cart_1_body" type="Node3D" unique_id=517604889]
+[node name="cart_1_body" instance=ExtResource("1_ctbdy")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=799267094]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -8.590746e-10, 0.80716705, -0.01965332)
-mesh = SubResource("CapsuleMesh_ue3ob")
+[node name="CartBody" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ctmat")
