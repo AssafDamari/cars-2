@@ -44,7 +44,7 @@ func _ready() -> void:
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.custom_minimum_size = Vector2(0, 180)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_apply_font_size(title, 160)
+	_apply_font_size(title, 80)
 	vbox.add_child(title)
 
 	var scroll = ScrollContainer.new()
@@ -70,7 +70,7 @@ func _ready() -> void:
 	close_btn.size_flags_horizontal = Control.SIZE_FILL
 	close_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	close_btn.custom_minimum_size = Vector2(0, 120)
-	_apply_font_size(close_btn, 96)
+	_apply_font_size(close_btn, 60)
 	close_btn.connect("pressed", Callable(self, "_on_close_pressed"))
 	close_hbox.add_child(close_btn)
 
@@ -96,21 +96,22 @@ func update_results(results: Array) -> void:
 	for child in results_grid.get_children():
 		results_grid.remove_child(child)
 		child.queue_free()
-
+	
+	var _font_size:float = 50
 	# Populate header row
-	var h_pos = Label.new(); h_pos.text = "Pos"; _apply_font_size(h_pos, 120); results_grid.add_child(h_pos)
-	var h_name = Label.new(); h_name.text = "Name"; _apply_font_size(h_name, 120); results_grid.add_child(h_name)
-	var h_time = Label.new(); h_time.text = "Time"; _apply_font_size(h_time, 120); results_grid.add_child(h_time)
+	var h_pos = Label.new(); h_pos.text = "Pos"; _apply_font_size(h_pos, _font_size); results_grid.add_child(h_pos)
+	var h_name = Label.new(); h_name.text = "Name"; _apply_font_size(h_name, _font_size); results_grid.add_child(h_name)
+	var h_time = Label.new(); h_time.text = "Time"; _apply_font_size(h_time, _font_size); results_grid.add_child(h_time)
 
 	for entry in results:
 		var pos_label = Label.new()
 		pos_label.text = "P%d" % entry["position"]
-		_apply_font_size(pos_label, 112)
+		_apply_font_size(pos_label, _font_size)
 		results_grid.add_child(pos_label)
 
 		var name_label = Label.new()
 		name_label.text = entry["name"] + (" ★" if entry["is_player"] else "")
-		_apply_font_size(name_label, 112)
+		_apply_font_size(name_label, _font_size)
 		results_grid.add_child(name_label)
 
 		var time_label = Label.new()
@@ -118,7 +119,7 @@ func update_results(results: Array) -> void:
 			time_label.text = "%.2fs" % entry["finish_time"]
 		else:
 			time_label.text = "DNF"
-		_apply_font_size(time_label, 112)
+		_apply_font_size(time_label, _font_size)
 		results_grid.add_child(time_label)
 
 	display()
