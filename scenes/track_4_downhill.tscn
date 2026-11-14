@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://55ewoaxaug3v" path="res://textures/sand_road.png" id="4_ewhp1"]
 [ext_resource type="PackedScene" uid="uid://dwrwpw5mtg6gr" path="res://scenes/finish.tscn" id="4_fj4wf"]
 
-[sub_resource type="Curve3D" id="Curve3D_ewhp1"]
+[sub_resource type="Curve3D" id="Curve3D_fj4wf"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -20, 66.66667, -53.33333, 20, -66.66667, 53.33333, 150, -180, 160, 25, 73.33333, -43.33333, -25, -73.33333, 43.33333, 120, -400, 320, 45, 75, -33.33333, -45, -75, 33.33333, 0, -620, 420, 58.33333, 68.33333, -38.33333, -58.33333, -68.33333, 38.33333, -150, -850, 520, 78.26288, 52.49403, -38.40272, -78.26288, -52.49403, 38.40272, -350, -1030, 650, 89.8591, 44.98807, -33.4721, 0, 0, 0, -619.5773, -1164.964, 750.4163),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.3763428, 0, -1.5842413, 0, 0, 0, 0, 0, 0, 316.6887, -68.13252, -11.197807, 0, 0, 0, 0, 0, 0, 635.5978, -138.3087, -17.20647),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 7
+point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqc7i"]
 albedo_texture = ExtResource("4_ewhp1")
@@ -25,7 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 [node name="StartPosition" type="Marker3D" parent="." unique_id=1572386782]
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1572843664 groups=["TRACK"]]
-curve = SubResource("Curve3D_ewhp1")
+curve = SubResource("Curve3D_fj4wf")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1404436444 groups=["TRACK"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28271484, -0.62838745, -0.5975342)
@@ -45,6 +45,6 @@ path_joined = false
 material = SubResource("StandardMaterial3D_iqc7i")
 
 [node name="Finish" parent="." unique_id=1638392428 instance=ExtResource("4_fj4wf")]
-transform = Transform3D(0.7737537, -0.3843653, -0.50355613, 0.40666595, 0.9108614, -0.07038794, 0.48572448, -0.15031615, 0.86109066, -619.5773, -1164.9642, 750.4163)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 630.5504, -137.54071, -17.979637)
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

@@ -97,7 +97,7 @@ func update_results(results: Array) -> void:
 		results_grid.remove_child(child)
 		child.queue_free()
 	
-	var _font_size:float = 50
+	var _font_size: int = 50
 	# Populate header row
 	var h_pos = Label.new(); h_pos.text = "Pos"; _apply_font_size(h_pos, _font_size); results_grid.add_child(h_pos)
 	var h_name = Label.new(); h_name.text = "Name"; _apply_font_size(h_name, _font_size); results_grid.add_child(h_name)
