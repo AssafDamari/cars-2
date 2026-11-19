@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://djlvejcullers" path="res://scripts/car_1.gd" id="1_px4qj"]
 [ext_resource type="PackedScene" uid="uid://ctxv6h7gl70sr" path="res://scenes/wheel.tscn" id="2_yhgjq"]
 [ext_resource type="Texture2D" uid="uid://b05ppmxi0l8xa" path="res://textures/decal1.png" id="4_s2ehm"]
+[ext_resource type="Resource" path="res://resources/handling/race.tres" id="handling_profile"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ilqg0"]
 friction = 0.0
@@ -27,6 +28,7 @@ physics_material_override = SubResource("PhysicsMaterial_ilqg0")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.2, -0.2)
 script = ExtResource("1_px4qj")
+handling = ExtResource("handling_profile")
 max_speed = 57.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=305743891]

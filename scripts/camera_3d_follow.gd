@@ -19,6 +19,9 @@ var target: Node3D
 @export var finish_offset: float = 5.0
 # debug mode
 @export var debug_mode: bool = false
+## How much the camera looks along the direction of travel instead of the
+## car's nose (0 = nose, 1 = travel). Keeps the view steady in drifts.
+@export_range(0.0, 1.0, 0.05) var velocity_follow: float = 0.6
 
 # Flag to control the "finish mode" camera behavior.
 var is_finish_mode: bool = false
@@ -91,6 +94,13 @@ func _calculate_desired_camera_position() -> Vector3:
 	# Assume the target model's "front" is along its local +Z axis.
 	# target.global_transform.basis.z gives this local Z axis in world coordinates.
 	var target_forward_world: Vector3 = target.global_transform.basis.z
+	# While sliding, aim between the nose and the direction of travel so the
+	# view does not swing around with the car's rotation.
+	if target is RigidBody3D and velocity_follow > 0.0:
+		var travel: Vector3 = (target as RigidBody3D).linear_velocity
+		travel.y = 0.0
+		if travel.length_squared() > 25.0 and travel.dot(-target_forward_world) > 0.0:
+			target_forward_world = target_forward_world.lerp(-travel.normalized(), velocity_follow)
 	
 	# Project the target's forward vector onto the XZ plane (ground plane).
 	# This effectively isolates the direction based on yaw.

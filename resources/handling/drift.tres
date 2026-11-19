@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CarHandling" format=3]
+
+[ext_resource type="Script" path="res://scripts/car_handling.gd" id="1_handling"]
+
+[resource]
+script = ExtResource("1_handling")
+max_steer_angle_deg = 32.0
+max_lateral_accel = 16.0
+steer_response = 9.0
+steer_return = 14.0
+yaw_assist = 8.0
+yaw_assist_max = 9.0
+max_grip_slip_deg = 6.0
+slip_correction = 4.0
+drift_enabled = true
+drift_entry_steer = 0.75
+drift_min_speed = 12.0
+drift_angle_min_deg = 15.0
+drift_angle_max_deg = 40.0
+drift_turn_rate_min = 0.45
+drift_turn_rate_max = 1.35
+drift_max_lateral_accel = 32.0
+drift_grip_factor = 0.1
