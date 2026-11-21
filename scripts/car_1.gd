@@ -172,11 +172,10 @@ func _drive_with_assists(delta: float) -> void:
 			apply_central_force(fwd * mass * h.boost_accel * _boost_strength)
 
 	var force := engine_force_to_apply * engine_force_modifier
-	# Corner slowdown: hard stick at speed lifts off and scrubs some speed.
+	# Corner slowdown: hard stick at speed scrubs a little speed (engine stays on).
 	var hard_steer := clampf((absf(_steer) - 0.5) * 2.0, 0.0, 1.0) * (1.0 - d)
 	if hard_steer > 0.0 and h.steer_slowdown > 0.0 and grounded and speed > max_speed * 0.4:
 		apply_central_force(-fwd * mass * h.steer_slowdown * hard_steer)
-		force *= 1.0 - hard_steer
 	if force > 0.0:
 		# Fade the engine out near top speed instead of switching it off, which
 		# made the rear tires grip and let go every frame.

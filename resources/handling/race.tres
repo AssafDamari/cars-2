@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_handling")
 max_steer_angle_deg = 26.0
-max_lateral_accel = 34.0
-steer_slowdown = 4.0
+max_lateral_accel = 42.0
+steer_slowdown = 3.0
 steer_response = 10.0
 steer_return = 16.0
 yaw_assist = 10.0
